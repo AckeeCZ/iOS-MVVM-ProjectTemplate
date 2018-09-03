@@ -28,13 +28,11 @@
 		691EF7051FDAFB2900135FBC /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691EF7011FDAFA6100135FBC /* TestingAppDelegate.swift */; };
 		693F90801FDB3D3000A18975 /* PluggableApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F907F1FDB3D3000A18975 /* PluggableApplicationDelegate.swift */; };
 		693F90821FDB3D8900A18975 /* MainAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F90811FDB3D8900A18975 /* MainAppDelegate.swift */; };
-		693F90871FDB449700A18975 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F90861FDB449700A18975 /* AppFlowController.swift */; };
-		693F90891FDB449E00A18975 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F90881FDB449E00A18975 /* FlowController.swift */; };
+		693F90871FDB449700A18975 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F90861FDB449700A18975 /* AppFlowCoordinator.swift */; };
 		693F908B1FDB484E00A18975 /* UIResponder+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693F908A1FDB484E00A18975 /* UIResponder+Errors.swift */; };
 		6964364B1FDAE979000D5CAA /* UnauthorizedHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964364A1FDAE979000D5CAA /* UnauthorizedHandling.swift */; };
 		6964364E1FDAEC04000D5CAA /* UIViewController+FrontmostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964364D1FDAEC04000D5CAA /* UIViewController+FrontmostController.swift */; };
 		696436511FDAECEA000D5CAA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696436501FDAECEA000D5CAA /* BaseViewController.swift */; };
-		6965AEDA1FDB4E34001A08C5 /* RoutingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AED91FDB4E34001A08C5 /* RoutingAction.swift */; };
 		6965AEDF1FDB5104001A08C5 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEDE1FDB5104001A08C5 /* ThemeProvider.swift */; };
 		6965AEE11FDB5177001A08C5 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEE01FDB5177001A08C5 /* UIColor+Theme.swift */; };
 		6965AEE31FDB5290001A08C5 /* UIFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEE21FDB5290001A08C5 /* UIFont+Theme.swift */; };
@@ -111,13 +109,11 @@
 		6924774520289818008F53A9 /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
 		693F907F1FDB3D3000A18975 /* PluggableApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluggableApplicationDelegate.swift; sourceTree = "<group>"; };
 		693F90811FDB3D8900A18975 /* MainAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppDelegate.swift; sourceTree = "<group>"; };
-		693F90861FDB449700A18975 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
-		693F90881FDB449E00A18975 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		693F90861FDB449700A18975 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		693F908A1FDB484E00A18975 /* UIResponder+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Errors.swift"; sourceTree = "<group>"; };
 		6964364A1FDAE979000D5CAA /* UnauthorizedHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedHandling.swift; sourceTree = "<group>"; };
 		6964364D1FDAEC04000D5CAA /* UIViewController+FrontmostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+FrontmostController.swift"; sourceTree = "<group>"; };
 		696436501FDAECEA000D5CAA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		6965AED91FDB4E34001A08C5 /* RoutingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingAction.swift; sourceTree = "<group>"; };
 		6965AEDE1FDB5104001A08C5 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
 		6965AEE01FDB5177001A08C5 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 		6965AEE21FDB5290001A08C5 /* UIFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Theme.swift"; sourceTree = "<group>"; };
@@ -238,9 +234,7 @@
 		693F90851FDB448200A18975 /* FlowCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				693F90861FDB449700A18975 /* AppFlowController.swift */,
-				693F90881FDB449E00A18975 /* FlowController.swift */,
-				6965AED91FDB4E34001A08C5 /* RoutingAction.swift */,
+				693F90861FDB449700A18975 /* AppFlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -611,7 +605,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				TargetAttributes = {
 					696E8C7F1FE3D6A400888769 = {
 						CreatedOnToolsVersion = 9.2;
@@ -918,9 +912,8 @@
 				69D13B381FDC3BC800315517 /* VersionUpdateManager.swift in Sources */,
 				69902FBD1FDC3FE100182939 /* PushNotification.swift in Sources */,
 				69D13B301FDC38EC00315517 /* User.swift in Sources */,
-				693F90891FDB449E00A18975 /* FlowController.swift in Sources */,
 				6965AEDF1FDB5104001A08C5 /* ThemeProvider.swift in Sources */,
-				693F90871FDB449700A18975 /* AppFlowController.swift in Sources */,
+				693F90871FDB449700A18975 /* AppFlowCoordinator.swift in Sources */,
 				690035981FD17E9D002EB20F /* AppDelegate.swift in Sources */,
 				6977BB551FD19F6700F6EB94 /* Network.swift in Sources */,
 				693F90801FDB3D3000A18975 /* PluggableApplicationDelegate.swift in Sources */,
@@ -941,7 +934,6 @@
 				69902FC51FDC657400182939 /* FirebasePushObserver.swift in Sources */,
 				69D13B2E1FDC383D00315517 /* UserManager.swift in Sources */,
 				693F908B1FDB484E00A18975 /* UIResponder+Errors.swift in Sources */,
-				6965AEDA1FDB4E34001A08C5 /* RoutingAction.swift in Sources */,
 				69C9D0FB1FE1EDA4008A1155 /* AppDependency+Factories.swift in Sources */,
 				693F90821FDB3D8900A18975 /* MainAppDelegate.swift in Sources */,
 				8829099C2135885300825878 /* ExampleViewController.swift in Sources */,
@@ -989,6 +981,7 @@
 		696E8C801FE3D6A400888769 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -998,6 +991,7 @@
 		696E8C811FE3D6A400888769 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1007,6 +1001,7 @@
 		696E8C821FE3D6A400888769 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1023,11 +1018,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1058,11 +1055,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1091,11 +1090,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
