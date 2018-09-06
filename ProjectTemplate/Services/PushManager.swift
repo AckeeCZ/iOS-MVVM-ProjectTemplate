@@ -1,9 +1,6 @@
 import ReactiveSwift
 import UserNotifications
 
-import enum Result.NoError
-typealias NoError = Result.NoError
-
 protocol HasPushManager {
     var pushManager: PushManaging { get }
 }

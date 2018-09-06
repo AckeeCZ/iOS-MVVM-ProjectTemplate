@@ -1,6 +1,6 @@
 import Foundation
 
 struct User {
-    let identifier: String
+    let identifier: IdentifierType
     let name: String
 }

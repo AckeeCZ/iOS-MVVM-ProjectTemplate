@@ -58,6 +58,7 @@
 		69A646C41FD1B6A100BD4A98 /* JSONAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A646C31FD1B6A100BD4A98 /* JSONAPIService.swift */; };
 		69C9D0FB1FE1EDA4008A1155 /* AppDependency+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9D0FA1FE1EDA4008A1155 /* AppDependency+Factories.swift */; };
 		69CFBB521FD1AAC4006E2402 /* NetworkUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CFBB511FD1AAC4006E2402 /* NetworkUploadable.swift */; };
+		69D100D5214135D100D5F753 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D100D4214135D100D5F753 /* Aliases.swift */; };
 		69D13B201FDC329E00315517 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D13B1B1FDC329E00315517 /* Alamofire.framework */; };
 		69D13B211FDC329E00315517 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D13B1C1FDC329E00315517 /* SnapKit.framework */; };
 		69D13B221FDC329E00315517 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D13B1D1FDC329E00315517 /* ACKategories.framework */; };
@@ -140,6 +141,7 @@
 		69A646C31FD1B6A100BD4A98 /* JSONAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAPIService.swift; sourceTree = "<group>"; };
 		69C9D0FA1FE1EDA4008A1155 /* AppDependency+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDependency+Factories.swift"; sourceTree = "<group>"; };
 		69CFBB511FD1AAC4006E2402 /* NetworkUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUploadable.swift; sourceTree = "<group>"; };
+		69D100D4214135D100D5F753 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		69D13B1B1FDC329E00315517 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		69D13B1C1FDC329E00315517 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		69D13B1D1FDC329E00315517 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				6977BB531FD19F5700F6EB94 /* Services */,
 				6965AEDD1FDB50E9001A08C5 /* Theme */,
 				69F4A6C61F8BD5C5003481A3 /* Info.plist */,
+				69D100D4214135D100D5F753 /* Aliases.swift */,
 				691EF7031FDAFAEF00135FBC /* main.swift */,
 			);
 			path = ProjectTemplate;
@@ -914,6 +917,7 @@
 				69D13B301FDC38EC00315517 /* User.swift in Sources */,
 				6965AEDF1FDB5104001A08C5 /* ThemeProvider.swift in Sources */,
 				693F90871FDB449700A18975 /* AppFlowCoordinator.swift in Sources */,
+				69D100D5214135D100D5F753 /* Aliases.swift in Sources */,
 				690035981FD17E9D002EB20F /* AppDelegate.swift in Sources */,
 				6977BB551FD19F6700F6EB94 /* Network.swift in Sources */,
 				693F90801FDB3D3000A18975 /* PluggableApplicationDelegate.swift in Sources */,

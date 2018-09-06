@@ -1,17 +1,6 @@
 import ReactiveSwift
 
-import enum Alamofire.HTTPMethod
-import protocol Alamofire.ParameterEncoding
-import struct Alamofire.URLEncoding
-import struct Alamofire.JSONEncoding
-import struct Alamofire.HTTPHeaders
 import enum Result.Result
-
-typealias HTTPMethod = Alamofire.HTTPMethod
-typealias ParameterEncoding = Alamofire.ParameterEncoding
-typealias HTTPHeaders = Alamofire.HTTPHeaders
-typealias URLEncoding = Alamofire.URLEncoding
-typealias JSONEncoding = Alamofire.JSONEncoding
 
 protocol HasJSONAPI {
     var jsonAPI: JSONAPIServicing { get }
