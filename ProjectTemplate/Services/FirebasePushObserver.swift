@@ -25,6 +25,14 @@ final class FirebasePushObserver: FirebasePushObserving {
     func start() {
         dependencies.pushManager.actions.registerToken <~ NotificationCenter.default.reactive
             .notifications(forName: .InstanceIDTokenRefresh)
-            .filterMap { _ in InstanceID.instanceID().token() }
+            .flatMap(.latest) { _ in
+                return SignalProducer<String?, NoError> { observer, _ in
+                    InstanceID.instanceID().instanceID(handler: { result, _ in
+                        observer.send(value: result?.token)
+                        observer.sendCompleted()
+                    })
+                }
+            }
+            .skipNil()
     }
 }
