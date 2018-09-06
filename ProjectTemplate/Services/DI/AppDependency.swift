@@ -5,6 +5,7 @@ typealias HasAPIDependencies = HasPushAPI & HasFetcher & HasExampleAPI
 typealias HasCredentialsDependencies = HasCredentialsProvider & HasCredentialsStore
 typealias HasManagerDependencies = HasPushManager & HasUserManager & HasFirebasePushObserver & HasVersionUpdateManager
 
+/// Container for all app dependencies
 final class AppDependency: HasBaseAPIDependecies, HasCredentialsDependencies, HasManagerDependencies, HasAPIDependencies {
     lazy var network: Networking = Network()
     lazy var authHandler: AuthHandling = AuthHandler()
