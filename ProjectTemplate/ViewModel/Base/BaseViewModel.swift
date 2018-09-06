@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Base class for all view models contained in app.
 class BaseViewModel {
 
     static var logEnabled: Bool = true
