@@ -20,7 +20,7 @@ extension UIView {
     func createVSpacer(_ height: CGFloat, priority: Int = 999) -> UIView {
         return createSpacer(height, axis: .vertical, priority: priority)
     }
-    
+
     /// Create horizontal spacer whose `isHidden` is tied to `self.isHidden`
     func createHSpacer(_ width: CGFloat, priority: Int = 999) -> UIView {
         return createSpacer(width, axis: .horizontal, priority: priority)
