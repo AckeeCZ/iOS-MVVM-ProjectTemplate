@@ -8,4 +8,4 @@ let args = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(
 )
 
 // swiftlint:disable force_unwrapping
-UIApplicationMain(CommandLine.argc, args, nil, NSStringFromClass(appDelegateClass!))
+UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(appDelegateClass!))
