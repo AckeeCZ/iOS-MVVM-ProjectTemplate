@@ -694,10 +694,11 @@
 			);
 			name = "Select GoogleService-Info.plist";
 			outputPaths = (
+				"${ACK_ENVIRONMENT_DIR}/Current/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService-Info.plist\"\n\ncp \"$SRC\" \"$DST\"";
+			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${SCRIPT_OUTPUT_FILE_0}\"\n\ncp \"$SRC\" \"$DST\"\n";
 		};
 		6924774D202898BD008F53A9 /* [Carthage] Check installed versions */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -722,10 +723,11 @@
 			);
 			name = "Environment switch";
 			outputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"";
+			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"\n";
 		};
 		696E8C841FE3D6A900888769 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -772,13 +774,15 @@
 			files = (
 			);
 			inputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
 			);
 			name = "Generate environment file";
 			outputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Environment.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"";
+			shellScript = "\"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"\n";
 		};
 		699DD5941F8D23D300C7080D /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -786,13 +790,17 @@
 			files = (
 			);
 			inputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/en.lproj/Localizable.strings",
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets",
 			);
 			name = SwiftGen;
 			outputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift",
+				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nswiftgen strings -t structured-swift4 \"${PROJECT_DIR}/${TARGET_NAME}/Resources/cs.lproj/Localizable.strings\" -o \"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift\"\nswiftgen xcassets -t swift4 \"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets\" -o \"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift\"";
+			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nLOC_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\n\ntouch \"$LOC_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$LOC_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\n";
 		};
 		69BB13E91FDEC10D008BAAE6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
