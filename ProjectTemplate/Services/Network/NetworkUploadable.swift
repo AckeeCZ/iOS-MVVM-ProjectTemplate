@@ -36,7 +36,7 @@ struct ImageUploadable: NetworkUploadable {
         let fixedOrientationImage = image.fixedOrientation()
         let resizedImage = fixedOrientationImage.resized(maxDimension: maxDimension) ?? image
 
-        if let imageData = UIImageJPEGRepresentation(resizedImage, compressionQuality) {
+        if let imageData = resizedImage.jpegData(compressionQuality: compressionQuality) {
             multipart.append(imageData, withName: key, fileName: fileName, mimeType: mimeType)
         }
     }

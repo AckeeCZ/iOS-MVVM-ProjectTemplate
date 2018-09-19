@@ -8,7 +8,7 @@ protocol HasPushManager {
 protocol PushManagingNotifications {
     /// Signal of received payloads while app is in foreground
     var received: Signal<PushNotification.Payload, NoError> { get }
-    
+
     /// Signal of notifications which were opened by the user
     var opened: Signal<PushNotification, NoError> { get }
 }

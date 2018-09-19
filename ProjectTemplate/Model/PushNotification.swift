@@ -24,7 +24,7 @@ struct PushNotification {
     ///
     /// Is `nil` if notification was opened without any action
     let action: Action?
-    
+
     /// Content data of notification
     let payload: Payload
 }

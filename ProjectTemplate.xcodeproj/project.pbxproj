@@ -103,8 +103,8 @@
 		35454DA5A985147A38EEA0A4 /* Pods-ProjectTemplate.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate/Pods-ProjectTemplate.adhoc.xcconfig"; sourceTree = "<group>"; };
 		60B7C76E48D9A34B19E19678 /* Pods-ProjectTemplate-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UnitTests/Pods-ProjectTemplate-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		690035971FD17E9D002EB20F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		691039D32028AF1D0069972B /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		691039D42028B0C90069972B /* Pluralization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluralization.swift; sourceTree = "<group>"; };
+		691DA92C21515691007CD98C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		691EF7011FDAFA6100135FBC /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		691EF7031FDAFAEF00135FBC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6924774520289818008F53A9 /* Cartfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Cartfile; sourceTree = "<group>"; };
@@ -616,10 +616,12 @@
 					};
 					69F4A6B61F8BD5C5003481A3 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 					};
 					69F4A6CA1F8BD5C5003481A3 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						TestTargetID = 69F4A6B61F8BD5C5003481A3;
 					};
@@ -630,7 +632,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				cs,
+				en,
 			);
 			mainGroup = 69C879351F8BD516006D38A0;
 			productRefGroup = 69F4A6B81F8BD5C5003481A3 /* Products */;
@@ -694,10 +696,11 @@
 			);
 			name = "Select GoogleService-Info.plist";
 			outputPaths = (
+				"${ACK_ENVIRONMENT_DIR}/Current/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService-Info.plist\"\n\ncp \"$SRC\" \"$DST\"";
+			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${SCRIPT_OUTPUT_FILE_0}\"\n\ncp \"$SRC\" \"$DST\"\n";
 		};
 		6924774D202898BD008F53A9 /* [Carthage] Check installed versions */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -722,10 +725,11 @@
 			);
 			name = "Environment switch";
 			outputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"";
+			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"\n";
 		};
 		696E8C841FE3D6A900888769 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -738,7 +742,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PROJECT_DIR/Pods/ACKLocalization/Localization\" \"<gdoc_id>\" \"key_ios\" '{\"CS\": \"Base\"}' \"$PROJECT_DIR/ProjectTemplate/Resources\" \"Localizable.strings\" ";
+			shellScript = "\"$PROJECT_DIR/Pods/ACKLocalization/Localization\" \"<gdoc_id>\" \"key_ios\" '{\"EN\": \"en\"}' \"$PROJECT_DIR/ProjectTemplate/Resources\" \"Localizable.strings\" \n";
 		};
 		6977BB5A1FD1A1C800F6EB94 /* [Carthage] Copy frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -772,13 +776,15 @@
 			files = (
 			);
 			inputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
 			);
 			name = "Generate environment file";
 			outputPaths = (
+				"$(ACK_ENVIRONMENT_DIR)/Environment.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"";
+			shellScript = "\"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"\n";
 		};
 		699DD5941F8D23D300C7080D /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -786,13 +792,17 @@
 			files = (
 			);
 			inputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/en.lproj/Localizable.strings",
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets",
 			);
 			name = SwiftGen;
 			outputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift",
+				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nswiftgen strings -t structured-swift4 \"${PROJECT_DIR}/${TARGET_NAME}/Resources/cs.lproj/Localizable.strings\" -o \"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift\"\nswiftgen xcassets -t swift4 \"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets\" -o \"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift\"";
+			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nLOC_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\n\ntouch \"$LOC_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$LOC_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\necho $?\n";
 		};
 		69BB13E91FDEC10D008BAAE6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -974,7 +984,7 @@
 		699DD59F1F8D249700C7080D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				691039D32028AF1D0069972B /* cs */,
+				691DA92C21515691007CD98C /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1193,7 +1203,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1264,7 +1274,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match InHouse cz.ackee.enterprise.*";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1336,7 +1346,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cz.ackee.SampleTesting";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1406,7 +1416,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectTemplate.app/ProjectTemplate";
 			};
@@ -1468,7 +1478,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectTemplate.app/ProjectTemplate";
 				VALIDATE_PRODUCT = YES;
@@ -1531,7 +1541,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectTemplate.app/ProjectTemplate";
 				VALIDATE_PRODUCT = YES;
