@@ -1,16 +1,20 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import SDCAlertView
 
 /// All objects (usually error objects) conforming to this protocol can be presented as error in responder chain
 public protocol ErrorPresentable {
     var title: String? { get }
     var message: String { get }
+
+    var detailedDescription: String? { get }
 }
 
 public extension ErrorPresentable {
     // make title optional
     var title: String? { return nil }
+    var detailedDescription: String? { return "\(self)" }
 
     var debugString: String {
         return "Error at \(Date()), title:\(title ?? ""), message:\(message), instance: \(self)"
@@ -57,18 +61,19 @@ extension UIWindow: ErrorPresenting {
         }
         guard let window = UIApplication.shared.keyWindow else { return false }
         let title = e.title ?? L10n.Basic.error
-        let alertController = UIAlertController(title: title, message: e.message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: L10n.Basic.ok, style: .cancel) { _ in }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+
+        let alertController = AlertController(attributedTitle: NSAttributedString(string: title), attributedMessage: NSAttributedString(string: e.message, attributes: [.paragraphStyle: paragraphStyle]), preferredStyle: .alert)
+        let okAction = AlertAction(title: L10n.Basic.ok, style: .preferred) { _ in }
         alertController.addAction(okAction)
 
-        #if DEBUG
-            let showMoreAction = UIAlertAction(title: L10n.Basic.showMore, style: .default) { _ in
-                let detailAlert = UIAlertController(title: "Error Detail", message: "\(e)", preferredStyle: .alert)
-                let detailOkAction = UIAlertAction(title: L10n.Basic.ok, style: .cancel) { _ in }
-                detailAlert.addAction(detailOkAction)
-                window.rootViewController?.frontmostController.present(detailAlert, animated: true)
-            }
-            alertController.addAction(showMoreAction)
+        #if DEBUG || ADHOC
+        let showMoreAction = AlertAction(title: L10n.Basic.showMore, style: .normal) { [weak self] _ in
+            self?.presentErrorDetail(error: e)
+        }
+        alertController.addAction(showMoreAction)
         #endif
 
         window.rootViewController?.frontmostController.present(alertController, animated: true)
@@ -79,5 +84,33 @@ extension UIWindow: ErrorPresenting {
         print(e.debugString)
         // if you use any console or logger library, call it here...
     }
+
+    fileprivate func presentErrorDetail(error: ErrorPresentable) {
+        let textView = UITextView()
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.textAlignment = .natural
+        textView.font = UIFont(name: "Courier New", size: 10)
+        textView.text = error.detailedDescription
+
+        let detailAlert = AlertController(title: "Error Detail", message: nil)
+        detailAlert.visualStyle = errorDetailAlertStyle
+        detailAlert.contentView.addSubview(textView)
+        textView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(300)
+        }
+
+        let detailOkAction = AlertAction(title: L10n.Basic.ok, style: .preferred)
+        detailAlert.addAction(detailOkAction)
+        rootViewController?.frontmostController.present(detailAlert, animated: true)
+    }
 }
 
+/// Visual style for error detail alert
+fileprivate let errorDetailAlertStyle: AlertVisualStyle = {
+    var style = AlertVisualStyle(alertStyle: .alert)
+    style.contentPadding = UIEdgeInsets(top: 36, left: 5, bottom: 5, right: 5)
+    style.width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)-20
+    return style
+}()

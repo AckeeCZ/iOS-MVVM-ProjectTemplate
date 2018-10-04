@@ -83,6 +83,8 @@
 		88576E4D2125C179009DB5D2 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576E4C2125C179009DB5D2 /* BaseViewModel.swift */; };
 		CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F73735F21BEAAADBB6C5C78 /* Pods_ProjectTemplate.framework */; };
 		D896867B00965E0DCEE5B306 /* Pods_ProjectTemplate_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B807F84FA2B1A44827573F /* Pods_ProjectTemplate_UnitTests.framework */; };
+		F8B0E8CE216244CC0075EA47 /* SDCAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B0E8CD216244CC0075EA47 /* SDCAlertView.framework */; };
+		F8B0E8D0216244D80075EA47 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B0E8CF216244D80075EA47 /* Reqres.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,8 @@
 		A5FC50C1EE8B67087528B38B /* Pods-ProjectTemplate-UnitTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UnitTests/Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		BBBDAAC3015105C5D8D57535 /* Pods-ProjectTemplate-UITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UITests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UITests/Pods-ProjectTemplate-UITests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		DBA320E0E4B46C241CF4502F /* Pods-ProjectTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate/Pods-ProjectTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		F8B0E8CD216244CC0075EA47 /* SDCAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCAlertView.framework; path = Carthage/Build/iOS/SDCAlertView.framework; sourceTree = "<group>"; };
+		F8B0E8CF216244D80075EA47 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,8 @@
 				CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */,
 				6977BB581FD1A1B300F6EB94 /* Result.framework in Frameworks */,
 				6977BB591FD1A1B300F6EB94 /* ReactiveSwift.framework in Frameworks */,
+				F8B0E8D0216244D80075EA47 /* Reqres.framework in Frameworks */,
+				F8B0E8CE216244CC0075EA47 /* SDCAlertView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +542,8 @@
 		9AFDE9C028D41DE8253C47ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8B0E8CF216244D80075EA47 /* Reqres.framework */,
+				F8B0E8CD216244CC0075EA47 /* SDCAlertView.framework */,
 				69D13B2B1FDC377C00315517 /* Fabric.framework */,
 				69D13B1D1FDC329E00315517 /* ACKategories.framework */,
 				69D13B1B1FDC329E00315517 /* Alamofire.framework */,
@@ -756,6 +764,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ACKategories.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Reqres.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDCAlertView.framework",
 			);
 			name = "[Carthage] Copy frameworks";
 			outputPaths = (
@@ -765,10 +775,12 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ACKategories.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SnapKit.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Reqres.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SDCAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		698258FE1F8E9B46004BBCB7 /* Generate environment file */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -816,7 +828,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT\"/SwiftLint/swiftlint autocorrect\n\"$PODS_ROOT\"/SwiftLint/swiftlint";
+			shellScript = "\"$PODS_ROOT\"/SwiftLint/swiftlint autocorrect\n\"$PODS_ROOT\"/SwiftLint/swiftlint\n";
 		};
 		69D13B251FDC337200315517 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1273,6 +1285,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "match InHouse cz.ackee.enterprise.*";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ADHOC;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
