@@ -1,7 +1,7 @@
 import UIKit
 
 /// Base class for all view controllers contained in app.
-class BaseViewController: UIViewController, AlertPresenting {
+class BaseViewController: UIViewController, PopupPresenting {
 
     static var logEnabled: Bool = true
 

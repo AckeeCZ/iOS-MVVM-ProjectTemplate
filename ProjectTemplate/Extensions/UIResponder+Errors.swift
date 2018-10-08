@@ -54,6 +54,7 @@ public protocol ErrorPresenting {
 // When no-one in responder chain is ErrorPresenting, window is the last object who can present the error.
 // Shows simple alert with error title and message and OK button.
 extension UIWindow: ErrorPresenting {
+    /// Present error in popup
     public func presentError(_ e: ErrorPresentable) -> Bool {
         defer {
             logError(e)
@@ -77,12 +78,12 @@ extension UIWindow: ErrorPresenting {
         return true
     }
 
-    fileprivate func logError(_ e: ErrorPresentable) {
+    private func logError(_ e: ErrorPresentable) {
         print(e.debugString)
         // if you use any console or logger library, call it here...
     }
 
-    fileprivate func presentErrorDetail(error: ErrorPresentable) {
+    private func presentErrorDetail(error: ErrorPresentable) {
         guard let window = UIApplication.shared.keyWindow else { return }
         let alertContentController = AlertContentController(title: L10n.Basic.error, description: error.detailedDescription)
         if let baseVC = window.rootViewController?.frontmostController as? AlertPresenting {

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol AlertPresenting: UIViewControllerTransitioningDelegate {
+protocol PopupPresenting: UIViewControllerTransitioningDelegate {
     var popupAnimation: PopupModalAnimation { get }
 
     func present(popup: UIViewController)
 }
 
-extension AlertPresenting where Self: UIViewController {
+extension PopupPresenting where Self: UIViewController {
     /// Presents popup with animation
     func present(popup: UIViewController) {
         popup.transitioningDelegate = self

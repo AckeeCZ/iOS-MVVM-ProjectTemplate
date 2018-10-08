@@ -8,16 +8,47 @@
 import Foundation
 import UIKit
 
+/// Animation for presenting popups
 final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
-    /// Background color
+    /// Popup horizontal inset
+    var popupXInset: CGFloat = 19
+
+    /// Background color for popup view
+    var popupBackgroundColor: UIColor = .clear
+
+    /// Background color for
     var backgroundColor: UIColor = .clear
 
-    /// Visual effect
+    /// Visual effect for background view
     var visualEffect: UIVisualEffect? = UIBlurEffect(style: .light)
 
-    /// Final alpha
+    /// Final alpha for background view
     var finalAlpha: CGFloat = 1.0
+
+    /// Duration of presenting modal
+    var presentDuration: TimeInterval = 1.0
+
+    /// Duration of dismissing modal
+    var dismissDuration: TimeInterval = 0.3
+
+    /// Shadow offset
+    let shadowOffset: CGSize = CGSize.zero
+
+    /// Shadow color
+    let shadowColor: CGColor = UIColor.black.cgColor
+
+    /// Shadow radius
+    let shadowRadius: CGFloat = 5.0
+
+    /// Shadow opacity
+    let shadowOpacity: Float = 0.5
+
+    /// Popup animation damping
+    let animationDamping: CGFloat = 0.8
+
+    /// Initial animation spring velocity
+    let animationInitialSpringVelocity: CGFloat = 1
 
     enum AnimationType {
         case present
@@ -26,10 +57,10 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
 
     var animationType: AnimationType = .present
 
-    lazy var coverView: UIVisualEffectView = {
+    private lazy var coverView: UIVisualEffectView = {
         let view = UIVisualEffectView()
         view.effect = visualEffect
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = popupBackgroundColor
         return view
     }()
 
@@ -40,27 +71,27 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
 
         if animationType == .present {
             //The modal view itself
-            guard let modalView = (transitionContext.viewController(forKey: .to)?.view) else { return }
+            guard let modalView = transitionContext.viewController(forKey: .to)?.view else { return }
 
             coverView.alpha = 0
             containerView.addSubview(coverView)
             containerView.snp.makeConstraints({ (make) in
                 make.edges.equalTo(0)
             })
-            containerView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+            containerView.backgroundColor = backgroundColor
             coverView.frame = containerView.frame
 
             containerView.addSubview(modalView)
             modalView.snp.makeConstraints({ (make) in
-                make.leading.trailing.equalTo(containerView).inset(19)
+                make.leading.trailing.equalTo(containerView).inset(popupXInset)
                 make.height.lessThanOrEqualTo(containerView.snp.height).multipliedBy(0.85)
                 make.center.equalTo(containerView)
             })
             modalView.layer.contentsScale = UIScreen.main.scale
-            modalView.layer.shadowColor = UIColor.black.cgColor
-            modalView.layer.shadowOffset = CGSize.zero
-            modalView.layer.shadowRadius = 5.0
-            modalView.layer.shadowOpacity = 0.5
+            modalView.layer.shadowColor = shadowColor
+            modalView.layer.shadowOffset = shadowOffset
+            modalView.layer.shadowRadius = shadowRadius
+            modalView.layer.shadowOpacity = shadowOpacity
             modalView.layer.masksToBounds = false
             modalView.clipsToBounds = false
 
@@ -69,7 +100,7 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
             containerView.bringSubviewToFront(modalView)
 
             //Move off of the screen so we can slide it up
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveLinear, animations: {
+            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: animationDamping, initialSpringVelocity: animationInitialSpringVelocity, options: .curveLinear, animations: {
                 modalView.frame = endFrame
                 self.coverView.alpha = self.finalAlpha
                 self.coverView.effect = self.visualEffect
@@ -77,7 +108,7 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
                     transitionContext.completeTransition(true)
             })
 
-        } else if (animationType == .dismiss) {
+        } else if animationType == .dismiss {
 
             guard let modalView = transitionContext.viewController(forKey: .from)?.view else { return }
             //The modal view itself
@@ -98,7 +129,7 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
     }
 
     @objc func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return (self.animationType == .present) ? 1.0 : 0.3
+        return animationType == .present ? presentDuration : dismissDuration
     }
 }
 
