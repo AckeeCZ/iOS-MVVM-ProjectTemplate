@@ -7,41 +7,18 @@
 
 import UIKit
 
-final class AlertController: UIViewController, AlertPresenting {
-    struct Action {
-        enum Style {
-            case blue
-            case text
-        }
-
-        static var ok: Action { return Action(title: L10n.Basic.ok, style: .blue) }
-        static var cancel: Action { return Action(title: L10n.Basic.showMore, style: .text) }
-
-        let title: String
-        let style: Style
-        let action: () -> ()
-    }
-
-    lazy var popupAnimation = PopupModalAnimation()
-
+final class AlertContentController: BaseViewController {
     private let _title: String
-    private let _message: String
-    private var actions = [Action]() {
-        didSet {
-            updateActionButtons()
-        }
-    }
-
-    private weak var actionVStack: UIStackView!
+    private let _description: String
+    private weak var okButton: UIButton!
 
     // MARK: Initializers
 
-    init(title: String, message: String?) {
-        assert(title.count > 0, "Title cannot be empty")
-
+    init(title: String, description: String?) {
         self._title = title
-        self._message = message ?? ""
-        super.init(nibName: nil, bundle: nil)
+        self._description = description ?? ""
+
+        super.init()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,118 +30,50 @@ final class AlertController: UIViewController, AlertPresenting {
     override func loadView() {
         super.loadView()
 
-        let rate = UIScreen.main.graphicRate
-
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         view.layer.cornerRadius = 7
         view.layer.masksToBounds = true
 
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.theme.bold(25)
+        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         titleLabel.numberOfLines = 0
         titleLabel.text = _title
         titleLabel.textAlignment = .center
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(45 * rate.height)
+            make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(26)
         }
 
-        var lastView: UIView = titleLabel
-
-        if _message.count > 0 {
-            let messageLabel = UILabel()
-            messageLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            messageLabel.numberOfLines = 0
-            messageLabel.text = _message
-            messageLabel.textAlignment = .center
-            view.addSubview(messageLabel)
-            messageLabel.snp.makeConstraints { (make) in
-                make.leading.trailing.equalToSuperview().inset(20)
-                make.top.equalTo(titleLabel.snp.bottom).offset(13)
-            }
-
-            lastView = messageLabel
+        let textView = UITextView()
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.textAlignment = .natural
+        textView.font = UIFont(name: "Courier New", size: 10)
+        textView.text = _description
+        view.addSubview(textView)
+        textView.snp.makeConstraints{ make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
+            make.height.equalTo(300)
         }
 
-        let actionVStack = UIStackView()
-        actionVStack.spacing = 23
-        actionVStack.axis = .vertical
-        view.addSubview(actionVStack)
-        actionVStack.snp.makeConstraints { (make) in
-            make.top.equalTo(lastView.snp.bottom).offset(42 * rate.height)
-            make.leading.trailing.equalToSuperview().inset(12)
-            make.bottom.equalToSuperview().inset(27 * rate.height)
+        let okButton = UIButton(type: .system)
+        okButton.setTitle(L10n.Basic.ok, for: [])
+        okButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        view.addSubview(okButton)
+        okButton.snp.makeConstraints { make in
+            make.top.equalTo(textView.snp.bottom).offset(15)
+            make.leading.trailing.bottom.equalToSuperview().inset(15)
         }
-        self.actionVStack = actionVStack
+        self.okButton = okButton
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateActionButtons()
-    }
-
-    // MARK: Public interface
-
-    func addAction(_ action: Action) {
-        actions.append(action)
-    }
-
-    // MARK: Private helpers
-
-    private func updateActionButtons() {
-        guard isViewLoaded else { return }
-
-        actionVStack.removeAllArrangedSubviews()
-
-        actions.forEach { action in
-            let button = self.button(forAction: action)
-            actionVStack.addArrangedSubview(button)
-        }
-    }
-
-    private func button(forAction action: Action) -> UIControl {
-        let button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        button.setTitle(action.title, for: .normal)
-        button.on(.touchUpInside) { [weak self] _ in
-            action.action()
+        okButton.on { [weak self] _ in
             self?.dismiss(animated: true)
         }
-        return button
-    }
-}
-
-extension AlertController.Action {
-    init(title: String, style: Style) {
-        self.init(title: title, style: style, action: { })
-    }
-}
-
-extension AlertController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        popupAnimation.animationType = .present
-        return popupAnimation
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        popupAnimation.animationType = .dismiss
-        return popupAnimation
-    }
-}
-
-extension UIScreen {
-    struct GraphicRate {
-        let width: CGFloat
-        let height: CGFloat
-    }
-
-    var graphicRate: GraphicRate {
-        return GraphicRate(width: bounds.width / 375, height: bounds.height / 667)
-    }
-
-    var isExtraCompact: Bool {
-        return graphicRate.width < 1 && graphicRate.height < 1
     }
 }
