@@ -86,7 +86,7 @@ extension UIWindow: ErrorPresenting {
     private func presentErrorDetail(error: ErrorPresentable) {
         guard let window = UIApplication.shared.keyWindow else { return }
         let alertContentController = DebugAlertController(title: L10n.Basic.error, description: error.detailedDescription)
-        if let baseVC = window.rootViewController?.frontmostController as? AlertPresenting {
+        if let baseVC = window.rootViewController?.frontmostController as? PopupPresenting {
             baseVC.present(popup: alertContentController)
         } else {
             window.rootViewController?.frontmostController.present(alertContentController, animated: true)
