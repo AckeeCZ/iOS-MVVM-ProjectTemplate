@@ -86,8 +86,8 @@
 		F8B0E8CE216244CC0075EA47 /* SDCAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B0E8CD216244CC0075EA47 /* SDCAlertView.framework */; };
 		F8B0E8D0216244D80075EA47 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B0E8CF216244D80075EA47 /* Reqres.framework */; };
 		F8CA9D6721677E7800F1AF45 /* PopupModelAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA9D6621677E7800F1AF45 /* PopupModelAnimation.swift */; };
-		F8CA9D6921677EC400F1AF45 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA9D6821677EC400F1AF45 /* AlertController.swift */; };
-		F8CA9D6B2167832E00F1AF45 /* AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA9D6A2167832E00F1AF45 /* AlertPresenting.swift */; };
+		F8CA9D6921677EC400F1AF45 /* DebugAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA9D6821677EC400F1AF45 /* DebugAlertController.swift */; };
+		F8CA9D6B2167832E00F1AF45 /* PopupPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA9D6A2167832E00F1AF45 /* PopupPresenting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,8 +185,8 @@
 		F8B0E8CD216244CC0075EA47 /* SDCAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCAlertView.framework; path = Carthage/Build/iOS/SDCAlertView.framework; sourceTree = "<group>"; };
 		F8B0E8CF216244D80075EA47 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
 		F8CA9D6621677E7800F1AF45 /* PopupModelAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupModelAnimation.swift; sourceTree = "<group>"; };
-		F8CA9D6821677EC400F1AF45 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		F8CA9D6A2167832E00F1AF45 /* AlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenting.swift; sourceTree = "<group>"; };
+		F8CA9D6821677EC400F1AF45 /* DebugAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugAlertController.swift; sourceTree = "<group>"; };
+		F8CA9D6A2167832E00F1AF45 /* PopupPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPresenting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +362,7 @@
 		696CEE641F8D1BF3007C6DF7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F8CA9D6C216B6AF900F1AF45 /* Popup */,
 				F8CA9D6521677E5A00F1AF45 /* Alert */,
 				6964364F1FDAECDE000D5CAA /* Base */,
 			);
@@ -569,11 +570,18 @@
 		F8CA9D6521677E5A00F1AF45 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				F8CA9D6621677E7800F1AF45 /* PopupModelAnimation.swift */,
-				F8CA9D6821677EC400F1AF45 /* AlertController.swift */,
-				F8CA9D6A2167832E00F1AF45 /* AlertPresenting.swift */,
+				F8CA9D6821677EC400F1AF45 /* DebugAlertController.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		F8CA9D6C216B6AF900F1AF45 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				F8CA9D6621677E7800F1AF45 /* PopupModelAnimation.swift */,
+				F8CA9D6A2167832E00F1AF45 /* PopupPresenting.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -961,7 +969,7 @@
 				690035981FD17E9D002EB20F /* AppDelegate.swift in Sources */,
 				6977BB551FD19F6700F6EB94 /* Network.swift in Sources */,
 				693F90801FDB3D3000A18975 /* PluggableApplicationDelegate.swift in Sources */,
-				F8CA9D6B2167832E00F1AF45 /* AlertPresenting.swift in Sources */,
+				F8CA9D6B2167832E00F1AF45 /* PopupPresenting.swift in Sources */,
 				69D13B351FDC3BC800315517 /* APIFetcher.swift in Sources */,
 				696436511FDAECEA000D5CAA /* BaseViewController.swift in Sources */,
 				69F927101FD223EB001D7592 /* Credentials.swift in Sources */,
@@ -977,7 +985,7 @@
 				6965AEE11FDB5177001A08C5 /* UIColor+Theme.swift in Sources */,
 				69A646C41FD1B6A100BD4A98 /* JSONAPIService.swift in Sources */,
 				69902FC51FDC657400182939 /* FirebasePushObserver.swift in Sources */,
-				F8CA9D6921677EC400F1AF45 /* AlertController.swift in Sources */,
+				F8CA9D6921677EC400F1AF45 /* DebugAlertController.swift in Sources */,
 				69D13B2E1FDC383D00315517 /* UserManager.swift in Sources */,
 				693F908B1FDB484E00A18975 /* UIResponder+Errors.swift in Sources */,
 				69C9D0FB1FE1EDA4008A1155 /* AppDependency+Factories.swift in Sources */,

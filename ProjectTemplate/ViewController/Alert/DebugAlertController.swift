@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlertContentController: BaseViewController {
+final class DebugAlertController: BaseViewController {
     private let _title: String
     private let _description: String
     private weak var okButton: UIButton!
