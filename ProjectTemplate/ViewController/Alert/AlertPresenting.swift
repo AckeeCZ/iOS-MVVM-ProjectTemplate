@@ -14,6 +14,7 @@ protocol AlertPresenting: UIViewControllerTransitioningDelegate {
 }
 
 extension AlertPresenting where Self: UIViewController {
+    /// Presents popup with animation
     func present(popup: UIViewController) {
         popup.transitioningDelegate = self
         popup.modalPresentationStyle = .custom

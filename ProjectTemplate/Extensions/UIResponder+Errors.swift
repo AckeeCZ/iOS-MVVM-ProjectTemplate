@@ -83,24 +83,6 @@ extension UIWindow: ErrorPresenting {
     }
 
     fileprivate func presentErrorDetail(error: ErrorPresentable) {
-//        let textView = UITextView()
-//        textView.isEditable = false
-//        textView.isSelectable = true
-//        textView.textAlignment = .natural
-//        textView.font = UIFont(name: "Courier New", size: 10)
-//        textView.text = error.detailedDescription
-//
-//        let detailAlert = AlertController(title: "Error Detail", message: nil)
-//        detailAlert.view.addSubview(textView)
-//        textView.snp.makeConstraints{ make in
-//            make.edges.equalToSuperview()
-//            make.height.equalTo(300)
-//        }
-//
-//        let detailOkAction = AlertController.Action(title: L10n.Basic.ok, style: .blue) {
-//            detailAlert.dismiss(animated: true, completion: nil)
-//        }
-//        detailAlert.addAction(detailOkAction)
         guard let window = UIApplication.shared.keyWindow else { return }
         let alertContentController = AlertContentController(title: L10n.Basic.error, description: error.detailedDescription)
         if let baseVC = window.rootViewController?.frontmostController as? AlertPresenting {
@@ -110,11 +92,3 @@ extension UIWindow: ErrorPresenting {
         }
     }
 }
-
-/// Visual style for error detail alert
-//fileprivate let errorDetailAlertStyle: AlertVisualStyle = {
-//    var style = AlertVisualStyle(alertStyle: .alert)
-//    style.contentPadding = UIEdgeInsets(top: 36, left: 5, bottom: 5, right: 5)
-//    style.width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)-20
-//    return style
-//}()

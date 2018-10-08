@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+
+    /// Background color
+    var backgroundColor: UIColor = .clear
+
+    /// Visual effect
+    var visualEffect: UIVisualEffect? = UIBlurEffect(style: .light)
+
+    /// Final alpha
+    var finalAlpha: CGFloat = 1.0
+
     enum AnimationType {
         case present
         case dismiss
@@ -16,9 +26,10 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
 
     var animationType: AnimationType = .present
 
-    lazy var coverView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: 0x174B71)
+    lazy var coverView: UIVisualEffectView = {
+        let view = UIVisualEffectView()
+        view.effect = visualEffect
+        view.backgroundColor = backgroundColor
         return view
     }()
 
@@ -58,26 +69,27 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
             containerView.bringSubviewToFront(modalView)
 
             //Move off of the screen so we can slide it up
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveLinear, animations: { [weak self] in
+            UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveLinear, animations: {
                 modalView.frame = endFrame
-                self?.coverView.alpha = 0.65
-
-                }, completion: { (finished) in
+                self.coverView.alpha = self.finalAlpha
+                self.coverView.effect = self.visualEffect
+                }, completion: { _ in
                     transitionContext.completeTransition(true)
             })
 
         } else if (animationType == .dismiss) {
 
-            let modalView = transitionContext.viewController(forKey: .from)?.view
+            guard let modalView = transitionContext.viewController(forKey: .from)?.view else { return }
             //The modal view itself
-            UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { [weak self] in
-                var frame = modalView!.frame
+            UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+                var frame = modalView.frame
                 frame.origin.y = containerView.frame.height
-                modalView!.layer.transform = CATransform3DRotate(modalView!.layer.transform, (3.14/180) * 35, 1, 0.0, 0.0)
-                self?.coverView.alpha = 0
+                modalView.layer.transform = CATransform3DRotate(modalView.layer.transform, (3.14/180) * 35, 1, 0.0, 0.0)
+                self.coverView.alpha = 0
+                self.coverView.effect = nil
 
-                modalView!.frame = frame
-                }, completion: { (completed) in
+                modalView.frame = frame
+            }, completion: { _ in
                     self.coverView.removeFromSuperview()
                     transitionContext.completeTransition(true)
             })
