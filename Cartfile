@@ -7,4 +7,3 @@ github "AckeeCZ/Reqres" ~> 2.3
 github "AckeeCZ/ACKategories" ~> 5.6
 
 github "SnapKit/SnapKit" ~> 4.0
-github "sberrevoets/SDCAlertView" ~> 8.0

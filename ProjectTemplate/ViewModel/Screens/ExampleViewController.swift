@@ -73,12 +73,6 @@ final class ExampleViewController: BaseViewController {
         setupBindings()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        reactive.errors() <~ SignalProducer(sequence(first: RequestError.missingRefreshToken, next: { _ in
-            return nil
-        }))
-    }
-
     // MARK: Helpers
 
     private func setupBindings() {

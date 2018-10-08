@@ -72,14 +72,6 @@ struct NetworkError: Error {
     let data: Data?
 
     var statusCode: Int? { return response?.statusCode }
-
-    var jsonBody: Any? { return data.flatMap({try? JSONSerialization.jsonObject(with: $0, options: .allowFragments) }) }
-
-    var backendStatusCode: Int? {
-        let json = jsonBody as? [String: Any]
-        let error = json?["error"] as? [String: Any]
-        return error?["code"] as? Int
-    }
 }
 
 extension RequestResponse where Value == Data {
