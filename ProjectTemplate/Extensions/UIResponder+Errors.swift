@@ -1,7 +1,6 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import SDCAlertView
 
 /// All objects (usually error objects) conforming to this protocol can be presented as error in responder chain
 public protocol ErrorPresentable {
@@ -52,8 +51,8 @@ public protocol ErrorPresenting {
     func presentError(_ e: ErrorPresentable) -> Bool
 }
 
-/// When no-one in responder chain is ErrorPresenting, window is the last object who can present the error.
-/// Shows simple alert with error title and message and OK button.
+// When no-one in responder chain is ErrorPresenting, window is the last object who can present the error.
+// Shows simple alert with error title and message and OK button.
 extension UIWindow: ErrorPresenting {
     public func presentError(_ e: ErrorPresentable) -> Bool {
         defer {
@@ -62,21 +61,24 @@ extension UIWindow: ErrorPresenting {
         guard let window = UIApplication.shared.keyWindow else { return false }
         let title = e.title ?? L10n.Basic.error
 
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-
-        let alertController = AlertController(attributedTitle: NSAttributedString(string: title), attributedMessage: NSAttributedString(string: e.message, attributes: [.paragraphStyle: paragraphStyle]), preferredStyle: .alert)
-        let okAction = AlertAction(title: L10n.Basic.ok, style: .preferred) { _ in }
+        let alertController = AlertController(title: title, message: e.message)
+        let okAction = AlertController.Action(title: L10n.Basic.ok, style: .blue) {
+            alertController.dismiss(animated: true, completion: nil)
+        }
         alertController.addAction(okAction)
 
         #if DEBUG || ADHOC
-        let showMoreAction = AlertAction(title: L10n.Basic.showMore, style: .normal) { [weak self] _ in
+        let showMoreAction = AlertController.Action(title: L10n.Basic.showMore, style: .text) { [weak self] in
             self?.presentErrorDetail(error: e)
         }
         alertController.addAction(showMoreAction)
         #endif
 
-        window.rootViewController?.frontmostController.present(alertController, animated: true)
+        if let baseVC = window.rootViewController?.frontmostController as? AlertPresenting {
+            baseVC.present(popup: alertController)
+        } else {
+            window.rootViewController?.frontmostController.present(alertController, animated: true)
+        }
         return true
     }
 
@@ -94,23 +96,25 @@ extension UIWindow: ErrorPresenting {
         textView.text = error.detailedDescription
 
         let detailAlert = AlertController(title: "Error Detail", message: nil)
-        detailAlert.visualStyle = errorDetailAlertStyle
-        detailAlert.contentView.addSubview(textView)
+//        detailAlert.visualStyle = errorDetailAlertStyle
+        detailAlert.view.addSubview(textView)
         textView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
             make.height.equalTo(300)
         }
 
-        let detailOkAction = AlertAction(title: L10n.Basic.ok, style: .preferred)
+        let detailOkAction = AlertController.Action(title: L10n.Basic.ok, style: .blue) {
+            detailAlert.dismiss(animated: true, completion: nil)
+        }
         detailAlert.addAction(detailOkAction)
         rootViewController?.frontmostController.present(detailAlert, animated: true)
     }
 }
 
 /// Visual style for error detail alert
-fileprivate let errorDetailAlertStyle: AlertVisualStyle = {
-    var style = AlertVisualStyle(alertStyle: .alert)
-    style.contentPadding = UIEdgeInsets(top: 36, left: 5, bottom: 5, right: 5)
-    style.width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)-20
-    return style
-}()
+//fileprivate let errorDetailAlertStyle: AlertVisualStyle = {
+//    var style = AlertVisualStyle(alertStyle: .alert)
+//    style.contentPadding = UIEdgeInsets(top: 36, left: 5, bottom: 5, right: 5)
+//    style.width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)-20
+//    return style
+//}()

@@ -1,9 +1,12 @@
 import UIKit
 
 /// Base class for all view controllers contained in app.
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, AlertPresenting {
 
     static var logEnabled: Bool = true
+
+    /// Presenting modal views
+    lazy var popupAnimation = PopupModalAnimation()
 
     /// Navigation bar is shown/hidden in viewWillAppear according to this flag
     var hasNavigationBar: Bool = true
@@ -39,5 +42,17 @@ class BaseViewController: UIViewController {
         if BaseViewController.logEnabled {
             NSLog("📱 ⚰️ \(self)")
         }
+    }
+}
+
+extension BaseViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        popupAnimation.animationType = .present
+        return popupAnimation
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        popupAnimation.animationType = .dismiss
+        return popupAnimation
     }
 }
