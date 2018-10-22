@@ -570,7 +570,6 @@
 				6924774D202898BD008F53A9 /* [Carthage] Check installed versions */,
 				696CEE6A1F8D1E5C007C6DF7 /* Environment switch */,
 				691039D62028B1D10069972B /* Select GoogleService-Info.plist */,
-				698258FE1F8E9B46004BBCB7 /* Generate environment file */,
 				699DD5941F8D23D300C7080D /* SwiftGen */,
 				69F4A6B31F8BD5C5003481A3 /* Sources */,
 				69BB13E91FDEC10D008BAAE6 /* Swiftlint */,
@@ -777,22 +776,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		698258FE1F8E9B46004BBCB7 /* Generate environment file */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
-			);
-			name = "Generate environment file";
-			outputPaths = (
-				"$(ACK_ENVIRONMENT_DIR)/Environment.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# \"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"\n";
 		};
 		699DD5941F8D23D300C7080D /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
