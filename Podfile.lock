@@ -94,7 +94,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
   - Smartling.i18n (1.0.14)
-  - SwiftGen (5.3.0)
+  - SwiftGen (6.0.2)
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
@@ -105,7 +105,7 @@ DEPENDENCIES:
   - Firebase/Performance (~> 5.6)
   - Firebase/RemoteConfig (~> 5.6)
   - Smartling.i18n (~> 1.0)
-  - SwiftGen (~> 5.3)
+  - SwiftGen (~> 6.0)
   - SwiftLint (~> 0.27)
 
 SPEC REPOS:
@@ -150,9 +150,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
-  SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
+  SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 3d47f37f45ef2d06607cf4891c773d6d8b06d845
+PODFILE CHECKSUM: cccb1143bf77373c757b8d79170f8531be8a6ce4
 
 COCOAPODS: 1.5.3
