@@ -38,8 +38,6 @@
 		6965AEE31FDB5290001A08C5 /* UIFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEE21FDB5290001A08C5 /* UIFont+Theme.swift */; };
 		6965AEE51FDB5526001A08C5 /* UIElements+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEE41FDB5526001A08C5 /* UIElements+Theme.swift */; };
 		696CEE521F8D19A5007C6DF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 696CEE501F8D19A5007C6DF7 /* Images.xcassets */; };
-		696CEE631F8D1ADE007C6DF7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696CEE621F8D1ADE007C6DF7 /* Environment.swift */; };
-		6977BB521FD19D2800F6EB94 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6977BB511FD19D2800F6EB94 /* environment.plist */; };
 		6977BB551FD19F6700F6EB94 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977BB541FD19F6700F6EB94 /* Network.swift */; };
 		6977BB581FD1A1B300F6EB94 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977BB561FD1A1B300F6EB94 /* Result.framework */; };
 		6977BB591FD1A1B300F6EB94 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977BB571FD1A1B300F6EB94 /* ReactiveSwift.framework */; };
@@ -83,6 +81,8 @@
 		88576E4D2125C179009DB5D2 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576E4C2125C179009DB5D2 /* BaseViewModel.swift */; };
 		CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F73735F21BEAAADBB6C5C78 /* Pods_ProjectTemplate.framework */; };
 		D896867B00965E0DCEE5B306 /* Pods_ProjectTemplate_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B807F84FA2B1A44827573F /* Pods_ProjectTemplate_UnitTests.framework */; };
+		F8E23046217DB9520039EA2B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E23045217DB9520039EA2B /* Environment.swift */; };
+		F8E23048217DBA3C0039EA2B /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8E23047217DBA3C0039EA2B /* environment.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +123,6 @@
 		696CEE581F8D1A3F007C6DF7 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		696CEE5A1F8D1AB7007C6DF7 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		696CEE5C1F8D1ABC007C6DF7 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
-		696CEE621F8D1ADE007C6DF7 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		6977BB511FD19D2800F6EB94 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		6977BB541FD19F6700F6EB94 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6977BB561FD1A1B300F6EB94 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		6977BB571FD1A1B300F6EB94 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
@@ -177,6 +175,8 @@
 		A5FC50C1EE8B67087528B38B /* Pods-ProjectTemplate-UnitTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UnitTests/Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		BBBDAAC3015105C5D8D57535 /* Pods-ProjectTemplate-UITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UITests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UITests/Pods-ProjectTemplate-UITests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		DBA320E0E4B46C241CF4502F /* Pods-ProjectTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate/Pods-ProjectTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		F8E23045217DB9520039EA2B /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F8E23047217DBA3C0039EA2B /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +309,7 @@
 				696CEE551F8D1A20007C6DF7 /* Development */,
 				696CEE571F8D1A20007C6DF7 /* Stage */,
 				696CEE561F8D1A20007C6DF7 /* Production */,
-				696CEE621F8D1ADE007C6DF7 /* Environment.swift */,
+				F8E23044217DB92A0039EA2B /* Generated */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				69D13B261FDC34C900315517 /* GoogleService-Info.plist */,
-				6977BB511FD19D2800F6EB94 /* environment.plist */,
+				F8E23047217DBA3C0039EA2B /* environment.plist */,
 			);
 			path = Current;
 			sourceTree = "<group>";
@@ -551,6 +551,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F8E23044217DB92A0039EA2B /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				F8E23045217DB9520039EA2B /* Environment.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -562,7 +570,6 @@
 				6924774D202898BD008F53A9 /* [Carthage] Check installed versions */,
 				696CEE6A1F8D1E5C007C6DF7 /* Environment switch */,
 				691039D62028B1D10069972B /* Select GoogleService-Info.plist */,
-				698258FE1F8E9B46004BBCB7 /* Generate environment file */,
 				699DD5941F8D23D300C7080D /* SwiftGen */,
 				69F4A6B31F8BD5C5003481A3 /* Sources */,
 				69BB13E91FDEC10D008BAAE6 /* Swiftlint */,
@@ -651,11 +658,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6977BB521FD19D2800F6EB94 /* environment.plist in Resources */,
 				696CEE521F8D19A5007C6DF7 /* Images.xcassets in Resources */,
 				69D13B271FDC34CA00315517 /* GoogleService-Info.plist in Resources */,
 				699DD5A91F8D24FF00C7080D /* LaunchScreen.storyboard in Resources */,
 				699DD5A11F8D249700C7080D /* Localizable.strings in Resources */,
+				F8E23048217DBA3C0039EA2B /* environment.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,22 +777,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		698258FE1F8E9B46004BBCB7 /* Generate environment file */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
-			);
-			name = "Generate environment file";
-			outputPaths = (
-				"$(ACK_ENVIRONMENT_DIR)/Environment.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Tools/EnvironmentGenerator.swift\"\n";
-		};
 		699DD5941F8D23D300C7080D /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,15 +785,17 @@
 			inputPaths = (
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/en.lproj/Localizable.strings",
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets",
+				"$(ACK_ENVIRONMENT_DIR)/Current/environment.plist",
 			);
 			name = SwiftGen;
 			outputPaths = (
 				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift",
 				"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift",
+				"${PROJECT_DIR}/Environment/Generated/Environment.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nLOC_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\n\ntouch \"$LOC_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$LOC_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\necho $?\n";
+			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nLOC_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\nPLIST_SRC_FILE=\"${SCRIPT_INPUT_FILE_2}\"\n\ntouch \"$LOC_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$LOC_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\necho $?\nswiftgen plist -t runtime-swift4 \"$PLIST_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_2}\" --param enumName=\"Environment\"\necho $?\n";
 		};
 		69BB13E91FDEC10D008BAAE6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -816,7 +809,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT\"/SwiftLint/swiftlint autocorrect\n\"$PODS_ROOT\"/SwiftLint/swiftlint";
+			shellScript = "\"$PODS_ROOT\"/SwiftLint/swiftlint autocorrect\n\"$PODS_ROOT\"/SwiftLint/swiftlint\n";
 		};
 		69D13B251FDC337200315517 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -936,13 +929,13 @@
 				69F927101FD223EB001D7592 /* Credentials.swift in Sources */,
 				69D13B361FDC3BC800315517 /* Fetcher.swift in Sources */,
 				6977BB5C1FD1A6BD00F6EB94 /* NetworkStructs.swift in Sources */,
-				696CEE631F8D1ADE007C6DF7 /* Environment.swift in Sources */,
 				69CFBB521FD1AAC4006E2402 /* NetworkUploadable.swift in Sources */,
 				6964364E1FDAEC04000D5CAA /* UIViewController+FrontmostController.swift in Sources */,
 				699DD5AD1F8D269B00C7080D /* Assets.swift in Sources */,
 				6965AEE51FDB5526001A08C5 /* UIElements+Theme.swift in Sources */,
 				691EF7041FDAFAEF00135FBC /* main.swift in Sources */,
 				8829099D2135885300825878 /* ExampleViewModel.swift in Sources */,
+				F8E23046217DB9520039EA2B /* Environment.swift in Sources */,
 				6965AEE11FDB5177001A08C5 /* UIColor+Theme.swift in Sources */,
 				69A646C41FD1B6A100BD4A98 /* JSONAPIService.swift in Sources */,
 				69902FC51FDC657400182939 /* FirebasePushObserver.swift in Sources */,

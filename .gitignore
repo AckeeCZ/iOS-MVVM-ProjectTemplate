@@ -65,7 +65,7 @@ screenshots
 Environment/Current
 Environment/.current
 Environment/.environment_preprocess.h
-Environment/Environment.swift
+Environment/Generated/*
 
 #generated files
 */Model/Generated/*
