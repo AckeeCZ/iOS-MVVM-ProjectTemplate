@@ -9,8 +9,8 @@ struct RequestAddress {
 }
 
 extension RequestAddress {
-    init(path: String, baseURL: URL = Environment.API.baseURL) {
-        // swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
+    init(path: String, baseURL: URL = URL(string: Environment.apiURLString)!) {
         url = URL(string: path, relativeTo: baseURL)!
     }
 }

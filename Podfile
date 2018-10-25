@@ -8,7 +8,7 @@ target 'ProjectTemplate' do
     pod 'SwiftLint', '~> 0.27'
     
     pod 'ACKLocalization', '~> 0.2'
-    pod 'SwiftGen', '~> 5.3'
+    pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
 
     pod 'Crashlytics', '~> 3.10'
