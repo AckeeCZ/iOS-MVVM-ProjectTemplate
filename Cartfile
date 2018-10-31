@@ -4,6 +4,6 @@ github "ReactiveCocoa/ReactiveCocoa" ~> 8.0
 github "Alamofire/Alamofire" ~> 4.7
 github "AckeeCZ/Reqres" ~> 2.3
 
-github "AckeeCZ/ACKategories" ~> 5.6
+github "AckeeCZ/ACKategories" ~> 6.0
 
 github "SnapKit/SnapKit" ~> 4.0
