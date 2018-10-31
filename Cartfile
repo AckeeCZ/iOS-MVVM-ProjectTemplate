@@ -2,6 +2,7 @@ github "ReactiveCocoa/ReactiveSwift" ~> 4.0
 github "ReactiveCocoa/ReactiveCocoa" ~> 8.0
 
 github "Alamofire/Alamofire" ~> 4.7
+github "AckeeCZ/Reqres" ~> 2.3
 
 github "AckeeCZ/ACKategories" ~> 5.6
 

@@ -35,7 +35,7 @@ final class ExampleViewController: BaseViewController {
 
     override func loadView() {
         super.loadView()
-
+        view.backgroundColor = UIColor(hex: 0x78dd82)
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.1)

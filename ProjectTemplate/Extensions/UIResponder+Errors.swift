@@ -6,11 +6,14 @@ import ReactiveCocoa
 public protocol ErrorPresentable {
     var title: String? { get }
     var message: String { get }
+
+    var detailedDescription: String? { get }
 }
 
 public extension ErrorPresentable {
     // make title optional
     var title: String? { return nil }
+    var detailedDescription: String? { return "\(self)" }
 
     var debugString: String {
         return "Error at \(Date()), title:\(title ?? ""), message:\(message), instance: \(self)"
@@ -48,36 +51,45 @@ public protocol ErrorPresenting {
     func presentError(_ e: ErrorPresentable) -> Bool
 }
 
-/// When no-one in responder chain is ErrorPresenting, window is the last object who can present the error.
-/// Shows simple alert with error title and message and OK button.
+// When no-one in responder chain is ErrorPresenting, window is the last object who can present the error.
+// Shows simple alert with error title and message and OK button.
 extension UIWindow: ErrorPresenting {
+    /// Present error in popup
     public func presentError(_ e: ErrorPresentable) -> Bool {
         defer {
             logError(e)
         }
         guard let window = UIApplication.shared.keyWindow else { return false }
         let title = e.title ?? L10n.Basic.error
+
         let alertController = UIAlertController(title: title, message: e.message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: L10n.Basic.ok, style: .cancel) { _ in }
+
+        let okAction = UIAlertAction(title: L10n.Basic.ok, style: .cancel, handler: { _ in alertController.dismiss(animated: true) })
         alertController.addAction(okAction)
 
-        #if DEBUG
-            let showMoreAction = UIAlertAction(title: L10n.Basic.showMore, style: .default) { _ in
-                let detailAlert = UIAlertController(title: "Error Detail", message: "\(e)", preferredStyle: .alert)
-                let detailOkAction = UIAlertAction(title: L10n.Basic.ok, style: .cancel) { _ in }
-                detailAlert.addAction(detailOkAction)
-                window.rootViewController?.frontmostController.present(detailAlert, animated: true)
-            }
-            alertController.addAction(showMoreAction)
+        #if DEBUG || ADHOC
+        let showMoreAction = UIAlertAction(title: L10n.Basic.showMore, style: .default, handler: { [weak self] _ in
+            self?.presentErrorDetail(error: e)
+        })
+        alertController.addAction(showMoreAction)
         #endif
 
         window.rootViewController?.frontmostController.present(alertController, animated: true)
         return true
     }
 
-    fileprivate func logError(_ e: ErrorPresentable) {
+    private func logError(_ e: ErrorPresentable) {
         print(e.debugString)
         // if you use any console or logger library, call it here...
     }
-}
 
+    private func presentErrorDetail(error: ErrorPresentable) {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        let debugAlertController = DebugAlertController(title: L10n.Basic.error, description: error.detailedDescription)
+        if let baseVC = window.rootViewController?.frontmostController as? PopupPresenting {
+            baseVC.present(popup: debugAlertController)
+        } else {
+            window.rootViewController?.frontmostController.present(debugAlertController, animated: true)
+        }
+    }
+}
