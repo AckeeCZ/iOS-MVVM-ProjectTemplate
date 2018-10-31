@@ -1,5 +1,6 @@
 import Alamofire
 import ReactiveSwift
+import Reqres
 
 protocol HasNetwork {
     var network: Networking { get }
@@ -13,7 +14,11 @@ protocol Networking {
 final class Network: Networking {
 
     private let sessionManager: SessionManager = {
-        return SessionManager.default
+        let configuration = Reqres.defaultSessionConfiguration()
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        let alamofireManager = SessionManager(configuration: configuration)
+        Reqres.sessionDelegate = alamofireManager.delegate
+        return alamofireManager
     }()
 
     fileprivate static let networkCallbackQueue = DispatchQueue.global(qos: .background)

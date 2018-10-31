@@ -79,9 +79,9 @@
 		8829099D2135885300825878 /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829099B2135885300825878 /* ExampleViewModel.swift */; };
 		8829099F2135889000825878 /* ExampleAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829099E2135889000825878 /* ExampleAPIService.swift */; };
 		88576E4D2125C179009DB5D2 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88576E4C2125C179009DB5D2 /* BaseViewModel.swift */; };
+		88C67C832189DD7400E1CC04 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C67C822189DD7400E1CC04 /* Reqres.framework */; };
 		CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F73735F21BEAAADBB6C5C78 /* Pods_ProjectTemplate.framework */; };
 		D896867B00965E0DCEE5B306 /* Pods_ProjectTemplate_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B807F84FA2B1A44827573F /* Pods_ProjectTemplate_UnitTests.framework */; };
-		F8B0E8D0216244D80075EA47 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B0E8CF216244D80075EA47 /* Reqres.framework */; };
 		F842186521820128002B2A49 /* DebugAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842186421820128002B2A49 /* DebugAlertController.swift */; };
 		F84218682182012F002B2A49 /* PopupPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218662182012F002B2A49 /* PopupPresenting.swift */; };
 		F84218692182012F002B2A49 /* PopupModelAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218672182012F002B2A49 /* PopupModelAnimation.swift */; };
@@ -175,6 +175,7 @@
 		8829099E2135889000825878 /* ExampleAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAPIService.swift; sourceTree = "<group>"; };
 		88576E4C2125C179009DB5D2 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		88C51D49211ADEAD00FC7FB9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		88C67C822189DD7400E1CC04 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
 		954CF4DA6E9916D6D503F6AA /* Pods_ProjectTemplate_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectTemplate_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FC50C1EE8B67087528B38B /* Pods-ProjectTemplate-UnitTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UnitTests/Pods-ProjectTemplate-UnitTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		BBBDAAC3015105C5D8D57535 /* Pods-ProjectTemplate-UITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate-UITests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate-UITests/Pods-ProjectTemplate-UITests.adhoc.xcconfig"; sourceTree = "<group>"; };
@@ -200,7 +201,7 @@
 				CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */,
 				6977BB581FD1A1B300F6EB94 /* Result.framework in Frameworks */,
 				6977BB591FD1A1B300F6EB94 /* ReactiveSwift.framework in Frameworks */,
-				F8B0E8D0216244D80075EA47 /* Reqres.framework in Frameworks */,
+				88C67C832189DD7400E1CC04 /* Reqres.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +547,7 @@
 		9AFDE9C028D41DE8253C47ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88C67C822189DD7400E1CC04 /* Reqres.framework */,
 				69D13B2B1FDC377C00315517 /* Fabric.framework */,
 				69D13B1D1FDC329E00315517 /* ACKategories.framework */,
 				69D13B1B1FDC329E00315517 /* Alamofire.framework */,
@@ -735,7 +737,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${SCRIPT_OUTPUT_FILE_0}\"\n\ncp \"$SRC\" \"$DST\"\n";
+			shellScript = "echo \"Selecting GoogleService-Info.plist for configuration ${CONFIGURATION}\"\n\nSRC=\"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist\"\nDST=\"${SCRIPT_OUTPUT_FILE_0}\"\n\ncp \"$SRC\" \"$DST\"\ntouch \"$DST\"\n";
 		};
 		6924774D202898BD008F53A9 /* [Carthage] Check installed versions */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -764,7 +766,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"\n";
+			shellScript = "CURRENT_ENV_FILE=\"${ACK_ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ACK_ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"\ntouch \"$CURRENT_ENV_DIR\"\n";
 		};
 		696E8C841FE3D6A900888769 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
