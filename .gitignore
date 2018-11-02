@@ -48,7 +48,8 @@ DerivedData
 Pods/
 
 # Carthage
-Carthage
+Carthage/Build
+Carthage/Checkouts
 Romefile
 
 #Fastlane
