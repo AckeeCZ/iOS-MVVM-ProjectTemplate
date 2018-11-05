@@ -23,7 +23,9 @@ lane :rename do |options|
   change_project_name_recursively("../Podfile", nil, old_name, name)
   change_project_name_recursively("../.swiftlint.yml", nil, old_name, name)
   change_project_name_recursively("../.travis.yml", nil, old_name + ".xcworkspace", name + ".xcworkspace")
-  change_project_name_recursively("../Carthage/xcfilelists", nil, old_name, name)
+  
+  sh "mv ../Carthage/xcfilelists/#{old_name}-inputPaths.xcfilelist ../Carthage/xcfilelists/#{name}-inputPaths.xcfilelist"
+  sh "mv ../Carthage/xcfilelists/#{old_name}-outputPaths.xcfilelist ../Carthage/xcfilelists/#{name}-outputPaths.xcfilelist"
 end
 
 
