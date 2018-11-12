@@ -11,5 +11,5 @@ before_install:
   - travis_wait 60 carthage bootstrap --platform iOS --cache-builds
 script:
   - bundle exec fastlane rename name:NewProject
-  - bundle exec pod install || bundle exec pod install --repo-update
+  - bundle exec pod install --repo-update
   - set -o pipefail && xcodebuild -scheme Development -workspace NewProject.xcworkspace -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1' ONLY_ACTIVE_ARCH=NO | xcpretty
