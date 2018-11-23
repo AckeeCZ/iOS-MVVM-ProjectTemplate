@@ -11,6 +11,9 @@ class BaseViewController: UIViewController, PopupPresenting {
     /// Navigation bar is shown/hidden in viewWillAppear according to this flag
     var hasNavigationBar: Bool = true
 
+    private var firstWillAppearOccured = false
+    private var firstDidAppearOccured = false
+
     // MARK: Initializers
 
     init() {
@@ -35,7 +38,32 @@ class BaseViewController: UIViewController, PopupPresenting {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if !firstWillAppearOccured {
+            viewWillFirstAppear(animated)
+            firstWillAppearOccured = true
+        }
+
         navigationController?.setNavigationBarHidden(!hasNavigationBar, animated: animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !firstDidAppearOccured {
+            viewDidFirstAppear(animated)
+            firstDidAppearOccured = true
+        }
+    }
+
+    /// Method is called when `viewWillAppear(_:)` is called for the first time
+    func viewWillFirstAppear(_ animated: Bool) {
+
+    }
+
+    /// Method is called when `viewDidAppear(_:)` is called for the first time
+    func viewDidFirstAppear(_ animated: Bool) {
+
     }
 
     deinit {
