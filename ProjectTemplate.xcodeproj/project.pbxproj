@@ -84,7 +84,7 @@
 		D896867B00965E0DCEE5B306 /* Pods_ProjectTemplate_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B807F84FA2B1A44827573F /* Pods_ProjectTemplate_UnitTests.framework */; };
 		F842186521820128002B2A49 /* DebugAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842186421820128002B2A49 /* DebugAlertController.swift */; };
 		F84218682182012F002B2A49 /* PopupPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218662182012F002B2A49 /* PopupPresenting.swift */; };
-		F84218692182012F002B2A49 /* PopupModelAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218672182012F002B2A49 /* PopupModelAnimation.swift */; };
+		F84218692182012F002B2A49 /* PopupModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218672182012F002B2A49 /* PopupModalAnimation.swift */; };
 		F842186C2182020C002B2A49 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = F842186B2182020C002B2A49 /* environment.plist */; };
 		F842186E21820235002B2A49 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842186D21820234002B2A49 /* Environment.swift */; };
 /* End PBXBuildFile section */
@@ -182,7 +182,7 @@
 		DBA320E0E4B46C241CF4502F /* Pods-ProjectTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTemplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTemplate/Pods-ProjectTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		F842186421820128002B2A49 /* DebugAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugAlertController.swift; sourceTree = "<group>"; };
 		F84218662182012F002B2A49 /* PopupPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupPresenting.swift; sourceTree = "<group>"; };
-		F84218672182012F002B2A49 /* PopupModelAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupModelAnimation.swift; sourceTree = "<group>"; };
+		F84218672182012F002B2A49 /* PopupModalAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupModalAnimation.swift; sourceTree = "<group>"; };
 		F842186B2182020C002B2A49 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		F842186D21820234002B2A49 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Environment/Generated/Environment.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -583,7 +583,7 @@
 		F8CA9D6C216B6AF900F1AF45 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				F84218672182012F002B2A49 /* PopupModelAnimation.swift */,
+				F84218672182012F002B2A49 /* PopupModalAnimation.swift */,
 				F84218662182012F002B2A49 /* PopupPresenting.swift */,
 			);
 			path = Popup;
@@ -1014,7 +1014,7 @@
 				693F90871FDB449700A18975 /* AppFlowCoordinator.swift in Sources */,
 				F842186E21820235002B2A49 /* Environment.swift in Sources */,
 				69D100D5214135D100D5F753 /* Aliases.swift in Sources */,
-				F84218692182012F002B2A49 /* PopupModelAnimation.swift in Sources */,
+				F84218692182012F002B2A49 /* PopupModalAnimation.swift in Sources */,
 				690035981FD17E9D002EB20F /* AppDelegate.swift in Sources */,
 				6977BB551FD19F6700F6EB94 /* Network.swift in Sources */,
 				693F90801FDB3D3000A18975 /* PluggableApplicationDelegate.swift in Sources */,
