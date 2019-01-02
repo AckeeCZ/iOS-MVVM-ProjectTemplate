@@ -1,5 +1,5 @@
 //
-//  PopupModelAnimation.swift
+//  PopupModalAnimation.swift
 //  ProjectTemplate
 //
 //  Created by Marek Fořt on 10/5/18.
