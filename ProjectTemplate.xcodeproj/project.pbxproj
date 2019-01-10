@@ -87,6 +87,7 @@
 		F84218692182012F002B2A49 /* PopupModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218672182012F002B2A49 /* PopupModalAnimation.swift */; };
 		F842186C2182020C002B2A49 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = F842186B2182020C002B2A49 /* environment.plist */; };
 		F842186E21820235002B2A49 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842186D21820234002B2A49 /* Environment.swift */; };
+		F860225121E78798008E7E96 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F860225021E78798008E7E96 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		F84218672182012F002B2A49 /* PopupModalAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupModalAnimation.swift; sourceTree = "<group>"; };
 		F842186B2182020C002B2A49 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		F842186D21820234002B2A49 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Environment/Generated/Environment.swift; sourceTree = SOURCE_ROOT; };
+		F860225021E78798008E7E96 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +376,7 @@
 				69D13B2F1FDC38EC00315517 /* User.swift */,
 				69902FBC1FDC3FE100182939 /* PushNotification.swift */,
 				69902FC81FDCB5DB00182939 /* CredentialsProvider.swift */,
+				F860225021E78798008E7E96 /* Logger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				691039D52028B0C90069972B /* Pluralization.swift in Sources */,
 				1C8D0D392099EBAA003BB41B /* UIView+Spacer.swift in Sources */,
 				69D13B371FDC3BC800315517 /* FirebaseFetcher.swift in Sources */,
+				F860225121E78798008E7E96 /* Logger.swift in Sources */,
 				69D13B2A1FDC34F500315517 /* FirebaseAppDelegate.swift in Sources */,
 				F842186521820128002B2A49 /* DebugAlertController.swift in Sources */,
 				69902FC71FDCAFBA00182939 /* AppDependency.swift in Sources */,

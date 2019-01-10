@@ -1,4 +1,5 @@
 import UIKit
+import os.log
 
 /// Base class for all view controllers contained in app.
 class BaseViewController: UIViewController, PopupPresenting {
@@ -20,7 +21,7 @@ class BaseViewController: UIViewController, PopupPresenting {
         super.init(nibName: nil, bundle: nil)
 
         if BaseViewController.logEnabled {
-            NSLog("📱 👶 \(self)")
+            os_log("📱 👶 %@", log: Logger.lifecycleLog(), type: .info, self)
         }
     }
 
@@ -68,7 +69,7 @@ class BaseViewController: UIViewController, PopupPresenting {
 
     deinit {
         if BaseViewController.logEnabled {
-            NSLog("📱 ⚰️ \(self)")
+            os_log("📱 ⚰️ %@", log: Logger.lifecycleLog(), type: .info, self)
         }
     }
 }
