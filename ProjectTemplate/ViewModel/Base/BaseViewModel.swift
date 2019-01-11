@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os.log
 
 /// Base class for all view models contained in app.
 class BaseViewModel {
@@ -14,13 +15,13 @@ class BaseViewModel {
 
     init() {
         if BaseViewModel.logEnabled {
-            NSLog("🧠 👶 \(self)")
+            os_log("🧠 👶 %@", log: Logger.lifecycleLog(), type: .info, "\(self)")
         }
     }
 
     deinit {
         if BaseViewModel.logEnabled {
-            NSLog("🧠 ⚰️ \(self)")
+            os_log("🧠 ⚰️ %@", log: Logger.lifecycleLog(), type: .info, "\(self)")
         }
     }
 }
