@@ -55,7 +55,8 @@ final class Network: Networking {
                             .handleResponse(observer: observer)
 
                     case .failure(let error):
-                        observer.send(error: .upload(error))
+                        let networkError = NetworkError(error: error, request: nil, response: nil, data: nil)
+                        observer.send(error: .upload(networkError))
                     }
             }
         }
