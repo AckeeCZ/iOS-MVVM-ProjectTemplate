@@ -53,9 +53,9 @@ final class Network: Networking {
                         uploadRequest
                             .validate()
                             .handleResponse(observer: observer)
-
                     case .failure(let error):
-                        observer.send(error: .upload(error))
+                        let networkError = NetworkError(error: error, request: nil, response: nil, data: nil)
+                        observer.send(error: .network(networkError))
                     }
             }
         }

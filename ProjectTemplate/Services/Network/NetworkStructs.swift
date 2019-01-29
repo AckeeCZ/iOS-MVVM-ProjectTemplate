@@ -26,20 +26,19 @@ struct RequestResponse<Value> {
 
 enum RequestError: Error {
     case network(NetworkError)
-    case upload(Error)
     case missingRefreshToken
 }
 
 extension RequestError: ErrorPresentable {
     var title: String? {
         switch self {
-        case .missingRefreshToken, .network, .upload: return L10n.Basic.error
+        case .missingRefreshToken, .network: return L10n.Basic.error
         }
     }
 
     var message: String {
         switch self {
-        case .missingRefreshToken, .upload: return L10n.Basic.Error.message
+        case .missingRefreshToken: return L10n.Basic.Error.message
         case .network(let e):
             switch (e.error as NSError).code {
             case -1001, -1009: return e.error.localizedDescription // timeout and no connection errors
@@ -50,7 +49,7 @@ extension RequestError: ErrorPresentable {
 
     var detailedDescription: String? {
         switch self {
-        case .missingRefreshToken, .upload: return "\(self)"
+        case .missingRefreshToken: return "\(self)"
         case .network(let e):
             guard let request = e.request else {
                 return "\(self)"
