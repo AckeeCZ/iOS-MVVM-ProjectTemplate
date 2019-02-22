@@ -11,7 +11,7 @@ private class BundleLocator { }
 
 extension L10n {
     static func pluralized(base: String, count: Int, table: String? = nil) -> String {
-        let format = Bundle(for: BundleLocator.self).pluralizedString(withKey: base, defaultValue: base, table: table, pluralValue: Float(count), forLocalization: "cs")
+        let format = Bundle(for: BundleLocator.self).pluralizedString(withKey: base, defaultValue: base, table: table, pluralValue: Float(count), forLocalization: Locale.current.languageCode)
         return format.map { String(format: $0, count) } ?? ""
     }
 }
