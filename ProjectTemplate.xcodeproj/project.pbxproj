@@ -740,6 +740,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${ACK_ENVIRONMENT_DIR}/Current/GoogleService/GoogleService-Info-${CONFIGURATION}.plist",
 			);
 			name = "Select GoogleService-Info.plist";
 			outputFileListPaths = (
