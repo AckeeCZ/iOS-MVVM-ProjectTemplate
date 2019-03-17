@@ -24,7 +24,7 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
         let jsonAPI = dependencies.jsonAPI
 
         return authorizationHeadersProducer()
-            .flatMap(.latest) { jsonAPI.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers + $0) }
+            .flatMap(.latest) { jsonAPI.request(address, method: method, parameters: parameters, encoding: encoding, headers: $0 + headers) }
             .flatMapError { [unowned self] in
                 self.unauthorizedHandler(error: $0, authHandler: self.dependencies.authHandler, authorizationHeaders: self.authorizationHeaders) { [unowned self] in
                     self.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
@@ -36,7 +36,7 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
         let jsonAPI = dependencies.jsonAPI
 
         return authorizationHeadersProducer()
-            .flatMap(.latest) { jsonAPI.upload(address, method: method, parameters: parameters, headers: headers + $0) }
+            .flatMap(.latest) { jsonAPI.upload(address, method: method, parameters: parameters, headers: $0 + headers) }
             .flatMapError { [unowned self] in
                 self.unauthorizedHandler(error: $0, authHandler: self.dependencies.authHandler, authorizationHeaders: self.authorizationHeaders) { [unowned self] in
                     self.upload(address, method: method, parameters: parameters, headers: headers)
