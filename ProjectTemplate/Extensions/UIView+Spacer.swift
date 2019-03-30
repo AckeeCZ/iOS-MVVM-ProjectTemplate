@@ -11,6 +11,7 @@ extension UIView {
             switch axis {
             case .vertical: make.height.equalTo(size).priority(priority)
             case .horizontal: make.width.equalTo(size).priority(priority)
+            @unknown default: assertionFailure("Unknown axis \(axis)")
             }
         }
         return v
