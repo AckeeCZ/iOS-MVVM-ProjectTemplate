@@ -1,5 +1,6 @@
 import Firebase
 import ReactiveSwift
+import enum Result.NoError
 
 protocol HasFirebasePushObserver {
     var firebasePushObserver: FirebasePushObserving { get }
