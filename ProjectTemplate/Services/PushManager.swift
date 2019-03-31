@@ -1,5 +1,6 @@
 import ReactiveSwift
 import UserNotifications
+import enum Result.NoError
 
 protocol HasPushManager {
     var pushManager: PushManaging { get }

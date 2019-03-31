@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1020"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "echo &quot;Development&quot; &gt; &quot;${ACK_ENVIRONMENT_DIR}/.current&quot;&#10;sh &quot;$PROJECT_DIR&quot;/Tools/generate_preprocess_header.sh">
+               scriptText = "echo &quot;Development&quot; &gt; &quot;${ACK_ENVIRONMENT_DIR}/.current&quot;&#10;sh &quot;$PROJECT_DIR&quot;/Tools/generate_preprocess_header.sh&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
