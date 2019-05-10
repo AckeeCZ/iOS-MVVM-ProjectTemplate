@@ -15,14 +15,14 @@ public class VersionUpdateManager: VersionUpdateManaging {
 
     public let updateRequired: Property<Bool>
 
-    private let dependencies: Dependencies
+    private let fetcher: Fetcher
     private let _updateRequired = MutableProperty(false)
 
     // MARK: Initializers 
 
     public init(dependencies: Dependencies) {
         updateRequired = Property(capturing: _updateRequired)
-        self.dependencies = dependencies
+        fetcher = dependencies.fetcher
     }
 
     // MARK: Public interface
@@ -30,7 +30,7 @@ public class VersionUpdateManager: VersionUpdateManaging {
     public func setup() {
         update()
 
-        dependencies.fetcher.fetch { [weak self] in self?.update() }
+        fetcher.fetch { [weak self] in self?.update() }
     }
 
     // MARK: Private helpers
@@ -38,7 +38,7 @@ public class VersionUpdateManager: VersionUpdateManaging {
     private func update() {
         guard
             let currentVersion = Bundle.main.infoDictionary?["CFBundleVersion"].flatMap({ $0 as? String }).flatMap({ Int($0) }),
-            let configVersion = dependencies.fetcher.version
+            let configVersion = fetcher.version
         else { return }
 
         _updateRequired.value = currentVersion < configVersion

@@ -1,7 +1,5 @@
 import ReactiveSwift
 
-import enum Result.Result
-
 protocol HasJSONAPI {
     var jsonAPI: JSONAPIServicing { get }
 }
@@ -14,24 +12,23 @@ protocol JSONAPIServicing {
 final class JSONAPIService: JSONAPIServicing {
     typealias Dependencies = HasNetwork
 
-    private let dependencies: Dependencies
+    private let network: Networking
 
     // MARK: Initializers
 
     init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+        network = dependencies.network
     }
 
     // MARK: Public methods
 
     func request(_ address: RequestAddress, method: HTTPMethod, parameters: [String: Any], encoding: ParameterEncoding, headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
-        return dependencies.network
-            .request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        return network.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
             .toJSON()
     }
 
     func upload(_ address: RequestAddress, method: HTTPMethod, parameters: [NetworkUploadable], headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
-        return dependencies.network.upload(address, method: method, parameters: parameters, headers: headers).toJSON()
+        return network.upload(address, method: method, parameters: parameters, headers: headers).toJSON()
     }
 }
 

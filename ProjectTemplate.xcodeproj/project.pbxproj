@@ -39,7 +39,6 @@
 		6965AEE51FDB5526001A08C5 /* UIElements+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AEE41FDB5526001A08C5 /* UIElements+Theme.swift */; };
 		696CEE521F8D19A5007C6DF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 696CEE501F8D19A5007C6DF7 /* Images.xcassets */; };
 		6977BB551FD19F6700F6EB94 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977BB541FD19F6700F6EB94 /* Network.swift */; };
-		6977BB581FD1A1B300F6EB94 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977BB561FD1A1B300F6EB94 /* Result.framework */; };
 		6977BB591FD1A1B300F6EB94 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977BB571FD1A1B300F6EB94 /* ReactiveSwift.framework */; };
 		6977BB5C1FD1A6BD00F6EB94 /* NetworkStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977BB5B1FD1A6BD00F6EB94 /* NetworkStructs.swift */; };
 		698B3D091F8D337600F87651 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F3C1FE1F8D169A00DB2B5C /* UnitTests.swift */; };
@@ -201,7 +200,6 @@
 				69D13B231FDC329E00315517 /* ReactiveCocoa.framework in Frameworks */,
 				69D13B241FDC329E00315517 /* Crashlytics.framework in Frameworks */,
 				CA25BDE99E13F778B6AAC1BA /* Pods_ProjectTemplate.framework in Frameworks */,
-				6977BB581FD1A1B300F6EB94 /* Result.framework in Frameworks */,
 				6977BB591FD1A1B300F6EB94 /* ReactiveSwift.framework in Frameworks */,
 				88C67C832189DD7400E1CC04 /* Reqres.framework in Frameworks */,
 			);
@@ -970,7 +968,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 			showEnvVarsInLog = 0;
 		};
 		O0VHBKJ4IQ449ZH79TDCSV2L /* Carthage */ = {
