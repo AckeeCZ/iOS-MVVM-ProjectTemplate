@@ -11,16 +11,16 @@ protocol PushAPIServicing {
 final class PushAPIService: PushAPIServicing {
     typealias Dependencies = HasJSONAPI
 
-    private let dependencies: Dependencies
+    private let jsonAPI: JSONAPIServicing
 
     // MARK: Initializers
 
     init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+        jsonAPI = dependencies.jsonAPI
     }
 
     func registerToken(_ token: String) -> SignalProducer<Void, RequestError> {
-        return dependencies.jsonAPI.request(RequestAddress(path: "devices/token"), method: .put, parameters: ["token": token])
+        return jsonAPI.request(RequestAddress(path: "devices/token"), method: .put, parameters: ["token": token])
             .map { _ in }
     }
 }

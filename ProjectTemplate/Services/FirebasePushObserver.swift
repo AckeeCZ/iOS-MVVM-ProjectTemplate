@@ -1,6 +1,5 @@
-import Firebase
+import FirebaseMessaging
 import ReactiveSwift
-import enum Result.NoError
 
 protocol HasFirebasePushObserver {
     var firebasePushObserver: FirebasePushObserving { get }
@@ -13,27 +12,20 @@ protocol FirebasePushObserving {
 final class FirebasePushObserver: FirebasePushObserving {
     typealias Dependencies = HasPushManager
 
-    private let dependencies: Dependencies
+    private let pushManager: PushManaging
 
     // MARK: Initializers
 
     init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+        pushManager = dependencies.pushManager
     }
 
     // MARK: Public interface
 
     func start() {
-        dependencies.pushManager.actions.registerToken <~ NotificationCenter.default.reactive
+        pushManager.actions.registerToken <~ NotificationCenter.default.reactive
             .notifications(forName: .InstanceIDTokenRefresh)
-            .flatMap(.latest) { _ in
-                return SignalProducer<String?, NoError> { observer, _ in
-                    InstanceID.instanceID().instanceID(handler: { result, _ in
-                        observer.send(value: result?.token)
-                        observer.sendCompleted()
-                    })
-                }
-            }
+            .map { _ in Messaging.messaging().fcmToken }
             .skipNil()
     }
 }

@@ -1,6 +1,5 @@
 import ReactiveSwift
 import UserNotifications
-import enum Result.NoError
 
 protocol HasPushManager {
     var pushManager: PushManaging { get }
@@ -8,10 +7,10 @@ protocol HasPushManager {
 
 protocol PushManagingNotifications {
     /// Signal of received payloads while app is in foreground
-    var received: Signal<PushNotification.Payload, NoError> { get }
+    var received: Signal<PushNotification.Payload, Never> { get }
 
     /// Signal of notifications which were opened by the user
-    var opened: Signal<PushNotification, NoError> { get }
+    var opened: Signal<PushNotification, Never> { get }
 }
 
 protocol PushManagingActions {
@@ -32,8 +31,8 @@ final class PushManager: NSObject, PushManaging, PushManagingNotifications, Push
     var notifications: PushManagingNotifications { return self }
     var actions: PushManagingActions { return self }
 
-    let (received, receivedObserver) = Signal<PushNotification.Payload, NoError>.pipe()
-    let (opened, openedObserver) = Signal<PushNotification, NoError>.pipe()
+    let (received, receivedObserver) = Signal<PushNotification.Payload, Never>.pipe()
+    let (opened, openedObserver) = Signal<PushNotification, Never>.pipe()
     let registerToken: Action<String, Void, RequestError>
 
     // MARK: Initializers
