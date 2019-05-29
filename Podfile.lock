@@ -1,8 +1,8 @@
 PODS:
   - ACKLocalization (0.3.3)
-  - Crashlytics (3.13.1):
-    - Fabric (~> 1.10.1)
-  - Fabric (1.10.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
   - Firebase/Analytics (5.20.2):
     - Firebase/Core
   - Firebase/Core (5.20.2):
@@ -143,8 +143,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ACKLocalization: d24a1ba1a31ec153ba9ab2dca5a38d653863214e
-  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
-  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
