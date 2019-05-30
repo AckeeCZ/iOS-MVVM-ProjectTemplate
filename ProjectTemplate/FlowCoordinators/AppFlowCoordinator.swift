@@ -1,7 +1,7 @@
 import UIKit
 import ACKategories
 
-final class AppFlowCoordinator: FlowCoordinator {
+final class AppFlowCoordinator: Base.FlowCoordinatorNoDeepLink {
 
     override func start(in window: UIWindow) {
         super.start(in: window)
