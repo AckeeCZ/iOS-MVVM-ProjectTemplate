@@ -15,3 +15,4 @@ typealias JSONEncoding = Alamofire.JSONEncoding
 typealias MultipartFormData = Alamofire.MultipartFormData
 
 typealias IdentifierType = Int64
+typealias TextAttributes = [NSAttributedString.Key: Any]
