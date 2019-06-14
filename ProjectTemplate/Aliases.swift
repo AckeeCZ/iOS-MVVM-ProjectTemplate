@@ -1,5 +1,7 @@
 // Aliases for common used types
 
+import Foundation
+
 import enum Alamofire.HTTPMethod
 import protocol Alamofire.ParameterEncoding
 import struct Alamofire.HTTPHeaders
@@ -15,3 +17,4 @@ typealias JSONEncoding = Alamofire.JSONEncoding
 typealias MultipartFormData = Alamofire.MultipartFormData
 
 typealias IdentifierType = Int64
+typealias TextAttributes = [NSAttributedString.Key: Any]
