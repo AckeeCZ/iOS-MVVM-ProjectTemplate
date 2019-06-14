@@ -1,5 +1,7 @@
 // Aliases for common used types
 
+import Foundation
+
 import enum Alamofire.HTTPMethod
 import protocol Alamofire.ParameterEncoding
 import struct Alamofire.HTTPHeaders
