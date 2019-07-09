@@ -1,6 +1,6 @@
-github "AckeeCZ/ACKategories" "6.1"
+github "AckeeCZ/ACKategories" "6.1.2"
 github "AckeeCZ/Reqres" "3.1.0"
 github "Alamofire/Alamofire" "4.8.2"
 github "ReactiveCocoa/ReactiveCocoa" "10.0.0"
-github "ReactiveCocoa/ReactiveSwift" "6.0.0"
+github "ReactiveCocoa/ReactiveSwift" "6.1.0"
 github "SnapKit/SnapKit" "5.0.0"
