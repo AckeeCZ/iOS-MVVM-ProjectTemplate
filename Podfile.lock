@@ -104,7 +104,7 @@ PODS:
   - Protobuf (3.7.0)
   - Smartling.i18n (1.0.14)
   - SwiftGen (6.1.0)
-  - SwiftLint (0.32.0)
+  - SwiftLint (0.35.0)
 
 DEPENDENCIES:
   - ACKLocalization (~> 0.3)
@@ -162,7 +162,7 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
-  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
 PODFILE CHECKSUM: be62e09515d80b149504aed5c1862ae77dddd4b0
 

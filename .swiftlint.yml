@@ -14,6 +14,7 @@ whitelist_rules:
   - trailing_whitespace
   - vertical_whitespace
   - weak_delegate
+  - overridden_super_call
 included: # paths to include during linting. `--path` is ignored if present.
   - ProjectTemplate
 excluded: # paths to ignore during linting. Takes precedence over `included`.
