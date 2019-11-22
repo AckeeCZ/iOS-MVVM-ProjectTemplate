@@ -21,7 +21,7 @@ public class FirebaseFetcher: Fetcher {
     public func fetch(completion: @escaping () -> Void) {
         remoteConfig.fetch(withExpirationDuration: 12 * 60 * 60) { [weak self] status, _ in
             guard status == .success else { return }
-            self?.remoteConfig.activateFetched()
+            self?.remoteConfig.activate()
             completion()
         }
     }
