@@ -1,5 +1,5 @@
 platform :ios, '10.3'
-project 'ProjectTemplate', 'AdHoc' => :release,'AppStore' => :release, 'Development' => :debug
+project 'ProjectTemplate', 'Beta-Development' => :release, 'Beta-Stage' => :release, 'Beta-Production' => :release, 'Release' => :release, 'Development' => :debug
 
 inhibit_all_warnings!
 use_frameworks!
