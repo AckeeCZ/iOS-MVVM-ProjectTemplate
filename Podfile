@@ -10,9 +10,6 @@ target 'ProjectTemplate' do
     pod 'ACKLocalization', '~> 0.3'
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
-
-    pod 'Crashlytics', '~> 3.10'
-    pod 'Firebase', '~> 5.6', :subspecs => ["RemoteConfig", "Performance", "Analytics", "Messaging"]
     
     target 'UnitTests' do
         inherit! :complete
