@@ -1,3 +1,4 @@
+import UIKit
 import Firebase
 
 /// Initialize and handle Firebase

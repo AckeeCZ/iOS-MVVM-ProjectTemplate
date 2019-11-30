@@ -1,169 +1,28 @@
 PODS:
   - ACKLocalization (0.3.3)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
-  - Firebase/Analytics (5.20.2):
-    - Firebase/Core
-  - Firebase/Core (5.20.2):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.1)
-  - Firebase/CoreOnly (5.20.2):
-    - FirebaseCore (= 5.4.1)
-  - Firebase/Messaging (5.20.2):
-    - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.5.0)
-  - Firebase/Performance (5.20.2):
-    - Firebase/Core
-    - FirebasePerformance (= 2.2.4)
-  - Firebase/RemoteConfig (5.20.2):
-    - Firebase/Core
-    - FirebaseRemoteConfig (= 3.1.0)
-  - FirebaseABTesting (2.0.0):
-    - FirebaseCore (~> 5.0)
-    - Protobuf (~> 3.5)
-  - FirebaseAnalytics (5.8.1):
-    - FirebaseCore (~> 5.4)
-    - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.1)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
-    - nanopb (~> 0.3)
-  - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseCore (5.4.1):
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.8.1):
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/UserDefaults (~> 5.2)
-  - FirebaseMessaging (3.5.0):
-    - FirebaseAnalyticsInterop (~> 1.1)
-    - FirebaseCore (~> 5.2)
-    - FirebaseInstanceID (~> 3.6)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/Reachability (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
-    - Protobuf (~> 3.1)
-  - FirebasePerformance (2.2.4):
-    - FirebaseAnalytics (~> 5.8)
-    - FirebaseInstanceID (~> 3.8)
-    - FirebaseRemoteConfig (~> 3.1)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GoogleUtilities/ISASwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GTMSessionFetcher/Core (~> 1.1)
-    - Protobuf (~> 3.5)
-  - FirebaseRemoteConfig (3.1.0):
-    - FirebaseABTesting (~> 2.0)
-    - FirebaseAnalytics (~> 5.3)
-    - FirebaseCore (~> 5.1)
-    - FirebaseInstanceID (~> 3.3)
-    - GoogleUtilities/Environment (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
-    - Protobuf (~> 3.5)
-  - GoogleAppMeasurement (5.8.1):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
-    - nanopb (~> 0.3)
-  - GoogleToolboxForMac/Defines (2.2.1)
-  - GoogleToolboxForMac/Logger (2.2.1):
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.8.0)
-  - GoogleUtilities/ISASwizzler (5.8.0)
-  - GoogleUtilities/Logger (5.8.0):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.8.0):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.8.0):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.8.0)"
-  - GoogleUtilities/Reachability (5.8.0):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.8.0):
-    - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.2)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
-  - Protobuf (3.7.0)
   - Smartling.i18n (1.0.14)
   - SwiftGen (6.1.0)
-  - SwiftLint (0.35.0)
+  - SwiftLint (0.37.0)
 
 DEPENDENCIES:
   - ACKLocalization (~> 0.3)
-  - Crashlytics (~> 3.10)
-  - Firebase/Analytics (~> 5.6)
-  - Firebase/Messaging (~> 5.6)
-  - Firebase/Performance (~> 5.6)
-  - Firebase/RemoteConfig (~> 5.6)
   - Smartling.i18n (~> 1.0)
   - SwiftGen (~> 6.0)
   - SwiftLint (~> 0.27)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ACKLocalization
-    - Crashlytics
-    - Fabric
-    - Firebase
-    - FirebaseABTesting
-    - FirebaseAnalytics
-    - FirebaseAnalyticsInterop
-    - FirebaseCore
-    - FirebaseInstanceID
-    - FirebaseMessaging
-    - FirebasePerformance
-    - FirebaseRemoteConfig
-    - GoogleAppMeasurement
-    - GoogleToolboxForMac
-    - GoogleUtilities
-    - GTMSessionFetcher
-    - nanopb
-    - Protobuf
     - Smartling.i18n
     - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
   ACKLocalization: d24a1ba1a31ec153ba9ab2dca5a38d653863214e
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
-  FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
-  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
-  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
-  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
-  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
-  FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
-  FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
-  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
-  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
-  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
-  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
-  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+  SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
 
-PODFILE CHECKSUM: be62e09515d80b149504aed5c1862ae77dddd4b0
+PODFILE CHECKSUM: a2fb812612dd03a55b00b830c74081a5b071fa8e
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.4

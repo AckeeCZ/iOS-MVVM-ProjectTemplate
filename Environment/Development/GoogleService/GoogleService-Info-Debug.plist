@@ -4,5 +4,7 @@
 <dict>
 	<key>This is placeholder file</key>
 	<string>Download your plist from FIrebase Console!</string>
+	<key>GOOGLE_APP_ID</key>
+	<string>abc</string>
 </dict>
 </plist>
