@@ -1136,7 +1136,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ACK_ENVIRONMENT_DIR = "$(PROJECT_DIR)/Environment";
-				ACK_PROJECT_VERSION = 0.0;
+				ACK_PROJECT_VERSION = 0.1.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1187,7 +1187,6 @@
 			baseConfigurationReference = 2B7E4BA8577906C932CC6C50 /* Pods-ProjectTemplate.beta-stage.xcconfig */;
 			buildSettings = {
 				ACK_APPNAME = "ProjectTemplate β";
-				ACK_PROJECT_VERSION = 1.0;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PXDF48X6VX;
@@ -1251,7 +1250,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ACK_ENVIRONMENT_DIR = "$(PROJECT_DIR)/Environment";
-				ACK_PROJECT_VERSION = 0.0;
+				ACK_PROJECT_VERSION = 0.1.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1302,7 +1301,6 @@
 			baseConfigurationReference = 0E5C825C88A7067DFAEC8770 /* Pods-ProjectTemplate.beta-production.xcconfig */;
 			buildSettings = {
 				ACK_APPNAME = "ProjectTemplate β";
-				ACK_PROJECT_VERSION = 1.0;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PXDF48X6VX;
@@ -1396,7 +1394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ACK_ENVIRONMENT_DIR = "$(PROJECT_DIR)/Environment";
-				ACK_PROJECT_VERSION = 0.0;
+				ACK_PROJECT_VERSION = 0.1.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1448,7 +1446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ACK_ENVIRONMENT_DIR = "$(PROJECT_DIR)/Environment";
-				ACK_PROJECT_VERSION = 0.0;
+				ACK_PROJECT_VERSION = 0.1.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1500,7 +1498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ACK_ENVIRONMENT_DIR = "$(PROJECT_DIR)/Environment";
-				ACK_PROJECT_VERSION = 0.0;
+				ACK_PROJECT_VERSION = 0.1.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1551,7 +1549,6 @@
 			baseConfigurationReference = 731DDCDC845B833A33C41D50 /* Pods-ProjectTemplate.debug.xcconfig */;
 			buildSettings = {
 				ACK_APPNAME = "ProjectTemplate Δ";
-				ACK_PROJECT_VERSION = 1.0;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PXDF48X6VX;
@@ -1587,7 +1584,6 @@
 			baseConfigurationReference = 9F26F245DFD4C55D6E0FB8D5 /* Pods-ProjectTemplate.beta-development.xcconfig */;
 			buildSettings = {
 				ACK_APPNAME = "ProjectTemplate β";
-				ACK_PROJECT_VERSION = 1.0;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PXDF48X6VX;
@@ -1619,7 +1615,6 @@
 			baseConfigurationReference = 1F1B470F4258093EFDBC16D9 /* Pods-ProjectTemplate.release.xcconfig */;
 			buildSettings = {
 				ACK_APPNAME = ProjectTemplate;
-				ACK_PROJECT_VERSION = 1.0;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3SMVP6VZP8;
