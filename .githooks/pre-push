@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# A hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local sha1> <remote ref> <remote sha1>
+
+remote="$1"
+url="$2"
+
+z40=0000000000000000000000000000000000000000
+
+while read local_ref local_sha remote_ref remote_sha
+do
+	if [ "$local_sha" = $z40 ]
+	then
+		# Handle delete
+		:
+	else
+
+		# resolve wildcard to find project file
+		list=(*.xcodeproj/project.pbxproj)
+
+		# skip version check if there is no project file
+		if [ ${#list[@]} == 0 ]; then
+			echo "Skipping version check. There is no Xcode project file to check the version."
+			exit 0
+		fi
+
+		# just one project file is supposed to be in the repository so take first one
+		project_file=${list[0]}
+
+		# extract version from project file
+		project_version=`git show $local_sha:$project_file | grep ACK_PROJECT_VERSION | head -n1 | sed 's/.*ACK_PROJECT_VERSION = \(.*\);.*/\1/'`
+
+		# extract version from branch name
+		#
+		# ^.*\/.*? - anything before version xxxxxxxxx/xxxx (non-greedy)
+		# ([0-9]+\.[0-9]+\.[0-9]+) - actual version n.n.n
+		# .*$ - anything after version
+		branch_version=`echo $remote_ref | perl -nle 'm/^.*\/.*?([0-9]+\.[0-9]+\.[0-9]+).*$/; print $1'`
+
+		# skip version check if version is not found in the branch name
+		if [ -z "$branch_version" ]; then
+			echo "Skipping version check. There is no version suffix in the branch name."
+			exit 0
+		fi
+
+		# actually compare project version with branch version
+		if [ $project_version == $branch_version ]; then
+			echo "Version suffix in the branch name matches project version. Push allowed."
+			exit 0
+		else
+		    echo "Push declined! Version found in $project_file ($project_version) does not match the version suffix in git branch name ($branch_version)". >&2
+			exit 1
+		fi
+	fi
+done
+
+exit 0

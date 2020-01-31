@@ -677,6 +677,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69F4A6DD1F8BD5C5003481A3 /* Build configuration list for PBXNativeTarget "ProjectTemplate" */;
 			buildPhases = (
+				88DEAB2723E415C600A6B5BE /* Register git hooks */,
 				FA09B2A22870621442C4107A /* [CP] Check Pods Manifest.lock */,
 				6924774D202898BD008F53A9 /* [Carthage] Check installed versions */,
 				696CEE6A1F8D1E5C007C6DF7 /* Environment switch */,
@@ -921,6 +922,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"Carthage/Build/iOS/Fabric.framework/run\"\n";
+		};
+		88DEAB2723E415C600A6B5BE /* Register git hooks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Register git hooks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# remove all hook symlinks from .git\nfind .git/hooks -type l -exec rm {} \\;\n\n# add new symlinks for all hooks\nfind .githooks -type f -exec ln -sf ../../{} .git/hooks/ \\;\n";
+			showEnvVarsInLog = 0;
 		};
 		8C4E94E23167DC17B57A1728 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
