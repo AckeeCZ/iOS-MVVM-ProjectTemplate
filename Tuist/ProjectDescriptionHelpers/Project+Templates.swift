@@ -1,14 +1,12 @@
 import ProjectDescription
 
 extension Project {
-    
     public static func project(name: String,
                                settings: CustomSettings = CustomSettings(configurations: [.debug,
                                                                                           .betaDevelopment,
                                                                                           .betaStage,
                                                                                           .betaProduction,
                                                                                           .release]),
-                               product: Product,
                                platform: Platform,
                                deploymentTarget: DeploymentTarget = .iOS(targetVersion: "12.0", devices: [.iphone, .ipad]),
                                dependencies: [TargetDependency] = [],
@@ -18,7 +16,7 @@ extension Project {
                        targets: [
                         Target(name: name,
                                 platform: platform,
-                                product: product,
+                                product: .app,
                                 bundleId: "${ACK_BUNDLE_ID}",
                                 deploymentTarget: deploymentTarget,
                                 infoPlist: .extendingDefault(with: infoPlist),
@@ -54,6 +52,12 @@ extension Project {
     
     private static func scriptPath(path: String) -> Path {
         Path("BuildPhases/" + path)
+    }
+}
+
+public extension TargetDependency {
+    static func carthage(name: String, platform: Platform = .iOS) -> TargetDependency {
+        .framework(path: Path("Carthage/Build/\(platform.rawValue)/\(name).framework"))
     }
 }
 
@@ -111,13 +115,45 @@ public enum AppCustomConfiguration {
     }
     
     private func settings(with name: String) -> [String: SettingValue] {
+        let base: [String: SettingValue] = [
+            "ACK_ENVIRONMENT_DIR": "$(PROJECT_DIR)/$(TARGET_NAME)/Environment",
+            "ACK_PROJECT_VERSION": "0.0",
+            "DEVELOPMENT_TEAM": "PXDF48X6VX",
+            "OTHER_LDFLAGS": "-ObjC",
+            "ENABLE_BITCODE": "NO",
+            "INFOPLIST_PREPROCESS": "YES",
+            "INFOPLIST_PREFIX_HEADER": "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h",
+            "CODE_SIGN_STYLE": "Manual",
+        ]
+        
         switch self {
         case .debug:
-            return generateSettings(for: .debug, with: name)
-        case .betaDevelopment, .betaStage, .betaProduction:
-            return generateSettings(for: .beta, with: name)
+            let debugSettings: [String: SettingValue] = [
+                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
+                "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+                "ACK_APPNAME": SettingValue(stringLiteral: "\(name) Δ"),
+                "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
+            ]
+            return base.merging(debugSettings, uniquingKeysWith: { _, debug in debug })
+        case .betaDevelopment, .betaProduction, .betaStage:
+            let betaSettings: [String: SettingValue] = [
+                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
+                "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
+                "ACK_APPNAME": SettingValue(stringLiteral: "\(name) β"),
+                "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
+            ]
+            return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
         case .release:
-            return generateSettings(for: .release, with: name)
+            let releaseSettings: [String: SettingValue] = [
+                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.\(name)"),
+                "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
+                "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
+                "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.\(name)"),
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.\(name)")
+            ]
+            return base.merging(releaseSettings, uniquingKeysWith: { _, release in release })
         }
     }
     
@@ -137,50 +173,6 @@ public enum AppCustomConfiguration {
     }
     
     private func targetSettings(with name: String) -> [String: SettingValue] {
-        return [
-            "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
-            "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
-        ]
-    }
-}
-
-private enum CustomConfigurationSettings {
-    case debug, beta, release, stripped
-}
-
-private func generateSettings(for customConfigurationSettings: CustomConfigurationSettings, with name: String) -> [String: SettingValue] {
-    let base: [String: SettingValue] = [
-        "ACK_ENVIRONMENT_DIR": "$(PROJECT_DIR)/$(TARGET_NAME)/Environment",
-        "ACK_PROJECT_VERSION": "0.0",
-        "DEVELOPMENT_TEAM": "PXDF48X6VX",
-        "OTHER_LDFLAGS": "-ObjC",
-        "ENABLE_BITCODE": "NO",
-        "INFOPLIST_PREPROCESS": "YES",
-        "INFOPLIST_PREFIX_HEADER": "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h",
-        "CODE_SIGN_STYLE": "Manual",
-    ]
-    switch customConfigurationSettings {
-    case .debug:
-        let debugSettings: [String: SettingValue] = [
-            "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
-            "ACK_APPNAME": SettingValue(stringLiteral: "\(name) Δ"),
-        ]
-        return base.merging(debugSettings, uniquingKeysWith: { _, debug in debug })
-    case .beta:
-        let betaSettings: [String: SettingValue] = [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
-            "ACK_APPNAME": SettingValue(stringLiteral: "\(name) β"),
-        ]
-        return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
-    case .release:
-        let releaseSettings: [String: SettingValue] = [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
-            "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
-        ]
-        return base.merging(releaseSettings, uniquingKeysWith: { _, release in release })
-    case .stripped:
-        let strippedSettings: [String: SettingValue] = ["INFOPLIST_PREPROCESS": "NO",
-                                                        "INFOPLIST_PREFIX_HEADER": "",]
-        return strippedSettings
+        return [:]
     }
 }

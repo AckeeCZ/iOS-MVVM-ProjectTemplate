@@ -1,10 +1,35 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project.app(name: "SysRoot", platform: .iOS, dependencies: [
-    .project(target: "SysRootKit", path: .relativeToManifest("../SysRootKit")),
-    .cocoapods(path: "."),
-    .framework(path: Path("Carthage/Build/iOS/ACKategories.framework")),
-    .framework(path: Path("Carthage/Build/iOS/SnapKit.framework")),
-    .framework(path: Path("Carthage/Build/iOS/Reqres.framework"))
-])
+let project = Project.project(name: "ProjectTemplate",
+                              platform: .iOS,
+                              dependencies: [
+                                .cocoapods(path: "."),
+                                .carthage(name: "ACKategories"),
+                                .carthage(name: "Alamofire"),
+                                .carthage(name: "ReactiveCocoa"),
+                                .carthage(name: "ReactiveSwift"),
+                                .carthage(name: "Reqres"),
+                                .carthage(name: "SnapKit"),
+                                // Firebase
+                                .carthage(name: "FIRAnalyticsConnector"),
+                                .carthage(name: "Firebase"),
+                                .carthage(name: "FirebaseABTesting"),
+                                .carthage(name: "FirebaseAnalytics"),
+                                .carthage(name: "FirebaseCore"),
+                                .carthage(name: "FirebaseCoreDiagnostics"),
+                                .carthage(name: "FirebaseCrashlytics"),
+                                .carthage(name: "FirebaseInstallations"),
+                                .carthage(name: "FirebasePerformance"),
+                                .carthage(name: "FirebaseInstanceID"),
+                                .carthage(name: "FirebaseRemoteConfig"),
+                                .carthage(name: "GTMSessionFetcher"),
+                                .carthage(name: "GoogleAppMeasurement"),
+                                .carthage(name: "GoogleDataTransport"),
+                                .carthage(name: "GoogleDataTransportCCTSupport"),
+                                .carthage(name: "GoogleToolboxForMac"),
+                                .carthage(name: "GoogleUtilities"),
+                                .carthage(name: "PromisesObjC"),
+                                .carthage(name: "Protobuf"),
+                                .carthage(name: "nanopb"),
+                                ])
