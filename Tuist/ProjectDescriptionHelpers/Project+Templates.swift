@@ -20,7 +20,7 @@ extension Project {
                                 bundleId: "${ACK_BUNDLE_ID}",
                                 deploymentTarget: deploymentTarget,
                                 infoPlist: .extendingDefault(with: infoPlist),
-                                sources: ["Sources/**"],
+                                sources: [SourceFileGlob(stringLiteral: "\(name)/**")],
                                 resources: [
                                     .glob(pattern: Path("\(name)/Environment/Current/**")),
                                     .glob(pattern: Path("\(name)/Resources/**")),
@@ -39,7 +39,7 @@ extension Project {
                         Target(name: "\(name)Tests",
                                 platform: platform,
                                 product: .unitTests,
-                                bundleId: "io.tuist.\(name)Tests",
+                                bundleId: "cz.ackee.\(name)Tests",
                                 infoPlist: .default,
                                 sources: "Tests/**",
                                 dependencies: [

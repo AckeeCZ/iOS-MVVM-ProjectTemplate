@@ -63,11 +63,13 @@ screenshots
 /outputs
 
 #Environment
-Environment/Current
-Environment/.current
-Environment/.environment_preprocess.h
-Environment/Generated/*
+**/Environment/Current
+**/Environment/.current
+**/Environment/.environment_preprocess.h
+**/Environment/Generated/*
 
 #generated files
 */Model/Generated/*
-!*/Model/Generated/.gitkeep
+
+# tuist
+Derived

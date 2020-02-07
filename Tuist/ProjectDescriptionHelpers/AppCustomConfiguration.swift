@@ -6,22 +6,34 @@ public enum AppCustomConfiguration {
     func customConfiguration(with name: String) -> CustomConfiguration {
         switch self {
         case .debug:
-            return CustomConfiguration.debug(name: name, settings: settings(with: name))
+            return CustomConfiguration.debug(name: configurationName, settings: settings(with: name))
         case .betaDevelopment, .betaProduction, .betaStage, .release:
-            return CustomConfiguration.release(name: name, settings: settings(with: name))
+            return CustomConfiguration.release(name: configurationName, settings: settings(with: name))
         }
     }
     
     func customTargetConfiguration(with name: String) -> CustomConfiguration {
         switch self {
         case .debug:
-            return CustomConfiguration.debug(name: name, settings: targetSettings(with: name))
+            return CustomConfiguration.debug(name: configurationName, settings: targetSettings(with: name))
         case .betaDevelopment, .betaProduction, .betaStage, .release:
-            return CustomConfiguration.release(name: name, settings: targetSettings(with: name))
+            return CustomConfiguration.release(name: configurationName, settings: targetSettings(with: name))
         }
     }
     
-    private var name: String {
+    func customScheme(with name: String) -> Scheme {
+        Scheme(name: configurationName,
+               shared: true,
+               buildAction: BuildAction(targets: [TargetReference(projectPath: nil, target: name)],
+                                 preActions: [ExecutionAction(scriptText:"""
+                                                                         echo "Development" > "${ACK_ENVIRONMENT_DIR}/.current" && sh "$PROJECT_DIR"/Tools/generate_preprocess_header.sh
+                                                                         """,
+                                                              target: TargetReference(stringLiteral: name))]),
+               testAction: TestAction(targets: [TestableTarget(stringLiteral: "\(name)Tests")]),
+               runAction: RunAction(executable: TargetReference(projectPath: nil, target: name)))
+    }
+    
+    private var configurationName: String {
         switch self {
         case .debug:
             return "Debug"

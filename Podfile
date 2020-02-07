@@ -11,7 +11,7 @@ target 'ProjectTemplate' do
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
     
-    target 'UnitTests' do
+    target 'ProjectTemplateTests' do
         inherit! :complete
     end
 end

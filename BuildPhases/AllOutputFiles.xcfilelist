@@ -1,5 +1,5 @@
 ${ACK_ENVIRONMENT_DIR}/Current/environment.plist
 ${ACK_ENVIRONMENT_DIR}/Current/GoogleService-Info.plist
-${PROJECT_DIR}/NovaPlusBase/Model/Generated/LocalizedStrings.swift
-${PROJECT_DIR}/NovaPlusBase/Model/Generated/Assets.swift
-${PROJECT_DIR}/NovaPlusBase/Model/Generated/Environment.swift
+$(PROJECT_DIR)/$(TARGET_NAME)/Model/Generated/LocalizedStrings.swift
+$(PROJECT_DIR)/$(TARGET_NAME)/Model/Generated/Assets.swift
+$(PROJECT_DIR)/$(TARGET_NAME)/Model/Generated/Environment.swift
