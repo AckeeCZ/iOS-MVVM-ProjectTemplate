@@ -3,7 +3,6 @@ import ProjectDescription
 extension Project {
     
     public static func project(name: String,
-                               appName: String,
                                settings: CustomSettings = CustomSettings(configurations: [.debug,
                                                                                           .betaDevelopment,
                                                                                           .betaStage,
@@ -15,7 +14,7 @@ extension Project {
                                dependencies: [TargetDependency] = [],
                                infoPlist: [String: InfoPlist.Value] = [:]) -> Project {
         return Project(name: name,
-                       settings: Settings(configurations: settings.customConfigurations(for: appName)),
+                       settings: Settings(configurations: settings.customConfigurations(for: name)),
                        targets: [
                         Target(name: name,
                                 platform: platform,
@@ -38,7 +37,7 @@ extension Project {
                                               name: "Crashlytics"),
                                 ],
                                 dependencies: dependencies,
-                                settings: Settings(configurations: [CustomConfiguration.debug(name: "Development", settings: ["Gibberish": "gibbb"])])),
+                                settings: Settings(configurations: settings.targetCustomConfiguration(for: name))),
                         Target(name: "\(name)Tests",
                                 platform: platform,
                                 product: .unitTests,
@@ -65,6 +64,10 @@ public struct CustomSettings {
         configurations.map { $0.customConfiguration(with: name) }
     }
     
+    func targetCustomConfiguration(for name: String) -> [CustomConfiguration] {
+        configurations.map { $0.customTargetConfiguration(with: name) }
+    }
+    
     public init(configurations: [AppCustomConfiguration]) {
         self.configurations = configurations
     }
@@ -80,6 +83,15 @@ public enum AppCustomConfiguration {
             return CustomConfiguration.debug(name: name, settings: settings(with: name))
         case .betaDevelopment, .betaProduction, .betaStage, .release:
             return CustomConfiguration.release(name: name, settings: settings(with: name))
+        }
+    }
+    
+    func customTargetConfiguration(with name: String) -> CustomConfiguration {
+        switch self {
+        case .debug:
+            return CustomConfiguration.debug(name: name, settings: targetSettings(with: name))
+        case .betaDevelopment, .betaProduction, .betaStage, .release:
+            return CustomConfiguration.release(name: name, settings: targetSettings(with: name))
         }
     }
     
@@ -101,20 +113,42 @@ public enum AppCustomConfiguration {
     private func settings(with name: String) -> [String: SettingValue] {
         switch self {
         case .debug:
-            return generateSettings(for: .debug)
+            return generateSettings(for: .debug, with: name)
         case .betaDevelopment, .betaStage, .betaProduction:
-            return generateSettings(for: .release)
+            return generateSettings(for: .beta, with: name)
         case .release:
-            return generateSettings(for: .base)
+            return generateSettings(for: .release, with: name)
         }
+    }
+    
+    private var identifierName: String {
+        switch self {
+        case .debug:
+            return "debug"
+        case .betaDevelopment:
+            return "development.beta"
+        case .betaStage:
+            return "stage.beta"
+        case .betaProduction:
+            return "production.beta"
+        case .release:
+            return "release"
+        }
+    }
+    
+    private func targetSettings(with name: String) -> [String: SettingValue] {
+        return [
+            "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
+            "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
+        ]
     }
 }
 
 private enum CustomConfigurationSettings {
-    case debug, release, base, stripped
+    case debug, beta, release, stripped
 }
 
-private func generateSettings(for customConfigurationSettings: CustomConfigurationSettings) -> [String: SettingValue] {
+private func generateSettings(for customConfigurationSettings: CustomConfigurationSettings, with name: String) -> [String: SettingValue] {
     let base: [String: SettingValue] = [
         "ACK_ENVIRONMENT_DIR": "$(PROJECT_DIR)/$(TARGET_NAME)/Environment",
         "ACK_PROJECT_VERSION": "0.0",
@@ -123,16 +157,27 @@ private func generateSettings(for customConfigurationSettings: CustomConfigurati
         "ENABLE_BITCODE": "NO",
         "INFOPLIST_PREPROCESS": "YES",
         "INFOPLIST_PREFIX_HEADER": "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h",
+        "CODE_SIGN_STYLE": "Manual",
     ]
     switch customConfigurationSettings {
     case .debug:
-        let debugSettings: [String: SettingValue] = ["DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"]
+        let debugSettings: [String: SettingValue] = [
+            "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+            "ACK_APPNAME": SettingValue(stringLiteral: "\(name) Δ"),
+        ]
         return base.merging(debugSettings, uniquingKeysWith: { _, debug in debug })
+    case .beta:
+        let betaSettings: [String: SettingValue] = [
+            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
+            "ACK_APPNAME": SettingValue(stringLiteral: "\(name) β"),
+        ]
+        return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
     case .release:
-        let releaseSettings: [String: SettingValue] = ["SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC"]
+        let releaseSettings: [String: SettingValue] = [
+            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
+            "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
+        ]
         return base.merging(releaseSettings, uniquingKeysWith: { _, release in release })
-    case .base:
-        return base
     case .stripped:
         let strippedSettings: [String: SettingValue] = ["INFOPLIST_PREPROCESS": "NO",
                                                         "INFOPLIST_PREFIX_HEADER": "",]
