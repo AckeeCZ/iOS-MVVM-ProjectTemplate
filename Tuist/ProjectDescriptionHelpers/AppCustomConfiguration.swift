@@ -3,7 +3,7 @@ import ProjectDescription
 public enum AppCustomConfiguration {
     case debug, betaDevelopment, betaStage, betaProduction, release
     
-    func customConfiguration(with name: String, projectVersion: Version) -> CustomConfiguration {
+    internal func customConfiguration(with name: String, projectVersion: Version) -> CustomConfiguration {
         switch self {
         case .debug:
             return CustomConfiguration.debug(name: configurationName, settings: settings(with: name, projectVersion: projectVersion))
@@ -12,25 +12,13 @@ public enum AppCustomConfiguration {
         }
     }
     
-    func customTargetConfiguration(with name: String) -> CustomConfiguration {
+    internal func customTargetConfiguration(with name: String) -> CustomConfiguration {
         switch self {
         case .debug:
             return CustomConfiguration.debug(name: configurationName, settings: targetSettings(with: name))
         case .betaDevelopment, .betaProduction, .betaStage, .release:
             return CustomConfiguration.release(name: configurationName, settings: targetSettings(with: name))
         }
-    }
-    
-    func customScheme(with name: String) -> Scheme {
-        Scheme(name: configurationName,
-               shared: true,
-               buildAction: BuildAction(targets: [TargetReference(projectPath: nil, target: name)],
-                                 preActions: [ExecutionAction(scriptText:"""
-                                                                         echo "Development" > "${ACK_ENVIRONMENT_DIR}/.current" && sh "$PROJECT_DIR"/Tools/generate_preprocess_header.sh
-                                                                         """,
-                                                              target: TargetReference(stringLiteral: name))]),
-               testAction: TestAction(targets: [TestableTarget(stringLiteral: "\(name)Tests")]),
-               runAction: RunAction(executable: TargetReference(projectPath: nil, target: name)))
     }
     
     private var configurationName: String {

@@ -11,7 +11,8 @@ extension Project {
                                platform: Platform,
                                deploymentTarget: DeploymentTarget = .iOS(targetVersion: "12.0", devices: [.iphone, .ipad]),
                                dependencies: [TargetDependency] = [],
-                               infoPlist: CustomInfoPlist = .default) -> Project {
+                               infoPlist: CustomInfoPlist = .default,
+                               schemes: [AppCustomScheme] = [.debug, .stage, .production]) -> Project {
         return Project(name: name,
                        settings: Settings(configurations: settings.customConfigurations(for: name, projectVersion: projectVersion)),
                        targets: [
@@ -46,7 +47,7 @@ extension Project {
                                 dependencies: [
                                     .target(name: "\(name)")
                                 ])],
-                       schemes: settings.customSchemes(for: name))
+                       schemes: schemes.map { $0.customScheme(with: name) })
     }
     
     // MARK: - Helpers
