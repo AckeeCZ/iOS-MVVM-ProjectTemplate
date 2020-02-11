@@ -1,0 +1,9 @@
+platform :ios, '10.3'
+project 'Localization'
+
+inhibit_all_warnings!
+use_frameworks!
+
+target 'Localization' do
+    pod 'ACKLocalization', '~> 0.3'
+end

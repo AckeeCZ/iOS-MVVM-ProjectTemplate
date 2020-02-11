@@ -7,7 +7,6 @@ use_frameworks!
 target 'ProjectTemplate' do
     pod 'SwiftLint', '~> 0.27'
     
-    pod 'ACKLocalization', '~> 0.3'
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
     
