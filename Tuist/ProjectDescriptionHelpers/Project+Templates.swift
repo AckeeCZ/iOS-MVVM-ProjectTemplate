@@ -44,8 +44,8 @@ extension Project {
                                 sources: "Tests/**",
                                 dependencies: [
                                     .target(name: "\(name)")
-                                ])
-                      ])
+                                ])],
+                       schemes: settings.customSchemes(for: name))
     }
     
     // MARK: - Helpers
