@@ -4,7 +4,12 @@ project 'ProjectTemplate', 'Beta-Development' => :release, 'Beta-Stage' => :rele
 inhibit_all_warnings!
 use_frameworks!
 
-target 'ProjectTemplate' do
+project_name='ProjectTemplate'
+
+workspace project_name + '.xcworkspace'
+
+target project_name do
+    project project_name + '.xcodeproj'
     pod 'SwiftLint', '~> 0.27'
     
     pod 'SwiftGen', '~> 6.0'
@@ -13,4 +18,9 @@ target 'ProjectTemplate' do
     target 'ProjectTemplateTests' do
         inherit! :complete
     end
+end
+
+target 'Localization' do
+    project 'Localization/Localization.xcodeproj'
+    pod 'ACKLocalization', '~> 0.3'
 end
