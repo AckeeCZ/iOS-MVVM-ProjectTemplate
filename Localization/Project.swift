@@ -7,5 +7,6 @@ let project = Project(name: "Localization", targets: [
            product: .framework,
            bundleId: "localization",
            infoPlist: .default,
-           actions: [.pre(path: "localization.sh",
+           actions: [.pre(tool: "sh",
+                          arguments: "localization.sh",
                           name: "Run ACKLocalization")])])
