@@ -3,12 +3,12 @@ import ProjectDescription
 public enum AppCustomConfiguration {
     case debug, betaDevelopment, betaStage, betaProduction, release
     
-    func customConfiguration(with name: String) -> CustomConfiguration {
+    func customConfiguration(with name: String, projectVersion: Version) -> CustomConfiguration {
         switch self {
         case .debug:
-            return CustomConfiguration.debug(name: configurationName, settings: settings(with: name))
+            return CustomConfiguration.debug(name: configurationName, settings: settings(with: name, projectVersion: projectVersion))
         case .betaDevelopment, .betaProduction, .betaStage, .release:
-            return CustomConfiguration.release(name: configurationName, settings: settings(with: name))
+            return CustomConfiguration.release(name: configurationName, settings: settings(with: name, projectVersion: projectVersion))
         }
     }
     
@@ -48,10 +48,10 @@ public enum AppCustomConfiguration {
         }
     }
     
-    private func settings(with name: String) -> [String: SettingValue] {
+    private func settings(with name: String, projectVersion: Version) -> [String: SettingValue] {
         let base: [String: SettingValue] = [
             "ACK_ENVIRONMENT_DIR": "$(PROJECT_DIR)/$(TARGET_NAME)/Environment",
-            "ACK_PROJECT_VERSION": "0.0",
+            "ACK_PROJECT_VERSION": SettingValue(stringLiteral: projectVersion.description),
             "ACK_PRODUCT_NAME": SettingValue(stringLiteral: name),
             "DEVELOPMENT_TEAM": "PXDF48X6VX",
             "OTHER_LDFLAGS": "-ObjC",

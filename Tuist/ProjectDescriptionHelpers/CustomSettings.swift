@@ -3,8 +3,8 @@ import ProjectDescription
 public struct CustomSettings {
     private let configurations: [AppCustomConfiguration]
     
-    func customConfigurations(for name: String) -> [CustomConfiguration] {
-        configurations.map { $0.customConfiguration(with: name) }
+    func customConfigurations(for name: String, projectVersion: Version) -> [CustomConfiguration] {
+        configurations.map { $0.customConfiguration(with: name, projectVersion: projectVersion) }
     }
     
     func targetCustomConfiguration(for name: String) -> [CustomConfiguration] {

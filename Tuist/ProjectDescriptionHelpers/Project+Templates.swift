@@ -7,12 +7,13 @@ extension Project {
                                                                                           .betaStage,
                                                                                           .betaProduction,
                                                                                           .release]),
+                               projectVersion: Version = Version(0, 1, 0),
                                platform: Platform,
                                deploymentTarget: DeploymentTarget = .iOS(targetVersion: "12.0", devices: [.iphone, .ipad]),
                                dependencies: [TargetDependency] = [],
                                infoPlist: CustomInfoPlist = .default) -> Project {
         return Project(name: name,
-                       settings: Settings(configurations: settings.customConfigurations(for: name)),
+                       settings: Settings(configurations: settings.customConfigurations(for: name, projectVersion: projectVersion)),
                        targets: [
                         Target(name: name,
                                 platform: platform,
