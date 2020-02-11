@@ -12,7 +12,7 @@ extension Project {
                                deploymentTarget: DeploymentTarget = .iOS(targetVersion: "12.0", devices: [.iphone, .ipad]),
                                dependencies: [TargetDependency] = [],
                                infoPlist: CustomInfoPlist = .default,
-                               schemes: [AppCustomScheme] = [.debug, .stage, .production]) -> Project {
+                               schemes: [AppCustomScheme] = [.development, .stage, .production]) -> Project {
         return Project(name: name,
                        settings: Settings(configurations: settings.customConfigurations(for: name, projectVersion: projectVersion)),
                        targets: [

@@ -2,12 +2,12 @@ import ProjectDescription
 
 /// Custom scheme for app
 public enum AppCustomScheme {
-    case debug, stage, production
+    case development, stage, production
     
     private var schemeName: String {
         switch self {
-        case .debug:
-            return "Debug"
+        case .development:
+            return "Development"
         case .stage:
             return "Stage"
         case .production:
