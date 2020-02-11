@@ -1,4 +1,4 @@
-osx_image: xcode11.2
+osx_image: xcode11.3
 language: objective-c
 # cache:
 #   directories:
@@ -10,7 +10,7 @@ before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
   - travis_wait 60 carthage bootstrap --platform iOS --cache-builds
-script:
   - tuist up
   - tuist generate
+script:
   - set -o pipefail && xcodebuild -scheme Development -workspace ProjectTemplate.xcworkspace -sdk iphonesimulator  ONLY_ACTIVE_ARCH=NO | xcpretty
