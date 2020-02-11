@@ -10,7 +10,7 @@ extension Project {
                                platform: Platform,
                                deploymentTarget: DeploymentTarget = .iOS(targetVersion: "12.0", devices: [.iphone, .ipad]),
                                dependencies: [TargetDependency] = [],
-                               infoPlist: [String: InfoPlist.Value] = [:]) -> Project {
+                               infoPlist: CustomInfoPlist = .default) -> Project {
         return Project(name: name,
                        settings: Settings(configurations: settings.customConfigurations(for: name)),
                        targets: [
@@ -19,7 +19,7 @@ extension Project {
                                 product: .app,
                                 bundleId: "${ACK_BUNDLE_ID}",
                                 deploymentTarget: deploymentTarget,
-                                infoPlist: .extendingDefault(with: infoPlist),
+                                infoPlist: .extendingDefault(with: infoPlist.value),
                                 sources: [SourceFileGlob(stringLiteral: "\(name)/**")],
                                 resources: [
                                     .glob(pattern: Path("\(name)/Environment/Current/**")),
