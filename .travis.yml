@@ -10,7 +10,6 @@ before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
   - travis_wait 60 carthage bootstrap --platform iOS --cache-builds
-  - bundle exec pod repo update
 script:
   - tuist up
   - tuist generate
