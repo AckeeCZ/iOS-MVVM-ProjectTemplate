@@ -1,6 +1,6 @@
 import ProjectDescription
 
-let projectName = "ProjecTemplate"
+let projectName = "ProjectTemplate"
 
 let generatedFiles: [String] = [
     "\(projectName)/Model/Generated/Assets.swift",

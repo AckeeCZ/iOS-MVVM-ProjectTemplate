@@ -52,6 +52,7 @@ public enum AppCustomConfiguration {
         let base: [String: SettingValue] = [
             "ACK_ENVIRONMENT_DIR": "$(PROJECT_DIR)/$(TARGET_NAME)/Environment",
             "ACK_PROJECT_VERSION": "0.0",
+            "ACK_PRODUCT_NAME": SettingValue(stringLiteral: name),
             "DEVELOPMENT_TEAM": "PXDF48X6VX",
             "OTHER_LDFLAGS": "-ObjC",
             "ENABLE_BITCODE": "NO",
