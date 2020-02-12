@@ -1,10 +1,10 @@
+project_name='ProjectTemplate'
+
 platform :ios, '10.3'
-project 'ProjectTemplate', 'Beta-Development' => :release, 'Beta-Stage' => :release, 'Beta-Production' => :release, 'Release' => :release, 'Development' => :debug
+project project_name, 'Beta-Development' => :release, 'Beta-Stage' => :release, 'Beta-Production' => :release, 'Release' => :release, 'Development' => :debug
 
 inhibit_all_warnings!
 use_frameworks!
-
-project_name='ProjectTemplate'
 
 workspace project_name + '.xcworkspace'
 
