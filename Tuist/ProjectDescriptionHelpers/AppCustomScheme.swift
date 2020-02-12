@@ -20,7 +20,7 @@ public enum AppCustomScheme {
                shared: true,
                buildAction: BuildAction(targets: [TargetReference(projectPath: nil, target: name)],
                                  preActions: [ExecutionAction(scriptText:"""
-                                                                         echo "Development" > "${ACK_ENVIRONMENT_DIR}/.current" && sh "$PROJECT_DIR"/Tools/generate_preprocess_header.sh
+                                                                         echo "\(schemeName)" > "${ACK_ENVIRONMENT_DIR}/.current" && sh "$PROJECT_DIR"/Tools/generate_preprocess_header.sh
                                                                          """,
                                                               target: TargetReference(stringLiteral: name))]),
                testAction: TestAction(targets: [TestableTarget(stringLiteral: "\(name)Tests")]),
