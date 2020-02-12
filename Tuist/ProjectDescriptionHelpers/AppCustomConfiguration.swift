@@ -56,7 +56,7 @@ public enum AppCustomConfiguration {
                 "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name) Δ"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
-                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)"),
             ]
             return base.merging(debugSettings, uniquingKeysWith: { _, debug in debug })
         case .betaDevelopment, .betaProduction, .betaStage:
@@ -65,7 +65,7 @@ public enum AppCustomConfiguration {
                 "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name) β"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
-                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)")
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.enterprise.\(name).\(identifierName)"),
             ]
             return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
         case .release:
@@ -74,7 +74,7 @@ public enum AppCustomConfiguration {
                 "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.\(name)"),
-                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.\(name)")
+                "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.\(name)"),
             ]
             return base.merging(releaseSettings, uniquingKeysWith: { _, release in release })
         }
@@ -96,7 +96,12 @@ public enum AppCustomConfiguration {
     }
     
     private func targetSettings(with name: String) -> [String: SettingValue] {
-        return [:]
+        switch self {
+        case .debug:
+            return ["CODE_SIGN_IDENTITY": "iPhone Developer"]
+        case .betaDevelopment, .betaStage, .betaProduction, .release:
+            return ["CODE_SIGN_IDENTITY": "iPhone Distribution"]
+        }
     }
 }
 
