@@ -1,7 +1,7 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project.project(name: "ProjectTemplate",
+let project = Project.project(name: projectName,
                               projectVersion: Version(0, 1, 0),
                               platform: .iOS,
                               dependencies: [
