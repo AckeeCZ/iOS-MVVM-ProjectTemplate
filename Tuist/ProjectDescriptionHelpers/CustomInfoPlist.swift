@@ -14,6 +14,7 @@ public enum CustomInfoPlist {
             "UIMainStoryboardFile": "",
             "CFBundleShortVersionString": "$(ACK_PROJECT_VERSION)",
             "CFBundleDisplayName": "$(ACK_APPNAME)",
+            "CFBundleVersion": "ACK_BUILD_NUMBER",
         ]
         switch self {
         case let .custom(infoPlist):
