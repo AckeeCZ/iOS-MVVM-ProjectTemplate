@@ -22,3 +22,5 @@ if arguments.count == 2 {
 } else {
     print("You must provide a name argument")
 }
+
+try FileManager.default.removeItem(atPath: "rename.swift")
