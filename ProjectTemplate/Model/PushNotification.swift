@@ -40,13 +40,13 @@ extension PushNotification {
 
 extension PushNotification.Action {
     init?(actionID: String) {
-        return nil // TODO: Implement if any actions, probably add String as rawValue and delegate to `init(rawValue:)`
+        nil // TODO: Implement if any actions, probably add String as rawValue and delegate to `init(rawValue:)`
     }
 }
 
 extension PushNotification.Payload {
     init?(notification: UNNotification) {
-        return nil // TODO: Implement payload mapping
+        nil // TODO: Implement payload mapping
     }
 }
 

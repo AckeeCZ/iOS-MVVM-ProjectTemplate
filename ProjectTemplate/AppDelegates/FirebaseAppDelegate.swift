@@ -8,6 +8,6 @@ final class FirebaseAppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: Uncomment this line when your Google plists are ready!
         // FirebaseApp.configure()
 
-        return true
+        true
     }
 }
