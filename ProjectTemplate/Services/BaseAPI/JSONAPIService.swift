@@ -34,7 +34,7 @@ final class JSONAPIService: JSONAPIServicing {
 
 extension SignalProducer where Value == DataResponse, Error == RequestError {
     func toJSON() -> SignalProducer<JSONResponse, Error> {
-        return attemptMap { dataResponse in
+        attemptMap { dataResponse in
             do {
                 let jsonResponse = try dataResponse.jsonResponse()
                 return Result.success(jsonResponse)
