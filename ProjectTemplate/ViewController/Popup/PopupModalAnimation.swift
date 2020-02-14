@@ -129,7 +129,7 @@ final class PopupModalAnimation: NSObject, UIViewControllerAnimatedTransitioning
     }
 
     @objc func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return animationType == .present ? presentDuration : dismissDuration
+        animationType == .present ? presentDuration : dismissDuration
     }
 }
 
