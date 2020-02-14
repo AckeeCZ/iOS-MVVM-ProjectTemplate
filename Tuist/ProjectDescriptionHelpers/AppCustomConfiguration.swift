@@ -52,7 +52,6 @@ public enum AppCustomConfiguration {
         switch self {
         case .debug:
             let debugSettings: [String: SettingValue] = [
-                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
                 "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name) Δ"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
@@ -61,7 +60,6 @@ public enum AppCustomConfiguration {
             return base.merging(debugSettings, uniquingKeysWith: { _, debug in debug })
         case .betaDevelopment, .betaProduction, .betaStage:
             let betaSettings: [String: SettingValue] = [
-                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
                 "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name) β"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.enterprise.\(name).\(identifierName)"),
@@ -70,7 +68,6 @@ public enum AppCustomConfiguration {
             return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
         case .release:
             let releaseSettings: [String: SettingValue] = [
-                "ACK_BUNDLE_ID": SettingValue(stringLiteral: "cz.ackee.\(name)"),
                 "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.\(name)"),

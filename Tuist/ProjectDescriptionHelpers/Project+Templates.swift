@@ -19,7 +19,7 @@ extension Project {
                         Target(name: name,
                                 platform: platform,
                                 product: .app,
-                                bundleId: "${ACK_BUNDLE_ID}",
+                                bundleId: "${PRODUCT_BUNDLE_IDENTIFIER}",
                                 deploymentTarget: deploymentTarget,
                                 infoPlist: .extendingDefault(with: infoPlist.value),
                                 sources: [SourceFileGlob(stringLiteral: "\(name)/**")],
