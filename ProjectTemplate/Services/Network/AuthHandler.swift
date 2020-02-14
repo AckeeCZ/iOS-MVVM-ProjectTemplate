@@ -13,6 +13,6 @@ protocol AuthHandlingActions {
 }
 
 final class AuthHandler: AuthHandling, AuthHandlingActions {
-    var actions: AuthHandlingActions { return self }
+    var actions: AuthHandlingActions { self }
     let refresh: Action<RequestError?, Credentials, RequestError> = Action { SignalProducer(error: $0 ?? .missingRefreshToken) }
 }

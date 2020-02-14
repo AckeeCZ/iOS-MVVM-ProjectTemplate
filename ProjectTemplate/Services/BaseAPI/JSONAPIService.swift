@@ -23,12 +23,12 @@ final class JSONAPIService: JSONAPIServicing {
     // MARK: Public methods
 
     func request(_ address: RequestAddress, method: HTTPMethod, parameters: [String: Any], encoding: ParameterEncoding, headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
-        return network.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        network.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
             .toJSON()
     }
 
     func upload(_ address: RequestAddress, method: HTTPMethod, parameters: [NetworkUploadable], headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
-        return network.upload(address, method: method, parameters: parameters, headers: headers).toJSON()
+        network.upload(address, method: method, parameters: parameters, headers: headers).toJSON()
     }
 }
 
@@ -48,18 +48,18 @@ extension SignalProducer where Value == DataResponse, Error == RequestError {
 
 extension JSONAPIServicing {
     func request(_ address: RequestAddress, method: HTTPMethod = .get, parameters: [String: Any] = [:], encoding: ParameterEncoding = URLEncoding.default, headers: HTTPHeaders = [:]) -> SignalProducer<JSONResponse, RequestError> {
-        return request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
     }
 
     func upload(_ address: RequestAddress, method: HTTPMethod = .get, parameters: [NetworkUploadable], headers: HTTPHeaders = [:]) -> SignalProducer<JSONResponse, RequestError> {
-        return upload(address, method: method, parameters: parameters, headers: headers)
+        upload(address, method: method, parameters: parameters, headers: headers)
     }
 
     func request(path: String, method: HTTPMethod = .get, parameters: [String: Any] = [:], encoding: ParameterEncoding = URLEncoding.default, headers: HTTPHeaders = [:]) -> SignalProducer<JSONResponse, RequestError> {
-        return request(RequestAddress(path: path), method: method, parameters: parameters, encoding: encoding, headers: headers)
+        request(RequestAddress(path: path), method: method, parameters: parameters, encoding: encoding, headers: headers)
     }
 
     func upload(path: String, method: HTTPMethod = .get, parameters: [NetworkUploadable], headers: HTTPHeaders = [:]) -> SignalProducer<JSONResponse, RequestError> {
-        return upload(RequestAddress(path: path), method: method, parameters: parameters, headers: headers)
+        upload(RequestAddress(path: path), method: method, parameters: parameters, headers: headers)
     }
 }

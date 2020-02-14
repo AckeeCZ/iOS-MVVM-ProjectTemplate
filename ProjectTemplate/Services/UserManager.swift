@@ -21,7 +21,7 @@ protocol UserManaging {
 }
 
 final class UserManager: UserManaging, UserManagingActions {
-    var actions: UserManagingActions { return self }
+    var actions: UserManagingActions { self }
 
     lazy var isLoggedIn = user.map { $0 != nil }
     let user = Property<User?>(value: nil)

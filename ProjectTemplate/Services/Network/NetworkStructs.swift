@@ -21,7 +21,7 @@ struct RequestResponse<Value> {
     let response: HTTPURLResponse?
     let data: Value?
 
-    var headers: HTTPHeaders { return response?.allHeaderFields as? HTTPHeaders ?? [:] }
+    var headers: HTTPHeaders { response?.allHeaderFields as? HTTPHeaders ?? [:] }
 }
 
 enum RequestError: Error {
@@ -70,7 +70,7 @@ struct NetworkError: Error {
     let response: HTTPURLResponse?
     let data: Data?
 
-    var statusCode: Int? { return response?.statusCode }
+    var statusCode: Int? { response?.statusCode }
 }
 
 extension RequestResponse where Value == Data {
