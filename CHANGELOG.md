@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Add custom Swiftlint rule to enforce link to the Redmine ticket in TODO ([#46](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/46), kudos to @LukasHromadnik))
 - Add swiftlint to rename ([#45](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/45))
 - Update dependencies to fix vulnerability warning ([#42](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/42))
 - Add tuist integration ([#41](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/41), kudos to @fortmarek)
