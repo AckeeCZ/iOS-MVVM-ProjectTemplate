@@ -8,6 +8,11 @@ final class MainAppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var appFlowCoordinator = AppFlowCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Clear launch screen cache
+        #if DEBUG || ADHOC
+        application.clearLaunchScreenCache()
+        #endif
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
