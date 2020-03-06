@@ -8,7 +8,7 @@ final class MainAppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var appFlowCoordinator = AppFlowCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Clear launch screen cache
+        // Clear launch screen cache on app launch (debug and beta configurations only)
         #if DEBUG || ADHOC
         application.clearLaunchScreenCache()
         #endif
