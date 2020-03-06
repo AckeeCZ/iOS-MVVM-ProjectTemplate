@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Add clear of launch screen cache on app launch for debug and beta configurations ([#47](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/47), kudos to @IgorRosocha)
 - Add swiftlint to rename ([#45](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/45))
 - Update dependencies to fix vulnerability warning ([#42](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/42))
 - Add tuist integration ([#41](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/41), kudos to @fortmarek)
