@@ -36,6 +36,6 @@ file_length:
 custom_rules:
   todo_redmine:
     name: "TODO Redmine"
-    regex: 'TODO: (?!https:\/\/redmine\.ack\.ee\/issues\/\d).+'
+    regex: 'TODO: (?!https:\/\/redmine\.ack\.ee\/issues\/\d)'
     message: "TODO must contain the full link to the Redmine ticket"
     severity: warning
