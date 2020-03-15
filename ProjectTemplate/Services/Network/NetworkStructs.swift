@@ -15,13 +15,22 @@ extension RequestAddress {
     }
 }
 
+extension RequestAddress: URLConvertible {
+    func asURL() throws -> URL {
+        url
+    }
+}
+
 struct RequestResponse<Value> {
     let statusCode: Int
     let request: URLRequest?
     let response: HTTPURLResponse?
     let data: Value?
 
-    var headers: HTTPHeaders { return response?.allHeaderFields as? HTTPHeaders ?? [:] }
+    var headers: HTTPHeaders {
+        let headers = (response?.allHeaderFields as? [String: String]) ?? [:]
+        return HTTPHeaders(headers)
+    }
 }
 
 enum RequestError: Error {

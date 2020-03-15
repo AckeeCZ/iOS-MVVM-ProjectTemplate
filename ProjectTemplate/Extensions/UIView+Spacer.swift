@@ -6,7 +6,7 @@ extension UIView {
     private func createSpacer(_ size: CGFloat, axis: NSLayoutConstraint.Axis, priority: Int) -> UIView {
         let v = UIView()
         v.isHidden = isHidden
-        v.reactive.isHidden <~ reactive.signal(forKeyPath: "hidden").filterMap { $0 as? Bool }
+        v.reactive.isHidden <~ reactive.signal(for: \.isHidden)
         v.snp.makeConstraints { make in
             switch axis {
             case .vertical: make.height.equalTo(size).priority(priority)

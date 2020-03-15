@@ -6,7 +6,7 @@ extension UnauthorizedHandling {
     func unauthorizedHandler<Value>(error: RequestError, authHandler: AuthHandling, authorizationHeaders: HTTPHeaders, retryFactory: @escaping () -> SignalProducer<Value, RequestError>) -> SignalProducer<Value, RequestError> {
         guard case .network(let networkError) = error, networkError.statusCode == 401 else { return SignalProducer(error: error) }
 
-        let usedCurrentAuthData = authorizationHeaders.map { networkError.request?.allHTTPHeaderFields?[$0] == $1 }.reduce(true) { $0 && $1 }
+        let usedCurrentAuthData = authorizationHeaders.dictionary.map { networkError.request?.allHTTPHeaderFields?[$0] == $1 }.reduce(true) { $0 && $1 }
 
         guard usedCurrentAuthData else { return retryFactory() }
 

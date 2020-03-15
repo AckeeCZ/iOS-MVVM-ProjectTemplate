@@ -2,18 +2,18 @@
 
 import Foundation
 
-import enum Alamofire.HTTPMethod
-import protocol Alamofire.ParameterEncoding
+import struct Alamofire.HTTPMethod
+import protocol Alamofire.ParameterEncoder
 import struct Alamofire.HTTPHeaders
-import struct Alamofire.URLEncoding
-import struct Alamofire.JSONEncoding
+import class Alamofire.URLEncodedFormParameterEncoder
+import class Alamofire.JSONEncoder
 import class Alamofire.MultipartFormData
 
 typealias HTTPMethod = Alamofire.HTTPMethod
-typealias ParameterEncoding = Alamofire.ParameterEncoding
+typealias ParameterEncoder = Alamofire.ParameterEncoder
 typealias HTTPHeaders = Alamofire.HTTPHeaders
-typealias URLEncoding = Alamofire.URLEncoding
-typealias JSONEncoding = Alamofire.JSONEncoding
+typealias URLEncoder = Alamofire.URLEncodedFormParameterEncoder
+typealias JSONEncoder = Alamofire.JSONEncoder
 typealias MultipartFormData = Alamofire.MultipartFormData
 
 typealias IdentifierType = Int64

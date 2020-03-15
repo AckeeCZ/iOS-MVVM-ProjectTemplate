@@ -24,14 +24,14 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
 
     // MARK: Public methods
 
-    func request(_ address: RequestAddress, method: HTTPMethod, parameters: [String: Any], encoding: ParameterEncoding, headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
+    func request<RequestType: Encodable>(_ address: RequestAddress, method: HTTPMethod, parameters: RequestType?, encoder: ParameterEncoder, headers: HTTPHeaders) -> SignalProducer<JSONResponse, RequestError> {
         let jsonAPI = self.jsonAPI
 
         return authorizationHeadersProducer()
-            .flatMap(.latest) { jsonAPI.request(address, method: method, parameters: parameters, encoding: encoding, headers: $0 + headers) }
+            .flatMap(.latest) { jsonAPI.request(address, method: method, parameters: parameters, encoder: encoder, headers: .init($0.dictionary + headers.dictionary)) }
             .flatMapError { [unowned self] in
                 self.unauthorizedHandler(error: $0, authHandler: self.authHandler, authorizationHeaders: self.authorizationHeaders) { [unowned self] in
-                    self.request(address, method: method, parameters: parameters, encoding: encoding, headers: headers)
+                    self.request(address, method: method, parameters: parameters, encoder: encoder, headers: headers)
                 }
         }
     }
@@ -40,7 +40,7 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
         let jsonAPI = self.jsonAPI
 
         return authorizationHeadersProducer()
-            .flatMap(.latest) { jsonAPI.upload(address, method: method, parameters: parameters, headers: $0 + headers) }
+            .flatMap(.latest) { jsonAPI.upload(address, method: method, parameters: parameters, headers: .init($0.dictionary + headers.dictionary)) }
             .flatMapError { [unowned self] in
                 self.unauthorizedHandler(error: $0, authHandler: self.authHandler, authorizationHeaders: self.authorizationHeaders) { [unowned self] in
                     self.upload(address, method: method, parameters: parameters, headers: headers)
