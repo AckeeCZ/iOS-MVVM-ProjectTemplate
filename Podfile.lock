@@ -1,11 +1,13 @@
 PODS:
   - ACKLocalization (0.3.3)
+  - LicensePlist (2.14.0)
   - Smartling.i18n (1.0.14)
   - SwiftGen (6.1.0)
   - SwiftLint (0.37.0)
 
 DEPENDENCIES:
   - ACKLocalization (~> 0.3)
+  - LicensePlist (~> 2.14)
   - Smartling.i18n (~> 1.0)
   - SwiftGen (~> 6.0)
   - SwiftLint (~> 0.27)
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - ACKLocalization
+    - LicensePlist
     - Smartling.i18n
     - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
   ACKLocalization: d24a1ba1a31ec153ba9ab2dca5a38d653863214e
+  LicensePlist: d52efb2ce5d3cf58833d362f82967ba4af25fe9a
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
 
-PODFILE CHECKSUM: 2726b207256c9ebfc1b432d216ab1a6e01ee709a
+PODFILE CHECKSUM: 17931fbf6886aa4622d1aab4142c295aad863e65
 
 COCOAPODS: 1.8.4

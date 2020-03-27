@@ -35,6 +35,8 @@ extension Project {
                                               name: "Swiftlint"),
                                          .post(path: scriptPath(path: "crashlytics.sh"),
                                               name: "Crashlytics"),
+                                         .post(path: scriptPath(path: "LicensePlist.sh"),
+                                               name: "Licenses")
                                 ],
                                 dependencies: dependencies,
                                 settings: Settings(configurations: settings.targetCustomConfiguration(for: name))),

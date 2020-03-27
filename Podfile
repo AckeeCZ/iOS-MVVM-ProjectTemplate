@@ -11,6 +11,7 @@ workspace project_name + '.xcworkspace'
 target project_name do
     project project_name + '.xcodeproj'
     pod 'SwiftLint', '~> 0.27'
+    pod 'LicensePlist', '~> 2.14'
     
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
