@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Make `RequestAddress` conform to `ExpressibleByStringLiteral` and `ExpressibleByStringInterpolation` (#50, kudos to @olejnjak)
 - Add custom Swiftlint rule to enforce link to the Redmine ticket in TODO ([#46](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/46), kudos to @LukasHromadnik))
 - Add swiftlint to rename ([#45](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/45))
 - Update dependencies to fix vulnerability warning ([#42](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/42))
