@@ -6,7 +6,7 @@ final class AppFlowCoordinator: Base.FlowCoordinatorNoDeepLink {
     override func start(in window: UIWindow) {
         super.start(in: window)
 
-        let vm = ExampleViewModel(dependencies: dependencies)
+        let vm = ExampleViewModel(dependencies: appDependencies)
         let vc = ExampleViewController(viewModel: vm)
 
         window.rootViewController = vc
