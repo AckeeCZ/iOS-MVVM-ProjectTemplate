@@ -27,7 +27,7 @@ final class ExampleAPIService: ExampleAPIServicing {
     }
 
     func fetchPhoto(_ id: Int) -> SignalProducer<String, RequestError> {
-        return jsonAPI.request(path: "photossss/\(id)").compactMap { response in
+        jsonAPI.request("photossss/\(id)").compactMap { response in
             return (response.data as? [String: Any])?["url"] as? String
         }
     }
