@@ -19,7 +19,7 @@ public class FirebaseFetcher: Fetcher {
     // MARK: - Public interface
 
     public func fetch(completion: @escaping () -> Void) {
-        remoteConfig.fetchAndActivate { [weak self] status, _ in
+        remoteConfig.fetchAndActivate { status, _ in
             guard status != .error else { return }
             completion()
         }
