@@ -39,6 +39,23 @@ public struct BuildAction : Swift.Equatable, Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+public struct Cloud : Swift.Codable, Swift.Equatable {
+  public enum Option : Swift.String, Swift.Codable, Swift.Equatable {
+    case insights
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let url: Swift.String
+  public let projectId: Swift.String
+  public let options: [ProjectDescription.Cloud.Option]
+  public static func cloud(url: Swift.String, projectId: Swift.String, options: [ProjectDescription.Cloud.Option] = []) -> ProjectDescription.Cloud
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public static func == (a: ProjectDescription.Cloud, b: ProjectDescription.Cloud) -> Swift.Bool
+}
 public enum CompatibleXcodeVersions : Swift.ExpressibleByArrayLiteral, Swift.ExpressibleByStringLiteral, Swift.Codable, Swift.Equatable {
   case all
   case list([Swift.String])
@@ -62,8 +79,8 @@ public struct Config : Swift.Codable, Swift.Equatable {
   }
   public let generationOptions: [ProjectDescription.Config.GenerationOptions]
   public let compatibleXcodeVersions: ProjectDescription.CompatibleXcodeVersions
-  public let cloudURL: Swift.String?
-  public init(compatibleXcodeVersions: ProjectDescription.CompatibleXcodeVersions = .all, cloudURL: Swift.String? = nil, generationOptions: [ProjectDescription.Config.GenerationOptions])
+  public let cloud: ProjectDescription.Cloud?
+  public init(compatibleXcodeVersions: ProjectDescription.CompatibleXcodeVersions = .all, cloud: ProjectDescription.Cloud? = nil, generationOptions: [ProjectDescription.Config.GenerationOptions])
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -114,6 +131,15 @@ public enum DeploymentTarget : Swift.Codable, Swift.Equatable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.DeploymentTarget, b: ProjectDescription.DeploymentTarget) -> Swift.Bool
+}
+@dynamicMemberLookup public struct Environment {
+  public enum Value {
+    case boolean(Swift.Bool)
+    case string(Swift.String)
+  }
+  public static subscript(dynamicMember member: Swift.String) -> ProjectDescription.Environment.Value? {
+    get
+  }
 }
 public struct ExecutionAction : Swift.Equatable, Swift.Codable {
   public let title: Swift.String
@@ -380,8 +406,9 @@ public struct RunAction : Swift.Equatable, Swift.Codable {
   public let configurationName: Swift.String
   public let executable: ProjectDescription.TargetReference?
   public let arguments: ProjectDescription.Arguments?
-  public init(configurationName: Swift.String, executable: ProjectDescription.TargetReference? = nil, arguments: ProjectDescription.Arguments? = nil)
-  public init(config: ProjectDescription.PresetBuildConfiguration = .debug, executable: ProjectDescription.TargetReference? = nil, arguments: ProjectDescription.Arguments? = nil)
+  public let diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption]
+  public init(configurationName: Swift.String, executable: ProjectDescription.TargetReference? = nil, arguments: ProjectDescription.Arguments? = nil, diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption] = [])
+  public init(config: ProjectDescription.PresetBuildConfiguration = .debug, executable: ProjectDescription.TargetReference? = nil, arguments: ProjectDescription.Arguments? = nil, diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption] = [])
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.RunAction, b: ProjectDescription.RunAction) -> Swift.Bool
@@ -400,11 +427,23 @@ public struct Scheme : Swift.Equatable, Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.Scheme, b: ProjectDescription.Scheme) -> Swift.Bool
 }
-public enum SettingValue : Swift.ExpressibleByStringLiteral, Swift.ExpressibleByArrayLiteral, Swift.Equatable, Swift.Codable {
+public enum SchemeDiagnosticsOption : Swift.String, Swift.Equatable, Swift.Codable {
+  case mainThreadChecker
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias SettingsDictionary = [Swift.String : ProjectDescription.SettingValue]
+public enum SettingValue : Swift.ExpressibleByStringLiteral, Swift.ExpressibleByArrayLiteral, Swift.ExpressibleByBooleanLiteral, Swift.Equatable, Swift.Codable {
   case string(Swift.String)
   case array([Swift.String])
   public init(stringLiteral value: Swift.String)
   public init(arrayLiteral elements: Swift.String...)
+  public typealias BooleanLiteralType = Swift.Bool
+  public init(booleanLiteral value: Swift.Bool)
+  public init<T>(_ stringRawRepresentable: T) where T : Swift.RawRepresentable, T.RawValue == Swift.String
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.SettingValue, b: ProjectDescription.SettingValue) -> Swift.Bool
@@ -414,14 +453,10 @@ public enum SettingValue : Swift.ExpressibleByStringLiteral, Swift.ExpressibleBy
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 public struct Configuration : Swift.Equatable, Swift.Codable {
-  public let settings: [Swift.String : ProjectDescription.SettingValue]
+  public let settings: ProjectDescription.SettingsDictionary
   public let xcconfig: ProjectDescription.Path?
-  public init(settings: [Swift.String : ProjectDescription.SettingValue] = [:], xcconfig: ProjectDescription.Path? = nil)
-  @available(*, deprecated, message: "Please use init(settings: [String: SettingValue], xcconfig: String?) instead")
-  public init(settings: [Swift.String : Swift.String], xcconfig: ProjectDescription.Path? = nil)
-  public static func settings(_ settings: [Swift.String : ProjectDescription.SettingValue], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.Configuration
-  @available(*, deprecated, message: "Please use settings(_ settings: [String: SettingValue], xcconfig: String?)")
-  public static func settings(_ settings: [Swift.String : Swift.String], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.Configuration
+  public init(settings: ProjectDescription.SettingsDictionary = [:], xcconfig: ProjectDescription.Path? = nil)
+  public static func settings(_ settings: ProjectDescription.SettingsDictionary, xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.Configuration
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.Configuration, b: ProjectDescription.Configuration) -> Swift.Bool
@@ -444,12 +479,8 @@ public struct CustomConfiguration : Swift.Equatable, Swift.Codable {
   public static func == (a: ProjectDescription.CustomConfiguration, b: ProjectDescription.CustomConfiguration) -> Swift.Bool
 }
 extension CustomConfiguration {
-  public static func debug(name: Swift.String, settings: [Swift.String : ProjectDescription.SettingValue] = [:], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
-  @available(*, deprecated, message: "Please use debug(name: String, settings: [String: SettingValue], xcconfig: String?) instead")
-  public static func debug(name: Swift.String, settings: [Swift.String : Swift.String], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
-  public static func release(name: Swift.String, settings: [Swift.String : ProjectDescription.SettingValue] = [:], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
-  @available(*, deprecated, message: "Please use release(name: String, settings: [String: SettingValue], xcconfig: String?) instead")
-  public static func release(name: Swift.String, settings: [Swift.String : Swift.String], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
+  public static func debug(name: Swift.String, settings: ProjectDescription.SettingsDictionary = [:], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
+  public static func release(name: Swift.String, settings: ProjectDescription.SettingsDictionary = [:], xcconfig: ProjectDescription.Path? = nil) -> ProjectDescription.CustomConfiguration
 }
 public enum DefaultSettings : Swift.String, Swift.Codable {
   case recommended
@@ -462,18 +493,51 @@ public enum DefaultSettings : Swift.String, Swift.Codable {
   }
 }
 public struct Settings : Swift.Equatable, Swift.Codable {
-  public let base: [Swift.String : ProjectDescription.SettingValue]
+  public let base: ProjectDescription.SettingsDictionary
   public let configurations: [ProjectDescription.CustomConfiguration]
   public let defaultSettings: ProjectDescription.DefaultSettings
-  public init(base: [Swift.String : ProjectDescription.SettingValue] = [:], debug: ProjectDescription.Configuration? = nil, release: ProjectDescription.Configuration? = nil, defaultSettings: ProjectDescription.DefaultSettings = .recommended)
-  @available(*, deprecated, message: "Please use init(base: [String: SettingValue], debug: Configuration?, release: Configuration?, defaultSettings: DefaultSettings) instead")
-  public init(base: [Swift.String : Swift.String], debug: ProjectDescription.Configuration? = nil, release: ProjectDescription.Configuration? = nil, defaultSettings: ProjectDescription.DefaultSettings = .recommended)
-  public init(base: [Swift.String : ProjectDescription.SettingValue] = [:], configurations: [ProjectDescription.CustomConfiguration], defaultSettings: ProjectDescription.DefaultSettings = .recommended)
-  @available(*, deprecated, message: "Please use init(base: [String: SettingValue], configurations: [CustomConfiguration], defaultSettings: DefaultSettings) instead")
-  public init(base: [Swift.String : Swift.String], configurations: [ProjectDescription.CustomConfiguration], defaultSettings: ProjectDescription.DefaultSettings = .recommended)
+  public init(base: ProjectDescription.SettingsDictionary = [:], debug: ProjectDescription.Configuration? = nil, release: ProjectDescription.Configuration? = nil, defaultSettings: ProjectDescription.DefaultSettings = .recommended)
+  public init(base: ProjectDescription.SettingsDictionary = [:], configurations: [ProjectDescription.CustomConfiguration], defaultSettings: ProjectDescription.DefaultSettings = .recommended)
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.Settings, b: ProjectDescription.Settings) -> Swift.Bool
+}
+extension Dictionary where Key == Swift.String, Value == ProjectDescription.SettingValue {
+  mutating public func merge(_ other: ProjectDescription.SettingsDictionary)
+  public func merging(_ other: ProjectDescription.SettingsDictionary) -> ProjectDescription.SettingsDictionary
+}
+public enum SwiftCompilationMode : Swift.String {
+  case singlefile
+  case wholemodule
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SwiftOptimizationLevel : Swift.String {
+  case o
+  case oNone
+  case oSize
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Dictionary where Key == Swift.String, Value == ProjectDescription.SettingValue {
+  public func manualCodeSigning(identity: Swift.String? = nil, provisioningProfileSpecifier: Swift.String? = nil) -> ProjectDescription.SettingsDictionary
+  public func automaticCodeSigning(devTeam: Swift.String) -> ProjectDescription.SettingsDictionary
+  public func codeSignIdentityAppleDevelopment() -> ProjectDescription.SettingsDictionary
+  public func codeSignIdentity(_ identity: Swift.String) -> ProjectDescription.SettingsDictionary
+  public func currentProjectVersion(_ version: Swift.String) -> ProjectDescription.SettingsDictionary
+  public func appleGenericVersioningSystem() -> ProjectDescription.SettingsDictionary
+  public func versionInfo(_ version: Swift.String, prefix: Swift.String? = nil, suffix: Swift.String? = nil) -> ProjectDescription.SettingsDictionary
+  public func swiftVersion(_ version: Swift.String) -> ProjectDescription.SettingsDictionary
+  public func otherSwiftFlags(_ flags: Swift.String...) -> ProjectDescription.SettingsDictionary
+  public func swiftCompilationMode(_ mode: ProjectDescription.SwiftCompilationMode) -> ProjectDescription.SettingsDictionary
+  public func swiftOptimizationLevel(_ level: ProjectDescription.SwiftOptimizationLevel) -> ProjectDescription.SettingsDictionary
+  public func bitcodeEnabled(_ enabled: Swift.Bool) -> ProjectDescription.SettingsDictionary
 }
 public struct Setup : Swift.Codable, Swift.Equatable {
   public let actions: [ProjectDescription.Up]
@@ -719,7 +783,7 @@ public struct Template : Swift.Codable, Swift.Equatable {
   public init(description: Swift.String, attributes: [ProjectDescription.Template.Attribute] = [], files: [ProjectDescription.Template.File] = [])
   public enum Contents : Swift.Codable, Swift.Equatable {
     case string(Swift.String)
-    case file(Swift.String)
+    case file(ProjectDescription.Path)
     public init(from decoder: Swift.Decoder) throws
     public func encode(to encoder: Swift.Encoder) throws
     public static func == (a: ProjectDescription.Template.Contents, b: ProjectDescription.Template.Contents) -> Swift.Bool
@@ -745,7 +809,7 @@ public struct Template : Swift.Codable, Swift.Equatable {
 }
 extension Template.File {
   public static func string(path: Swift.String, contents: Swift.String) -> ProjectDescription.Template.File
-  public static func file(path: Swift.String, templatePath: Swift.String) -> ProjectDescription.Template.File
+  public static func file(path: Swift.String, templatePath: ProjectDescription.Path) -> ProjectDescription.Template.File
 }
 extension DefaultStringInterpolation {
   mutating public func appendInterpolation(_ value: ProjectDescription.Template.Attribute)
@@ -794,8 +858,11 @@ public struct TestAction : Swift.Equatable, Swift.Codable {
   public let codeCoverageTargets: [ProjectDescription.TargetReference]
   public let preActions: [ProjectDescription.ExecutionAction]
   public let postActions: [ProjectDescription.ExecutionAction]
-  public init(targets: [ProjectDescription.TestableTarget] = [], arguments: ProjectDescription.Arguments? = nil, configurationName: Swift.String, coverage: Swift.Bool = false, codeCoverageTargets: [ProjectDescription.TargetReference] = [], preActions: [ProjectDescription.ExecutionAction] = [], postActions: [ProjectDescription.ExecutionAction] = [])
-  public init(targets: [ProjectDescription.TestableTarget], arguments: ProjectDescription.Arguments? = nil, config: ProjectDescription.PresetBuildConfiguration = .debug, coverage: Swift.Bool = false, codeCoverageTargets: [ProjectDescription.TargetReference] = [], preActions: [ProjectDescription.ExecutionAction] = [], postActions: [ProjectDescription.ExecutionAction] = [])
+  public let language: Swift.String?
+  public let region: Swift.String?
+  public let diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption]
+  public init(targets: [ProjectDescription.TestableTarget] = [], arguments: ProjectDescription.Arguments? = nil, configurationName: Swift.String, coverage: Swift.Bool = false, codeCoverageTargets: [ProjectDescription.TargetReference] = [], preActions: [ProjectDescription.ExecutionAction] = [], postActions: [ProjectDescription.ExecutionAction] = [], diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption] = [], language: Swift.String? = nil, region: Swift.String? = nil)
+  public init(targets: [ProjectDescription.TestableTarget], arguments: ProjectDescription.Arguments? = nil, config: ProjectDescription.PresetBuildConfiguration = .debug, coverage: Swift.Bool = false, codeCoverageTargets: [ProjectDescription.TargetReference] = [], preActions: [ProjectDescription.ExecutionAction] = [], postActions: [ProjectDescription.ExecutionAction] = [], diagnosticsOptions: [ProjectDescription.SchemeDiagnosticsOption] = [], language: Swift.String? = nil, region: Swift.String? = nil)
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.TestAction, b: ProjectDescription.TestAction) -> Swift.Bool
@@ -880,6 +947,8 @@ public struct Workspace : Swift.Codable, Swift.Equatable {
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: ProjectDescription.Workspace, b: ProjectDescription.Workspace) -> Swift.Bool
 }
+extension ProjectDescription.Cloud.Option : Swift.Hashable {}
+extension ProjectDescription.Cloud.Option : Swift.RawRepresentable {}
 extension ProjectDescription.CoreDataModel.CodingKeys : Swift.Equatable {}
 extension ProjectDescription.CoreDataModel.CodingKeys : Swift.Hashable {}
 extension ProjectDescription.CoreDataModel.CodingKeys : Swift.RawRepresentable {}
@@ -896,10 +965,18 @@ extension ProjectDescription.PresetBuildConfiguration : Swift.Hashable {}
 extension ProjectDescription.PresetBuildConfiguration : Swift.RawRepresentable {}
 extension ProjectDescription.Product : Swift.Hashable {}
 extension ProjectDescription.Product : Swift.RawRepresentable {}
+extension ProjectDescription.SchemeDiagnosticsOption : Swift.Hashable {}
+extension ProjectDescription.SchemeDiagnosticsOption : Swift.RawRepresentable {}
 extension ProjectDescription.CustomConfiguration.Variant : Swift.Hashable {}
 extension ProjectDescription.CustomConfiguration.Variant : Swift.RawRepresentable {}
 extension ProjectDescription.DefaultSettings : Swift.Hashable {}
 extension ProjectDescription.DefaultSettings : Swift.RawRepresentable {}
+extension ProjectDescription.SwiftCompilationMode : Swift.Equatable {}
+extension ProjectDescription.SwiftCompilationMode : Swift.Hashable {}
+extension ProjectDescription.SwiftCompilationMode : Swift.RawRepresentable {}
+extension ProjectDescription.SwiftOptimizationLevel : Swift.Equatable {}
+extension ProjectDescription.SwiftOptimizationLevel : Swift.Hashable {}
+extension ProjectDescription.SwiftOptimizationLevel : Swift.RawRepresentable {}
 extension ProjectDescription.SourceFilesList.CodingKeys : Swift.Equatable {}
 extension ProjectDescription.SourceFilesList.CodingKeys : Swift.Hashable {}
 extension ProjectDescription.SourceFilesList.CodingKeys : Swift.RawRepresentable {}

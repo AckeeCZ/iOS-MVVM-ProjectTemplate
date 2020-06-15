@@ -2,7 +2,7 @@ PODS:
   - ACKLocalization (0.3.3)
   - Smartling.i18n (1.0.14)
   - SwiftGen (6.1.0)
-  - SwiftLint (0.37.0)
+  - SwiftLint (0.39.2)
 
 DEPENDENCIES:
   - ACKLocalization (~> 0.3)
@@ -21,8 +21,8 @@ SPEC CHECKSUMS:
   ACKLocalization: d24a1ba1a31ec153ba9ab2dca5a38d653863214e
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
-  SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
 PODFILE CHECKSUM: 2726b207256c9ebfc1b432d216ab1a6e01ee709a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3
