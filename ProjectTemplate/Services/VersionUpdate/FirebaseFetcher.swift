@@ -19,11 +19,9 @@ public class FirebaseFetcher: Fetcher {
     // MARK: - Public interface
 
     public func fetch(completion: @escaping () -> Void) {
-        remoteConfig.fetch(withExpirationDuration: 12 * 60 * 60) { [weak self] status, _ in
-            guard status == .success else { return }
-            self?.remoteConfig.activate()
+        remoteConfig.fetchAndActivate { [weak self] status, _ in
+            guard status != .error else { return }
             completion()
         }
     }
-
 }

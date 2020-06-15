@@ -12,4 +12,4 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.j
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseCrashlyticsBinary.json" ~> 6.26
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseMessagingBinary.json" ~> 6.26
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebasePerformanceBinary.json" ~> 6.26
-binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json" ~> 6.26
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseProtobufBinary.json" ~> 6.26

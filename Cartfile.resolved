@@ -2,7 +2,7 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.j
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseCrashlyticsBinary.json" "6.26.0"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseMessagingBinary.json" "6.26.0"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebasePerformanceBinary.json" "6.26.0"
-binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json" "6.26.0"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseProtobufBinary.json" "6.26.0"
 github "AckeeCZ/ACKategories" "6.5.1"
 github "AckeeCZ/Reqres" "3.1.1"
 github "Alamofire/Alamofire" "4.9.1"
