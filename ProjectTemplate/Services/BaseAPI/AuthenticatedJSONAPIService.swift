@@ -12,7 +12,7 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
     private let authHandler: AuthHandling
     private let credentialsProvider: CredentialsProvider
 
-    private var authorizationHeaders: HTTPHeaders { return credentialsProvider.credentials.map { ["Authorization": "Bearer " + $0.accessToken] } ?? [:] }
+    private var authorizationHeaders: HTTPHeaders { credentialsProvider.credentials.map { ["Authorization": "Bearer " + $0.accessToken] } ?? [:] }
 
     // MARK: Initializers
 
@@ -51,7 +51,7 @@ final class AuthenticatedJSONAPIService: UnauthorizedHandling, JSONAPIServicing 
     // MARK: Private helpers
 
     private func authorizationHeadersProducer() -> SignalProducer<HTTPHeaders, RequestError> {
-        return SignalProducer { [weak self] observer, _ in
+        SignalProducer { [weak self] observer, _ in
             guard let self = self else { observer.sendInterrupted(); return }
             observer.send(value: self.authorizationHeaders)
             observer.sendCompleted()

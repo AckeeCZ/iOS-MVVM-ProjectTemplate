@@ -7,12 +7,12 @@ final class AppDelegate: PluggableApplicationDelegate {
     private let mainDelegate = MainAppDelegate()
 
     override var window: UIWindow? {
-        get { return mainDelegate.window }
+        get { mainDelegate.window }
         set { mainDelegate.window = newValue }
     }
 
     override var delegates: [UIApplicationDelegate] {
-        return [
+        [
             FirebaseAppDelegate(),
             mainDelegate
         ]

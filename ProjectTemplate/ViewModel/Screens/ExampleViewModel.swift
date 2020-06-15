@@ -20,7 +20,7 @@ protocol ExampleViewModeling {
 }
 
 extension ExampleViewModeling where Self: ExampleViewModelingActions {
-    var actions: ExampleViewModelingActions { return self }
+    var actions: ExampleViewModelingActions { self }
 }
 
 final class ExampleViewModel: BaseViewModel, ExampleViewModeling, ExampleViewModelingActions {

@@ -14,9 +14,9 @@ open class PluggableApplicationDelegate: UIResponder, UIApplicationDelegate {
 
     public var window: UIWindow?
 
-    open var delegates: [UIApplicationDelegate] { return [] }
+    open var delegates: [UIApplicationDelegate] { [] }
     private lazy var __delegates: [UIApplicationDelegate]! = {
-        return self.delegates
+        self.delegates
     }()
 
     @available(iOS 2.0, *)

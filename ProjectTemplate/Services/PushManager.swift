@@ -28,8 +28,8 @@ protocol PushManaging {
 final class PushManager: NSObject, PushManaging, PushManagingNotifications, PushManagingActions {
     typealias Dependencies = HasPushAPI
 
-    var notifications: PushManagingNotifications { return self }
-    var actions: PushManagingActions { return self }
+    var notifications: PushManagingNotifications { self }
+    var actions: PushManagingActions { self }
 
     let (received, receivedObserver) = Signal<PushNotification.Payload, Never>.pipe()
     let (opened, openedObserver) = Signal<PushNotification, Never>.pipe()

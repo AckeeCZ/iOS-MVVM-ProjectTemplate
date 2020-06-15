@@ -6,7 +6,7 @@ public class FirebaseFetcher: Fetcher {
     private let remoteConfig: RemoteConfig
 
     public var version: Int? {
-        return remoteConfig.configValue(forKey: key).numberValue?.intValue
+        remoteConfig.configValue(forKey: key).numberValue?.intValue
     }
 
     // MARK: - Initialization

@@ -20,7 +20,7 @@ final class PushAPIService: PushAPIServicing {
     }
 
     func registerToken(_ token: String) -> SignalProducer<Void, RequestError> {
-        return jsonAPI.request(RequestAddress(path: "devices/token"), method: .put, parameters: ["token": token])
+        jsonAPI.request(RequestAddress(path: "devices/token"), method: .put, parameters: ["token": token])
             .map { _ in }
     }
 }

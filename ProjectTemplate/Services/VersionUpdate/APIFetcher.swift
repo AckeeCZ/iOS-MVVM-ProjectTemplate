@@ -40,7 +40,7 @@ public class APIFetcher: Fetcher {
         }
     }
 
-    public var version: Int? { return _version.value }
+    public var version: Int? { _version.value }
 
     // MARK: - Initialization
 

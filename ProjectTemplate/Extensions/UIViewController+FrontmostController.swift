@@ -14,6 +14,6 @@ extension UIViewController {
     }
 
     var frontmostController: UIViewController {
-        return presentedViewController?.frontmostController ?? frontmostChild?.frontmostController ?? self
+        presentedViewController?.frontmostController ?? frontmostChild?.frontmostController ?? self
     }
 }

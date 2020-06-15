@@ -13,6 +13,7 @@
 - Add clear of launch screen cache on app launch for debug and beta configurations ([#47](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/47), kudos to @IgorRosocha)
 - Add custom Swiftlint rule to enforce link to the Redmine ticket in TODO ([#46](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/46), kudos to @LukasHromadnik))
 - Add swiftlint to rename ([#45](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/45))
+- Remove useless return statements (#43, kudos to @babacros)
 - Update dependencies to fix vulnerability warning ([#42](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/42))
 - Add tuist integration ([#41](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/41), kudos to @fortmarek)
 - Change default project version to `0.1.0` 

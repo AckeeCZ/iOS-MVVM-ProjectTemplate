@@ -12,17 +12,17 @@ public protocol ErrorPresentable {
 
 public extension ErrorPresentable {
     // make title optional
-    var title: String? { return nil }
-    var detailedDescription: String? { return "\(self)" }
+    var title: String? { nil }
+    var detailedDescription: String? { "\(self)" }
 
     var debugString: String {
-        return "Error at \(Date()), title:\(title ?? ""), message:\(message), instance: \(self)"
+        "Error at \(Date()), title:\(title ?? ""), message:\(message), instance: \(self)"
     }
 }
 
 // Make all NSErrors presentable
 extension NSError: ErrorPresentable {
-    public var message: String { return localizedDescription }
+    public var message: String { localizedDescription }
 }
 
 extension Reactive where Base: UIResponder {
@@ -31,7 +31,7 @@ extension Reactive where Base: UIResponder {
      reactive.errors() <~ viewModel.actions.fetchOrders.errors
      */
     public func errors<Error>() -> BindingTarget<Error> where Error: ErrorPresentable {
-        return makeBindingTarget { (base, value) in
+        makeBindingTarget { (base, value) in
             base.displayError(value)
         }
     }
