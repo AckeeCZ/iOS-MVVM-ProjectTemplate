@@ -5,5 +5,5 @@ protocol HasExampleViewModelFactory {
 }
 
 extension AppDependency: HasExampleViewModelFactory {
-    var exampleVMFactory: () -> ExampleViewModeling { { ExampleViewModel(dependencies: dependencies) } }
+    var exampleVMFactory: () -> ExampleViewModeling { { ExampleViewModel(dependencies: appDependencies) } }
 }

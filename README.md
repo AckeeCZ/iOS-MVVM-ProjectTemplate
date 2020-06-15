@@ -40,20 +40,28 @@ bundle install
 ```
 This will install all needed gems to run the skeleton and maintain their versions appropriately.
 
-2. rename template
+2. Rename template
 ```bash
-bundle exec fastlane rename name:NewProject
-```
-if the `name` argument is ommitted, the script will prompt for it.
-
-3. Run installation of cocoapods
-```bash
-bundle exec pod install
+./rename.swift name_of_your_new_project
 ```
 
-4. Run carthage
+3. Run carthage
 ```bash
 carthage bootstrap --platform ios --cache-builds
+```
+
+4. Generate the project with [tuist](https://github.com/tuist/tuist)
+
+Install it if necessary:
+```bash
+bash <(curl -Ls https://install.tuist.io)
+```
+
+And then run:
+
+```bash
+tuist up
+tuist generate
 ```
 
 Now your new project is ready to use :tada:

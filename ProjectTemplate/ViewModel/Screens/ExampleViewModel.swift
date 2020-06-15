@@ -34,9 +34,9 @@ final class ExampleViewModel: BaseViewModel, ExampleViewModeling, ExampleViewMod
 
     init(dependencies: Dependencies) {
         fetchPhoto = Action { dependencies.exampleAPI.fetchPhoto(1)  // wired photo ID just for example
-            .filterMap { URL(string: $0) }
+            .compactMap { URL(string: $0) }
             .observe(on: QueueScheduler())
-            .filterMap { try? Data(contentsOf: $0) }
+            .compactMap { try? Data(contentsOf: $0) }
             .observe(on: QueueScheduler.main)
             .map { UIImage(data: $0) }
         }

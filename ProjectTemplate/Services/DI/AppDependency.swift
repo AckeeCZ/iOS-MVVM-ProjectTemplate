@@ -29,4 +29,4 @@ final class AppDependency: HasBaseAPIDependecies, HasCredentialsDependencies, Ha
 protocol HasNoDependency { }
 extension AppDependency: HasNoDependency { }
 
-let dependencies = AppDependency()
+let appDependencies = AppDependency()

@@ -3,6 +3,7 @@ whitelist_rules:
   - closing_brace
   - colon
   - comma
+  - custom_rules
   - cyclomatic_complexity
   - empty_enum_arguments
   - file_length
@@ -17,6 +18,7 @@ whitelist_rules:
   - overridden_super_call
 included: # paths to include during linting. `--path` is ignored if present.
   - ProjectTemplate
+  - Tests
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Source/Generated
   - Carthage
@@ -31,4 +33,10 @@ type_body_length:
 file_length:
   warning: 500
   error: 1200
-# reporter: "csv" # reporter type (xcode, json, csv, checkstyle)
+
+custom_rules:
+  todo_redmine:
+    name: "TODO Redmine"
+    regex: 'TODO: (?!https:\/\/redmine\.ack\.ee\/issues\/\d)'
+    message: "TODO must contain the full link to the Redmine ticket"
+    severity: warning

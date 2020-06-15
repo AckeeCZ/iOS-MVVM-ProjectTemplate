@@ -15,6 +15,12 @@ extension RequestAddress {
     }
 }
 
+extension RequestAddress: ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
+    init(stringLiteral value: String) {
+        self.init(path: value)
+    }
+}
+
 struct RequestResponse<Value> {
     let statusCode: Int
     let request: URLRequest?
