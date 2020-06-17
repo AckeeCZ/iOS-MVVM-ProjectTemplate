@@ -1,4 +1,4 @@
-# iOS MVVM Project Template
+![ackee|iOS MVVM Project Template](Resources/cover-image.png)
 
 **This is just installation guide, for detailed description check [wiki](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/wiki).**
 
