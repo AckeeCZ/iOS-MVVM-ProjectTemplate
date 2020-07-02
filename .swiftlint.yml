@@ -10,7 +10,6 @@ whitelist_rules:
   - force_cast
   - force_unwrapping
   - function_body_length
-  - todo
   - trailing_semicolon
   - trailing_whitespace
   - vertical_whitespace

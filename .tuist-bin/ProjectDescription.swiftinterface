@@ -722,6 +722,7 @@ public enum TargetDependency : Swift.Codable, Swift.Equatable {
   case sdk(name: Swift.String, status: ProjectDescription.SDKStatus)
   case cocoapods(path: ProjectDescription.Path)
   case xcFramework(path: ProjectDescription.Path)
+  case xctest
   public static func sdk(name: Swift.String) -> ProjectDescription.TargetDependency
   public var typeName: Swift.String {
     get
