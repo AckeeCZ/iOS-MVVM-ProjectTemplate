@@ -26,6 +26,7 @@ extension Project {
                                 resources: [
                                     .glob(pattern: Path("\(name)/Environment/Current/**")),
                                     .glob(pattern: Path("\(name)/Resources/**")),
+                                    .folderReference(path: Path("\(name)/Settings.bundle"))
                                 ],
                                 actions: [.pre(path: scriptPath(path: "All.sh"),
                                              name: "Pre-build",

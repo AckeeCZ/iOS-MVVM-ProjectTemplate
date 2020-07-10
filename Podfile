@@ -14,6 +14,7 @@ target project_name do
     
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
+    pod 'LicensePlist', '~> 2.14'
     
     target 'ProjectTemplateTests' do
         inherit! :complete

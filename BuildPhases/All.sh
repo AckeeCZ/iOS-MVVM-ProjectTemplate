@@ -13,4 +13,7 @@ echo "Selecting correct Google plist"
 echo "Running SwiftGen"
 ./SwiftGen.sh
 
+echo "LicensePlist"
+./LicensePlist.sh
+
 cd -
