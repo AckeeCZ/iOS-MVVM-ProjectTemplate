@@ -12,6 +12,7 @@ public enum CustomInfoPlist {
     internal var value: [String: InfoPlist.Value] {
         let defaultInfoPlist: [String: InfoPlist.Value] = [
             "UIMainStoryboardFile": "",
+            "UILaunchStoryboardName": "LaunchScreen",
             "CFBundleShortVersionString": "$(ACK_PROJECT_VERSION)",
             "CFBundleDisplayName": "$(ACK_APPNAME)",
             "CFBundleVersion": "ACK_BUILD_NUMBER",
