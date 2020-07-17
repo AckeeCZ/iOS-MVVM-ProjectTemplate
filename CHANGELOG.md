@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Remove `xcfilelists` ([#60](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/60), kudos to @fortmarek)
 - Fix missing LaunchScreen storyboard after generation ([#59](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/59), kudos to @LukasHromadnik)
 - Added LicensePlist ([#58](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/58), kudos to @LukasHromadnik)
 - Removed `todo` from whitelist rules, update tuist ([#57](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/57), kudos to @fortmarek)
