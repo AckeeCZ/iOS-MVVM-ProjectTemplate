@@ -67,7 +67,7 @@ public enum AppCustomConfiguration {
             return base.merging(betaSettings, uniquingKeysWith: { _, beta in beta })
         case .release:
             let releaseSettings: [String: SettingValue] = [
-                "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "ADHOC",
+                "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "",
                 "ACK_APPNAME": SettingValue(stringLiteral: "\(name)"),
                 "PRODUCT_BUNDLE_IDENTIFIER": SettingValue(stringLiteral: "cz.ackee.\(name)"),
                 "PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "match InHouse cz.ackee.\(name)"),
