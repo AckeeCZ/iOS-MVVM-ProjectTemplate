@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Run script for uploading debug symbols to Firebase Crashlytics ([#63](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/62), kudos to @svastven)
 - Fix release configuration bug and make `SWIFT_ACTIVE_COMPILATION_CONDITIONS` empty ([#62](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/62) kudos to @svastven)
 - Make init of `AppDependency` fileprivate ([#61](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/61), kudos to @olejnjak)
 - Remove `xcfilelists` ([#60](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/60), kudos to @fortmarek)
