@@ -14,4 +14,5 @@ else
     chmod +x "$RUN_SCRIPT_DST" 
     chmod +x "$UPLOAD_DSYM_DST"
     "$RUN_SCRIPT_DST"
+    "$UPLOAD_DSYM_DST"
 fi
