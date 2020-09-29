@@ -23,5 +23,5 @@ end
 
 target 'Localization' do
     project 'Localization/Localization.xcodeproj'
-    pod 'ACKLocalization', '~> 0.3'
+    pod 'ACKLocalization', '~> 1.1'
 end

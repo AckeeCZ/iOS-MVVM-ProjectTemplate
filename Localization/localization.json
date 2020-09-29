@@ -1,0 +1,9 @@
+{
+    "destinationDir": "../ProjectTemplate/Resources",
+    "keyColumnName": "IOS_KEY",
+    "languageMapping": {
+        "EN": "en"
+    },
+    "serviceAccount": "LocalizationServiceAccount.json",
+    "spreadsheetID": "<GOOGLE_SPREADSHEET_ID>"
+}
