@@ -9,7 +9,7 @@ DEPENDENCIES:
   - ACKLocalization (~> 0.3)
   - LicensePlist (~> 2.14)
   - Smartling.i18n (~> 1.0)
-  - SwiftGen (~> 6.0)
+  - SwiftGen (~> 6.3)
   - SwiftLint (~> 0.27)
 
 SPEC REPOS:
@@ -27,6 +27,6 @@ SPEC CHECKSUMS:
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 22e9cacb97d22f8c62ac83e66635e9346e308650
+PODFILE CHECKSUM: 040b7c865bb21cb693412770ae9f2d5bccfa11f9
 
 COCOAPODS: 1.9.3

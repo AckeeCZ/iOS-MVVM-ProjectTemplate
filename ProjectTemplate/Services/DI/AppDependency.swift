@@ -24,12 +24,12 @@ final class AppDependency: HasBaseAPIDependecies, HasCredentialsDependencies, Ha
     lazy var pushManager: PushManaging = PushManager(dependencies: self)
     lazy var userManager: UserManaging = UserManager()
     lazy var versionUpdateManager: VersionUpdateManaging = VersionUpdateManager(dependencies: self)
-    
+
     // MARK: - Initializers
-    
+
     /// This class is not supposed to be instantiated elsewhere
     fileprivate init() {
-        
+
     }
 }
 

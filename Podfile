@@ -12,7 +12,7 @@ target project_name do
     project project_name + '.xcodeproj'
     pod 'SwiftLint', '~> 0.27'
     
-    pod 'SwiftGen', '~> 6.0'
+    pod 'SwiftGen', '~> 6.3'
     pod 'Smartling.i18n', '~> 1.0'
     pod 'LicensePlist', '~> 2.14'
     
