@@ -1,8 +1,7 @@
 import UIKit
 import ACKategories
 
-/// Use as classic app delegate - for app flow and lifecycle handling, appearance settings etc.
-final class MainAppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private lazy var appFlowCoordinator = AppFlowCoordinator()
