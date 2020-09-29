@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Remove pluggable app delegates ([#65](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/65) kudos to @olejnjak)
 - Fix release configuration bug and make `SWIFT_ACTIVE_COMPILATION_CONDITIONS` empty ([#62](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/62) kudos to @svastven)
 - Make init of `AppDependency` fileprivate ([#61](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/61), kudos to @olejnjak)
 - Remove `xcfilelists` ([#60](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/60), kudos to @fortmarek)
