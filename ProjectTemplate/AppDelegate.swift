@@ -1,13 +1,16 @@
 import UIKit
 import ACKategories
+import FirebaseCore
 
-/// Use as classic app delegate - for app flow and lifecycle handling, appearance settings etc.
-final class MainAppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private lazy var appFlowCoordinator = AppFlowCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // TODO: Uncomment this line when your Google plists are ready!
+        // FirebaseApp.configure()
+
         // Clear launch screen cache on app launch (debug and beta configurations only)
         #if DEBUG || ADHOC
         application.clearLaunchScreenCache()
