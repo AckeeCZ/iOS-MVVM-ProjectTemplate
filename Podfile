@@ -13,7 +13,6 @@ target project_name do
     pod 'SwiftLint', '~> 0.27'
     
     pod 'SwiftGen', '~> 6.3'
-    pod 'Smartling.i18n', '~> 1.0'
     pod 'LicensePlist', '~> 2.14'
     
     target 'ProjectTemplateTests' do
@@ -23,5 +22,5 @@ end
 
 target 'Localization' do
     project 'Localization/Localization.xcodeproj'
-    pod 'ACKLocalization', '~> 0.3'
+    pod 'ACKLocalization', '~> 1.1'
 end

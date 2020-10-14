@@ -1,0 +1,9 @@
+{
+    "destinationDir": "../ProjectTemplate/Resources",
+    "keyColumnName": "key_iOS",
+    "languageMapping": {
+        "EN": "en"
+    },
+    "spreadsheetID": "1OfNO4fDngGa2_RtZXbDFrO18sfyKou031iezo9Wt51s",
+    "serviceAccount": "LocalizationServiceAccount.json"
+}
