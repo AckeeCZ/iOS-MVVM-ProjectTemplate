@@ -1,6 +1,0 @@
-import ProjectDescription
-import ProjectDescriptionHelpers
-
-let project = Project.app(name: "{{ name }}", platform: .{{ platform }}, dependencies: [
-    .project(target: "{{ name }}Kit", path: .relativeToManifest("../{{ name }}Kit"))
-])
