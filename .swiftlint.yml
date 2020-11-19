@@ -15,6 +15,7 @@ whitelist_rules:
   - vertical_whitespace
   - weak_delegate
   - overridden_super_call
+  - superfluous_disable_command
 included: # paths to include during linting. `--path` is ignored if present.
   - ProjectTemplate
   - Tests
