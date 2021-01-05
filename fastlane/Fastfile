@@ -1,0 +1,7 @@
+require 'ACKFastlane'
+
+import(ACKFastlane.fastfilePath)
+
+PRODUCTION_TEAM_ID2 = "1588142" # number identifier, anyone idea for better name?
+
+ENV["XCODE_VERSION"] = "~> 12.3"
