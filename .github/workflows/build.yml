@@ -25,10 +25,11 @@ jobs:
         run: bundle install
       - name: Install Tuist
         run: bash <(curl -Ls https://install.tuist.io)
-      - name: Install Carthage dependencies
+      - uses: olejnjak/carthage-workaround@main
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: carthage bootstrap --platform iOS --cache-builds
+        with:
+          action: bootstrap --platform iOS --cache-builds
       - name: Generate project
         run: tuist up; tuist generate
       - name: Build project
