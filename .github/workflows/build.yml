@@ -33,4 +33,4 @@ jobs:
       - name: Generate project
         run: tuist up; tuist generate
       - name: Build project
-        run: set -o pipefail && xcodebuild -scheme Development -workspace ProjectTemplate.xcworkspace -sdk iphonesimulator  ONLY_ACTIVE_ARCH=YES | xcpretty
+        run: set -o pipefail && xcodebuild -scheme Development -workspace ProjectTemplate.xcworkspace -sdk iphonesimulator  ONLY_ACTIVE_ARCH=NO | xcpretty
