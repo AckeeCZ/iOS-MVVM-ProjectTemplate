@@ -6,6 +6,7 @@
 - <description> (#<PR_number>, kudos to @<author>)
 ```
 
+- Update to use Xcode 12.4 ([#70](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/70) kudos to @olejnjak)
 - Add `superfluous_disable_command` to white list ([#69](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/69) kudos to @fortmarek)
 - Remove .tuist-bin folder, move Config.swift to Tuist folder, add .disableSynthesizedResourceAccessors generation option ([#68](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/68) kudos to @svastven)
 - Update ACKLocalization ([#66](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/66) kudos to @olejnjak)
