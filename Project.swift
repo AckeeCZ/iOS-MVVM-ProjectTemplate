@@ -36,7 +36,7 @@ private let app = Target.app(
         .carthage(name: "Reqres"),
         .carthage(name: "SnapKit"),
     ] + firebaseDependencies,
-    settings: Settings(base: configInfo.settingsDictionary(name: name))
+    settings: Settings(base: configInfo.settingsDictionary(name: name), configurations: [])
 )
 
 let project = Project(
