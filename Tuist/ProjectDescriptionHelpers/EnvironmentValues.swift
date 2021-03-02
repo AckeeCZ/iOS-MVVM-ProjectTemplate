@@ -8,9 +8,9 @@ public func environment() -> String {
     }
 }
 
-public func configuration() -> AppCustomConfiguration {
+public func configurationInfo() -> CustomConfigurationInfo {
     if case let .string(config) = Environment.configuration {
-        return AppCustomConfiguration(rawValue: config) ?? .debug
+        return CustomConfigurationInfo.allCases.first { $0.configuration.name == config } ?? .debug
     } else {
         return .debug
     }

@@ -1,7 +1,7 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let firebaseDependencies: [TargetDependency] = [
+private let firebaseDependencies: [TargetDependency] = [
     .carthage(name: "FIRAnalyticsConnector"),
     .carthage(name: "FirebaseABTesting"),
     .carthage(name: "FirebaseAnalytics"),
@@ -21,15 +21,32 @@ let firebaseDependencies: [TargetDependency] = [
     .carthage(name: "Protobuf"),
 ]
 
-let project = Project.project(
-    name: "ProjectTemplate",
-    projectVersion: Version(0, 1, 0),
+private let name = "ProjectTemplate"
+private let version = Version(0, 1, 0)
+private let configInfo = configurationInfo()
+
+private let app = Target.app(
+    name: name,
     platform: .iOS,
+    infoPlist: .default,
     dependencies: [
         .carthage(name: "ACKategories"),
         .carthage(name: "ReactiveCocoa"),
         .carthage(name: "ReactiveSwift"),
         .carthage(name: "Reqres"),
         .carthage(name: "SnapKit"),
-    ] + firebaseDependencies
+    ] + firebaseDependencies,
+    settings: Settings(base: configInfo.settingsDictionary(name: name))
+)
+
+let project = Project(
+    name: name,
+    settings: Settings(
+        base: SettingsDictionary.base.addingProjectVersion(version),
+        configurations: [configInfo.configuration]
+    ),
+    targets: [
+        app,
+        .unitTests(for: app),
+    ]
 )
