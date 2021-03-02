@@ -1,6 +1,6 @@
 #!/bin/sh
 
-"${PODS_ROOT}/LicensePlist/license-plist" \
+mint run LicensePlist \
     --output-path "${PROJECT_DIR}/${TARGET_NAME}/Settings.bundle" \
     --prefix Licenses \
     --pods-path "${PROJECT_DIR}/Pods/" \
