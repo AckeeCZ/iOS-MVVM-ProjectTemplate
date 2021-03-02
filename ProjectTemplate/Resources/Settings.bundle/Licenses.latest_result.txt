@@ -1,0 +1,49 @@
+name: ACKLocalization, nameSpecified: 
+body: Copyright (c) 2016 A…
+version: 1.1.2
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.16.0
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.16.0
+
+name: SwiftGen, nameSpecified: 
+body: MIT Licence
+
+Copyrig…
+version: 6.3.0
+
+name: SwiftGen, nameSpecified: 
+body: MIT Licence
+
+Copyrig…
+version: 6.3.0
+
+name: SwiftLint, nameSpecified: 
+body: The MIT License (MIT…
+version: 0.40.3
+
+name: SwiftLint, nameSpecified: 
+body: The MIT License (MIT…
+version: 0.40.3
+
+name: ACKategories, nameSpecified: , owner: AckeeCZ, version: 6.8.1
+
+name: ReactiveCocoa, nameSpecified: , owner: ReactiveCocoa, version: 11.1.0
+
+name: ReactiveSwift, nameSpecified: , owner: ReactiveCocoa, version: 6.5.0
+
+name: Reqres, nameSpecified: , owner: AckeeCZ, version: 3.1.1
+
+name: SnapKit, nameSpecified: , owner: SnapKit, version: 5.0.1
+
+add-version-numbers: false
+
+LicensePlist Version: 2.16.0

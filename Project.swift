@@ -21,14 +21,15 @@ let firebaseDependencies: [TargetDependency] = [
     .carthage(name: "Protobuf"),
 ]
 
-let project = Project.project(name: "ProjectTemplate",
-                              projectVersion: Version(0, 1, 0),
-                              platform: .iOS,
-                              dependencies: [
-                                .cocoapods(path: "."),
-                                .carthage(name: "ACKategories"),
-                                .carthage(name: "ReactiveCocoa"),
-                                .carthage(name: "ReactiveSwift"),
-                                .carthage(name: "Reqres"),
-                                .carthage(name: "SnapKit"),
-                                ] + firebaseDependencies)
+let project = Project.project(
+    name: "ProjectTemplate",
+    projectVersion: Version(0, 1, 0),
+    platform: .iOS,
+    dependencies: [
+        .carthage(name: "ACKategories"),
+        .carthage(name: "ReactiveCocoa"),
+        .carthage(name: "ReactiveSwift"),
+        .carthage(name: "Reqres"),
+        .carthage(name: "SnapKit"),
+    ] + firebaseDependencies
+)

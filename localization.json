@@ -1,5 +1,5 @@
 {
-    "destinationDir": "../ProjectTemplate/Resources",
+    "destinationDir": "ProjectTemplate/Resources",
     "keyColumnName": "key_iOS",
     "languageMapping": {
         "EN": "en"
