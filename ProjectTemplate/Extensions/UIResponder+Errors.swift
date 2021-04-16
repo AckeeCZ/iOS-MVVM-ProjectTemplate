@@ -35,6 +35,16 @@ extension Reactive where Base: UIResponder {
             base.displayError(value)
         }
     }
+
+    /** Binding target for presentable errors on all UIResponders. Typical usage is with UIViewController.
+     
+     reactive.errors() <~ viewModel.actions.fetchOrders.errors
+     */
+    public func errors() -> BindingTarget<ErrorPresentable> {
+        makeBindingTarget { (base, value) in
+            base.displayError(value)
+        }
+    }
 }
 
 public extension UIResponder {
