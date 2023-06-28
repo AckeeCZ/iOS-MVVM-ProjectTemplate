@@ -3,7 +3,18 @@ import ProjectDescription
 public extension TargetScript {
     static func crashlytics() -> TargetScript {
         .post(
-            path: "BuildPhases/run",
+            script: """
+            if [ "$CONFIGURATION" != "Debug" ]; then
+                TMPDIR=`mktemp -d`
+            
+                pushd "$TMPDIR"
+                curl "https://raw.githubusercontent.com/firebase/firebase-ios-sdk/master/Crashlytics/run" > run
+                curl "https://github.com/firebase/firebase-ios-sdk/blob/master/Crashlytics/upload-symbols" > upload-symbols
+                ./run
+                popd
+                rm -rf "$TMPDIR"
+            fi
+            """,
             name: "Crashlytics",
             inputPaths: [
                 "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
