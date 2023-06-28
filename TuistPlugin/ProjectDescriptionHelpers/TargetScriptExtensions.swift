@@ -15,7 +15,46 @@ public extension TargetScript {
 
     static func setBuildNumber() -> TargetScript {
         .post(
-            path: "BuildPhases/SetBuildNumber.sh",
+            script: """
+            echo "Updating build number"
+
+            cd "$SRCROOT"
+
+            COMMITS=`git rev-list HEAD --count`
+
+            if [ $? -ne 0 ]; then
+                echo "error: Unable to get commits count, make sure you run project from git repo, or comment out this build phase"
+                exit 1
+            else
+                echo "Number of commits $COMMITS"
+            fi
+
+            echo "Updating Info.plist at ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+
+            # Update build number in created binary's Info.plist
+            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $COMMITS" "${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+
+            if [ $? -ne 0 ]; then
+                # this write can fail as plist might not be present
+                echo "error: Unable to write binary plist"
+            else
+                echo "Binary plist written"
+            fi
+
+            echo "Updating Info.plist at ${INFOPLIST_FILE}"
+
+            # Update build number in original plist so it is consistent
+            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $COMMITS" "$INFOPLIST_FILE"
+
+            if [ $? -ne 0 ]; then
+                echo "error: Unable to write local plist"
+                exit 3
+            else
+                echo "Local plist written"
+            fi
+
+            echo "Updating build finished"
+            """,
             name: "Set build number",
             basedOnDependencyAnalysis: false
         )
