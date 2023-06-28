@@ -29,27 +29,32 @@ public extension TargetScript {
         .post(
             script: """
             export PATH=/opt/homebrew/bin:${PATH}
-            
+
             set -e
-            
-            if 
-            
-            if command -v mint &> /dev/null then
+
+            if ! [ -f ".swiftlint.yml" ]; then
+                echo "No swiftlint.yml found, not running it"
+                exit 0
+            fi
+
+            if command -v mint &> /dev/null && grep -iq swiftlint Mintfile; then
+                echo "Mint"
                 pushd "$SRCROOT"
                 xcrun --sdk macosx mint run swiftlint --fix
                 xcrun --sdk macosx mint run swiftlint
                 popd
                 exit 0
             fi
-            
-            if command -v swiftlint &> /dev/null then
+
+            if command -v "swiftlint" &> /dev/null; then
+                echo "Direct"
                 pushd "$SRCROOT"
                 xcrun --sdk macosx swiftlint --fix
                 xcrun --sdk macosx swiftlint
                 popd
                 exit 0
             fi
-            
+
             echo "SwiftLint not found, not running it"
             """,
             name: "SwiftLint",
