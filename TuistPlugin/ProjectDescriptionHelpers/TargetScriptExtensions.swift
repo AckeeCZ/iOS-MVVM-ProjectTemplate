@@ -12,7 +12,8 @@ public extension TargetScript {
             
                 pushd "$TMPDIR"
                 curl "https://raw.githubusercontent.com/firebase/firebase-ios-sdk/master/Crashlytics/run" > run
-                curl "https://github.com/firebase/firebase-ios-sdk/blob/master/Crashlytics/upload-symbols" > upload-symbols
+                curl "https://raw.githubusercontent.com/firebase/firebase-ios-sdk/master/Crashlytics/upload-symbols" > upload-symbols
+                chmod +x run upload-symbols
                 ./run
                 popd
                 rm -rf "$TMPDIR"
