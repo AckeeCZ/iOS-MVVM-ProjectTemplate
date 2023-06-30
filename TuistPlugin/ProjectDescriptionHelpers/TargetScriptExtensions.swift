@@ -5,6 +5,8 @@ public extension TargetScript {
     static func crashlytics() -> TargetScript {
         .post(
             script: """
+            set -e
+            
             if [ "$CONFIGURATION" != "Debug" ]; then
                 TMPDIR=`mktemp -d`
             
@@ -32,6 +34,8 @@ public extension TargetScript {
     static func setBuildNumber() -> TargetScript {
         .post(
             script: """
+            set -e
+            
             pushd "$SRCROOT"
             
             echo "Updating build number"
