@@ -1,3 +1,4 @@
+import Foundation
 import ProjectDescription
 
 public extension Configuration {
@@ -5,7 +6,7 @@ public extension Configuration {
     ///
     /// If no `TUIST_ENVIRONMENT` is given, debug configuration is used
     static var current: Self {
-        let rawValue = Environment.configuration.getString(default: "debug").lowercased()
+        let rawValue = ProjectDescription.Environment.configuration.getString(default: "debug").lowercased()
         let settings: SettingsDictionary = [
             "SWIFT_ACTIVE_COMPILATION_CONDITIONS": .string(rawValue.uppercased()),
         ]

@@ -1,6 +1,7 @@
 import ProjectDescription
 
 public extension TargetScript {
+    /// Downloads latest upload dSYM script from Firebase repository and uses it to upload dSYMs
     static func crashlytics() -> TargetScript {
         .post(
             script: """
@@ -23,13 +24,17 @@ public extension TargetScript {
             basedOnDependencyAnalysis: false
         )
     }
-
+    
+    /// Script that reads number of commits in current git branch
+    /// and sets it to Info.plist in target binary (if any) and in Info.plist file
+    ///
+    /// This command should be run only in git repository, otherwise if will fail getting commits count.
     static func setBuildNumber() -> TargetScript {
         .post(
             script: """
+            pushd "$SRCROOT"
+            
             echo "Updating build number"
-
-            cd "$SRCROOT"
 
             COMMITS=`git rev-list HEAD --count`
 
@@ -65,6 +70,8 @@ public extension TargetScript {
             fi
 
             echo "Updating build finished"
+            
+            popd
             """,
             name: "Set build number",
             basedOnDependencyAnalysis: false
