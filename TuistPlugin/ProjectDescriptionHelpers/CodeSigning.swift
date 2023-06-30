@@ -25,7 +25,6 @@ public enum CodeSigning {
         switch self {
         case .automatic(let teamID):
             return [
-                "CODE_SIGN_IDENTITY": "",
                 "CODE_SIGN_STYLE": "Automatic",
                 "DEVELOPMENT_TEAM": .string(teamID.rawValue),
                 "PROVISIONING_PROFILE_SPECIFIER": "", // Xcode will select "Automatic"
