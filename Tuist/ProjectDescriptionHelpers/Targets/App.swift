@@ -1,4 +1,5 @@
 import AckeeTemplate
+import Foundation
 import ProjectDescription
 
 private let targetName = "App"
@@ -25,7 +26,9 @@ let app = Target(
         .setBuildNumber(),
         .crashlytics(),
     ],
-    dependencies: [],
+    dependencies: [
+        .core,
+    ],
     settings: .settings(
         base: codeSigning.settings,
         configurations: [.current]

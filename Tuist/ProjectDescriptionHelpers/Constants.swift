@@ -7,4 +7,5 @@ public let version: Version = "0.1.0"
 public let codeCoverageTargets = projectTargets
 public let projectTargets = [
     app,
+    core, coreTests,
 ]
