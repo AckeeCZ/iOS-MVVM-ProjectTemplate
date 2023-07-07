@@ -83,3 +83,14 @@ public struct RequestBody {
     }
 }
 
+extension RequestBody: ExpressibleByDictionaryLiteral {
+    public init(dictionaryLiteral elements: (String, Any)...) {
+        try! self.init(jsonDictionary: .init(elements) { $1 })
+    }
+}
+
+extension RequestBody: ExpressibleByArrayLiteral {
+    public init(arrayLiteral elements: Any...) {
+        try! self.init(jsonArray: elements)
+    }
+}

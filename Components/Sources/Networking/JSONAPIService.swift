@@ -19,7 +19,7 @@ public final class JSONAPIService {
     private let responseInterceptors: [ResponseInterceptor]
     private let decodingInterceptors: [DecodingInterceptor]
     
-    init(
+    public init(
         baseURL: @autoclosure @escaping () -> URL,
         network: Networking,
         requestInterceptors: [RequestInterceptor] = [],
@@ -36,8 +36,8 @@ public final class JSONAPIService {
     public func request(
         url: URL,
         method: HTTPMethod,
-        query: [String : String],
-        headers: [String : String],
+        query: [String: String],
+        headers: [String: String],
         body: RequestBody?
     ) -> Async<HTTPResponse> {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -51,6 +51,7 @@ public final class JSONAPIService {
         request.httpMethod = method.rawValue
         request.httpBody = body?.data
         request.allHTTPHeaderFields = headers
+        request.setValue(body?.contentType, forHTTPHeaderField: "Content-Type")
         
         requestInterceptors.forEach { interceptor in
             interceptor.intercept(request: &request)
@@ -64,13 +65,14 @@ public final class JSONAPIService {
                 }
                 return response
             }
+            .validate()
     }
     
     public func request<T: Decodable>(
         url: URL,
         method: HTTPMethod,
-        query: [String : String],
-        headers: [String : String],
+        query: [String: String],
+        headers: [String: String],
         body: RequestBody?,
         decoder: JSONDecoder,
         result: T.Type = T.self
