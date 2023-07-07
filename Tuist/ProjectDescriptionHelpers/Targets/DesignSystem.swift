@@ -13,7 +13,10 @@ let designSystem = Target(
     sources: .init(globs: [
         "\(basePath)/Sources/**",
         testing(at: basePath),
-    ].compactMap { $0 })
+    ].compactMap { $0 }),
+    dependencies: [
+        .assets,
+    ]
 )
 
 let designSystemTests = Target(
