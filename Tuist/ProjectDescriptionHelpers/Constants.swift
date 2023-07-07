@@ -8,4 +8,5 @@ public let codeCoverageTargets = projectTargets
 public let projectTargets = [
     app,
     core, coreTests,
+    designSystem, designSystemTests,
 ]
