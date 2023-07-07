@@ -54,7 +54,6 @@ Pods/
 # Carthage
 Carthage/Build
 Carthage/Checkouts
-Romefile
 
 #Fastlane
 fastlane/report.xml
@@ -65,15 +64,6 @@ screenshots
 
 #build output
 /outputs
-
-#Environment
-**/Environment/Current
-**/Environment/.current
-**/Environment/.environment_preprocess.h
-**/Environment/Generated/*
-
-#generated files
-*/Model/Generated/*
 
 # tuist
 Derived
