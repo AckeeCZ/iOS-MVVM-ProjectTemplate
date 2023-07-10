@@ -17,8 +17,8 @@ let package = Package(
             targets: ["PushNotifications"]
         ),
         .library(
-            name: "Theme",
-            targets: ["Theme"]
+            name: "UI",
+            targets: ["UI"]
         ),
     ],
     targets: [
@@ -32,6 +32,6 @@ let package = Package(
             name: "PushNotificationsTests",
             dependencies: ["PushNotifications"]
         ),
-        .target(name: "Theme"),
+        .target(name: "UI"),
     ]
 )
