@@ -12,12 +12,21 @@ let package = Package(
             name: "Networking",
             targets: ["Networking"]
         ),
+        .library(
+            name: "PushNotifications",
+            targets: ["PushNotifications"]
+        ),
     ],
     targets: [
         .target(name: "Networking"),
         .testTarget(
             name: "NetworkingTests",
             dependencies: ["Networking"]
+        ),
+        .target(name: "PushNotifications"),
+        .testTarget(
+            name: "PushNotificationsTests",
+            dependencies: ["PushNotifications"]
         ),
     ]
 )
