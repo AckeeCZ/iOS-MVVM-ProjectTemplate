@@ -12,6 +12,14 @@ public protocol DecodingInterceptor {
     func intercept<T: Decodable>(response: HTTPResponse, result: Result<T, DecodingError>)
 }
 
+public struct UnexpectedStatusCodeError: Error {
+    public let statusCode: Int
+    
+    public init(statusCode: Int) {
+        self.statusCode = statusCode
+    }
+}
+
 public final class JSONAPIService {
     private let baseURLFactory: () -> URL
     private let network: Networking
@@ -39,7 +47,7 @@ public final class JSONAPIService {
         query: [String: String],
         headers: [String: String],
         body: RequestBody?
-    ) -> Async<HTTPResponse> {
+    ) async throws -> HTTPResponse {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         var queryItems = urlComponents?.queryItems ?? []
         query.forEach { key, value in
@@ -57,15 +65,17 @@ public final class JSONAPIService {
             interceptor.intercept(request: &request)
         }
         
-        return network.request(request)
-            .map { [responseInterceptors] response in
-                var response = response
-                responseInterceptors.forEach { interceptor in
-                    interceptor.intercept(response: &response)
-                }
-                return response
-            }
-            .validate()
+        var response = try await network.request(request)
+        
+        responseInterceptors.forEach { interceptor in
+            interceptor.intercept(response: &response)
+        }
+        
+        if let code = response.statusCode, !response.isAccepted() {
+            throw UnexpectedStatusCodeError(statusCode: code)
+        }
+        
+        return response
     }
     
     public func request<T: Decodable>(
@@ -76,30 +86,29 @@ public final class JSONAPIService {
         body: RequestBody?,
         decoder: JSONDecoder,
         result: T.Type = T.self
-    ) -> Async<T> {
-        request(
+    ) async throws -> T {
+        let response = try await request(
             url: url,
             method: method,
             query: query,
             headers: headers,
             body: body
         )
-        .attemptMap { [decodingInterceptors] response in
-            do {
-                let result = try decoder.decode(result, from: response.data ?? .init())
-                decodingInterceptors.forEach { interceptor in
-                    interceptor.intercept(response: response, result: .success(result))
-                }
-                return result
-            } catch let error as DecodingError {
-                decodingInterceptors.forEach { interceptor in
-                    interceptor.intercept(
-                        response: response,
-                        result: Result<T, DecodingError>.failure(error)
-                    )
-                }
-                throw error
+        
+        do {
+            let result = try decoder.decode(result, from: response.data ?? .init())
+            decodingInterceptors.forEach { interceptor in
+                interceptor.intercept(response: response, result: .success(result))
             }
+            return result
+        } catch let error as DecodingError {
+            decodingInterceptors.forEach { interceptor in
+                interceptor.intercept(
+                    response: response,
+                    result: Result<T, DecodingError>.failure(error)
+                )
+            }
+            throw error
         }
     }
 }

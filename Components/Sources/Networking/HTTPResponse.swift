@@ -12,24 +12,3 @@ public struct HTTPResponse {
         statusCode.map { codes.contains($0) } ?? true
     }
 }
-
-public struct UnexpectedStatusCodeError: Error {
-    public let statusCode: Int
-    
-    public init(statusCode: Int) {
-        self.statusCode = statusCode
-    }
-}
-
-public extension Async<HTTPResponse> {
-    func validate(acceptedStatusCodes codes: [Int] = .init(200...299)) -> Async<HTTPResponse> {
-        attemptMap { response in
-            guard let statusCode = response.statusCode else { return response }
-            
-            if response.isAccepted(acceptedStatusCodes: codes) {
-                return response
-            }
-            throw UnexpectedStatusCodeError(statusCode: statusCode)
-        }
-    }
-}

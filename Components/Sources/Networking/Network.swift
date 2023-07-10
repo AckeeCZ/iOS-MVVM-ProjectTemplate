@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol Networking {
-    func request(_ request: URLRequest) -> Async<HTTPResponse>
+    func request(_ request: URLRequest) async throws -> HTTPResponse
 }
 
 public protocol HasNetwork {
@@ -15,15 +15,13 @@ public final class Network: Networking {
         self.session = session
     }
     
-    public func request(_ request: URLRequest) -> Async<HTTPResponse> {
-        .init { [session] in
-            let (data, response) = try await session.data(for: request)
-            
-            return .init(
-                request: request,
-                response: response as? HTTPURLResponse,
-                data: data
-            )
-        }
+    public func request(_ request: URLRequest) async throws -> HTTPResponse {
+        let (data, response) = try await session.data(for: request)
+        
+        return .init(
+            request: request,
+            response: response as? HTTPURLResponse,
+            data: data
+        )
     }
 }
