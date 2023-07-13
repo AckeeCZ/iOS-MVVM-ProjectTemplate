@@ -10,9 +10,9 @@ public actor OAuthInterceptor: ResponseInterceptor {
     public let refreshAuthData: (HTTPResponse) async throws -> URLRequest
     
     public init(
-        isExpiredAuthDataResponse: @escaping (HTTPResponse) -> Bool,
-        requestUsedCurrentAuthData: @escaping (HTTPResponse) -> UsedCurrentAuthData,
-        refreshAuthData: @escaping (HTTPResponse) -> URLRequest
+        isExpiredAuthDataResponse: @escaping (HTTPResponse) async -> Bool,
+        requestUsedCurrentAuthData: @escaping (HTTPResponse) async -> UsedCurrentAuthData,
+        refreshAuthData: @escaping (HTTPResponse) async throws -> URLRequest
     ) {
         self.isExpiredAuthDataResponse = isExpiredAuthDataResponse
         self.requestUsedCurrentAuthData = requestUsedCurrentAuthData
