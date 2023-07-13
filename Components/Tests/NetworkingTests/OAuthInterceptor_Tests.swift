@@ -183,4 +183,73 @@ final class OAuthInterceptor_Tests: XCTestCase {
 
         XCTAssertEqual(refreshCount, 1)
     }
+    
+    func test_concurrentRefresh_oldRequest() async throws {
+        let authHeaderName = "Authorization"
+        let originalToken = "Original"
+        let newToken = "New"
+        var currentToken = originalToken
+        
+        let subject = OAuthInterceptor(
+            isExpiredAuthDataResponse: { $0.statusCode == 401 },
+            requestUsedCurrentAuthData: {
+                guard var request = $0.request else { return .yes }
+                
+                let isCurrent = request.value(forHTTPHeaderField: authHeaderName) == currentToken
+                
+                if isCurrent {
+                    return .yes
+                }
+                
+                request.setValue(currentToken, forHTTPHeaderField: authHeaderName)
+                
+                return .no(request)
+            },
+            refreshAuthData: {
+                if currentToken == newToken {
+                    throw UnexpectedCall()
+                }
+                
+                currentToken = newToken
+                return {
+                    var request = $0.request!
+                    request.setValue(currentToken, forHTTPHeaderField: authHeaderName)
+                    return request
+                }
+            }
+        )
+        
+        service.requestBody = { request in
+            return try .test(
+                request: request,
+                response: .test(url: XCTUnwrap(request.url),
+                statusCode: 200)
+            )
+        }
+        
+        let request1 = URLRequest.test(headers: [authHeaderName: currentToken])
+        var response1 = try HTTPResponse.test(
+            request: request1,
+            response: .test(
+                url: XCTUnwrap(request1.url),
+                statusCode: 401
+            )
+        )
+        let request2 = URLRequest.test(headers: [authHeaderName: currentToken])
+        var response2 = try HTTPResponse.test(
+            request: request2,
+            response: .test(
+                url: XCTUnwrap(request1.url),
+                statusCode: 401
+            )
+        )
+        
+        try await subject.intercept(service: service, response: &response1)
+        
+        XCTAssertEqual(response1.request?.value(forHTTPHeaderField: authHeaderName), newToken)
+        
+        try await subject.intercept(service: service, response: &response2)
+        
+        XCTAssertEqual(response2.request?.value(forHTTPHeaderField: authHeaderName), newToken)
+    }
 }

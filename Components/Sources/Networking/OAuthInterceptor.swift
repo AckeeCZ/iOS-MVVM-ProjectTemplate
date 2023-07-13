@@ -1,8 +1,14 @@
 import Foundation
 
+/// Interceptor that is ready to solve token refresh
 public final actor OAuthInterceptor: ResponseInterceptor {
+    /// Enum for results when checking if request current auth data
     public enum UsedCurrentAuthData {
-        case yes, no(URLRequest)
+        /// Request used current auth data
+        case yes
+        /// Request did not use current auth data and should use
+        /// given URLRequest to retry
+        case no(URLRequest)
     }
     
     public let isExpiredAuthDataResponse: (HTTPResponse) async -> Bool
