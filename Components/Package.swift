@@ -24,6 +24,16 @@ let package = Package(
             name: "VersionUpdate",
             targets: ["VersionUpdate"]
         ),
+        .library(
+            name: "FirebaseFetcher",
+            targets: ["FirebaseFetcher"]
+        ),
+    ],
+    dependencies: [
+        .package(
+            url: "https://github.com/firebase/firebase-ios-sdk",
+            .upToNextMajor(from: "10.12.0")
+        ),
     ],
     targets: [
         .target(name: "Networking"),
@@ -45,5 +55,15 @@ let package = Package(
             name: "VersionUpdateTests",
             dependencies: ["VersionUpdate"]
         ),
+        .target(
+            name: "FirebaseFetcher",
+            dependencies: [
+                "VersionUpdate",
+                .product(
+                    name: "FirebaseRemoteConfigSwift",
+                    package: "firebase-ios-sdk"
+                ),
+            ]
+        )
     ]
 )
