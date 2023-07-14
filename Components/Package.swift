@@ -20,6 +20,10 @@ let package = Package(
             name: "UI",
             targets: ["UI"]
         ),
+        .library(
+            name: "VersionUpdate",
+            targets: ["VersionUpdate"]
+        ),
     ],
     targets: [
         .target(name: "Networking"),
@@ -33,5 +37,13 @@ let package = Package(
             dependencies: ["PushNotifications"]
         ),
         .target(name: "UI"),
+        .target(
+            name: "VersionUpdate",
+            dependencies: ["Networking"]
+        ),
+        .testTarget(
+            name: "VersionUpdateTests",
+            dependencies: ["VersionUpdate"]
+        ),
     ]
 )
