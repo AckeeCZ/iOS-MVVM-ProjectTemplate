@@ -20,6 +20,8 @@ public struct HTTPResponse {
         self.data = data
     }
     
+    /// Check that `statusCode` is in accepted range (200...299 by default)
+    /// - Parameter acceptedStatusCodes: List of accepte status codes
     public func isAccepted(acceptedStatusCodes codes: [Int] = .init(200...299)) -> Bool {
         statusCode.map { codes.contains($0) } ?? true
     }
