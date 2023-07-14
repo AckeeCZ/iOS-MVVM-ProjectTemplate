@@ -54,7 +54,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
                 return refreshResponseRequest
             }
         )
-        let apiService = JSONAPIService(
+        let apiService = APIService(
             baseURL: .ackeeCZ,
             network: network,
             responseInterceptors: [oauth]
@@ -126,7 +126,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
                 return refreshResponseRequest
             }
         )
-        let apiService = JSONAPIService(
+        let apiService = APIService(
             baseURL: .ackeeCZ,
             network: network,
             responseInterceptors: [oauth]

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class JSONAPIService: APIServicing {
+public final class APIService: APIServicing {
     /// Error thrown when response status code is unexpected
     public struct UnexpectedStatusCodeError: Error {
         /// Received response with unexpected status code
@@ -61,6 +61,14 @@ public final class JSONAPIService: APIServicing {
         return response
     }
     
+    /// Construct and send request using given parameters
+    /// - Parameters:
+    ///   - url: Request URL
+    ///   - method: Request method
+    ///   - query: Query parameters
+    ///   - headers: Custom headers
+    ///   - body: Request body
+    /// - Returns: Received HTTP response
     public func request(
         url: URL,
         method: HTTPMethod,
