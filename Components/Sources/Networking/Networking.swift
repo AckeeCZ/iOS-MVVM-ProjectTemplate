@@ -1,11 +1,11 @@
 import Foundation
 
+/// Protocol wrapping raw network requests, basically URLSession
 public protocol Networking {
+    /// Send given request
+    /// - Parameter request: Request to be sent
+    /// - Returns: Received response
     func request(_ request: URLRequest) async throws -> HTTPResponse
-}
-
-public protocol HasNetwork {
-    var network: Networking { get }
 }
 
 extension URLSession: Networking {

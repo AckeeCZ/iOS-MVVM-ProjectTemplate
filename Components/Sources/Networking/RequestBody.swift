@@ -1,8 +1,11 @@
 import Foundation
 
 public protocol Encoder: AnyObject {
+    /// Content type to which encoder encodes data
+    ///
+    /// Used for `Content-Type` header
     static var contentType: String { get }
-    
+
     func encode<T: Encodable>(_ encodable: T) throws -> Data
 }
 
