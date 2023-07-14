@@ -1,17 +1,9 @@
-import Networking
+@testable import Networking
 import XCTest
 
 @MainActor
 final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
-    private final class NetworkMock: Networking {
-        var requestBody: (URLRequest) async throws -> HTTPResponse = { _ in .test() }
-        
-        func request(_ request: URLRequest) async throws -> HTTPResponse {
-            try await requestBody(request)
-        }
-    }
-    
-    private var network: NetworkMock!
+    private var network: Network_Mock!
     
     // MARK: - Setup
     

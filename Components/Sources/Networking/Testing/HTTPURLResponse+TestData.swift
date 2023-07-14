@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 extension HTTPURLResponse {
@@ -15,3 +16,4 @@ extension HTTPURLResponse {
         )
     }
 }
+#endif

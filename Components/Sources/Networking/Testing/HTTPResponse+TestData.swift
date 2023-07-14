@@ -1,5 +1,5 @@
+#if DEBUG
 import Foundation
-import Networking
 
 extension HTTPResponse {
     static func test(
@@ -14,3 +14,4 @@ extension HTTPResponse {
         )
     }
 }
+#endif

@@ -7,7 +7,7 @@ public protocol VersionUpdateManaging {
 public final class VersionUpdateManager: VersionUpdateManaging {
     public var updateRequired: Bool {
         get async {
-            guard let min = try? await fetcher.minBuildNumber() else { return false }
+            guard let min = try? await fetcher.minBuildNumber else { return false }
             return min > buildNumberProvider()
         }
     }

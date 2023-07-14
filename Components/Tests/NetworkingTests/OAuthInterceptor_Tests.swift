@@ -1,23 +1,13 @@
 import XCTest
-import Networking
+@testable import Networking
 
 @MainActor
 final class OAuthInterceptor_Tests: XCTestCase {
-    private final class MockAPIService: APIService {
-        var requestBody: (URLRequest) async throws -> HTTPResponse = { _ in
-            .init(request: nil, response: nil, data: nil)
-        }
-
-        func request(_ request: URLRequest) async throws -> HTTPResponse {
-            try await requestBody(request)
-        }
-    }
-
     private final class UnexpectedCall: Error {
         init() { XCTFail("Should not be called") }
     }
 
-    private var service: MockAPIService!
+    private var service: APIService_Mock!
 
     // MARK: - Setup
 
