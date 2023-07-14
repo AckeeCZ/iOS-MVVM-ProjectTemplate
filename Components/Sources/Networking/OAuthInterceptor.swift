@@ -28,7 +28,7 @@ public final actor OAuthInterceptor: ResponseInterceptor {
     }
     
     public func intercept(
-        service: APIService,
+        service: APIServicing,
         response originalResponse: inout HTTPResponse
     ) async throws {
         guard await isExpiredAuthDataResponse(originalResponse) else {

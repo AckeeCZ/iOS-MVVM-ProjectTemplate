@@ -1,7 +1,7 @@
 #if DEBUG
 import Foundation
 
-final class APIService_Mock: APIService {
+final class APIService_Mock: APIServicing {
     var requestBody: (URLRequest) async throws -> HTTPResponse = {
         .init(request: $0, response: nil, data: nil)
     }

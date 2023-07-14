@@ -1,7 +1,7 @@
 import Foundation
 
 /// Protocol wrapping objects that perform network requests
-public protocol APIService {
+public protocol APIServicing {
     /// Send given `URLRequest`
     /// - Parameter request: Request to be sent
     /// - Returns: HTTPResponse to given request
@@ -15,7 +15,7 @@ public protocol RequestInterceptor {
     ///   - service: Service that wants to send given request
     ///   - request: Request that should be sent and can be modified
     func intercept(
-        service: APIService,
+        service: APIServicing,
         request: inout URLRequest
     ) async throws
 }
@@ -27,7 +27,7 @@ public protocol ResponseInterceptor {
     ///   - service: Service that received given response
     ///   - response: Response that was received and can be modified
     func intercept(
-        service: APIService,
+        service: APIServicing,
         response: inout HTTPResponse
     ) async throws
 }

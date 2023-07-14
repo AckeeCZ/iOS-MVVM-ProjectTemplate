@@ -1,19 +1,28 @@
 import Foundation
 
-public struct UnexpectedStatusCodeError: Error {
-    public let statusCode: Int
-    
-    public init(statusCode: Int) {
-        self.statusCode = statusCode
+public final class JSONAPIService: APIServicing {
+    /// Error thrown when response status code is unexpected
+    public struct UnexpectedStatusCodeError: Error {
+        /// Received response with unexpected status code
+        public let response: HTTPResponse
+        
+        /// - Parameter response: Received response with unexpected status code
+        public init(response: HTTPResponse) {
+            self.response = response
+        }
     }
-}
-
-public final class JSONAPIService: APIService {
+    
     private let baseURLFactory: () -> URL
     private let network: Networking
     private let requestInterceptors: [RequestInterceptor]
     private let responseInterceptors: [ResponseInterceptor]
     
+    /// Create new `JSONAPIService`
+    /// - Parameters:
+    ///   - baseURL: Base URL for requests that use path instead of full URL/request
+    ///   - network: Network object performing API calls, `URLSession` basically
+    ///   - requestInterceptors: List of request interceptors, useful for logging or header injections
+    ///   - responseInterceptors: List of response interceptors, useful for logging or token refresh
     public init(
         baseURL: @autoclosure @escaping () -> URL,
         network: Networking,
@@ -45,8 +54,8 @@ public final class JSONAPIService: APIService {
             )
         }
         
-        if let code = response.statusCode, !response.isAccepted() {
-            throw UnexpectedStatusCodeError(statusCode: code)
+        guard response.isAccepted() else {
+            throw UnexpectedStatusCodeError(response: response)
         }
         
         return response
