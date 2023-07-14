@@ -21,7 +21,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
         var currentToken = originalToken
         
         let refreshResponseRequest: (HTTPResponse) -> URLRequest = { response in
-            var request = response.request!
+            var request = response.request
             request.setValue(currentToken, forHTTPHeaderField: authHeaderName)
             return request
         }
@@ -29,7 +29,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
         let oauth = OAuthInterceptor(
             isExpiredAuthDataResponse: { $0.statusCode == 401 },
             requestUsedCurrentAuthData: {
-                let isCurrent = $0.request?.value(forHTTPHeaderField: authHeaderName) == currentToken
+                let isCurrent = $0.request.value(forHTTPHeaderField: authHeaderName) == currentToken
                 guard !isCurrent else {
                     return .yes
                 }
@@ -77,7 +77,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
             headers: ["Authorization": originalToken]
         ))
         
-        XCTAssertEqual(newToken, response.request?.value(forHTTPHeaderField: authHeaderName))
+        XCTAssertEqual(newToken, response.request.value(forHTTPHeaderField: authHeaderName))
     }
     
     func test_expiredTokenRefresh_concurrent() async throws {
@@ -90,7 +90,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
         var retriedRequests = [URLRequest]()
         
         let refreshResponseRequest: (HTTPResponse) -> URLRequest = { response in
-            var request = response.request!
+            var request = response.request
             request.setValue(currentToken, forHTTPHeaderField: authHeaderName)
             return request
         }
@@ -98,7 +98,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
         let oauth = OAuthInterceptor(
             isExpiredAuthDataResponse: { $0.statusCode == 401 },
             requestUsedCurrentAuthData: {
-                let isCurrent = $0.request?.value(forHTTPHeaderField: authHeaderName) == currentToken
+                let isCurrent = $0.request.value(forHTTPHeaderField: authHeaderName) == currentToken
                 guard !isCurrent else {
                     return .yes
                 }
@@ -157,7 +157,7 @@ final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
                         taskHeaderName: .init(i),
                     ]
                 ))
-                XCTAssertEqual(newToken, response.request?.value(forHTTPHeaderField: authHeaderName))
+                XCTAssertEqual(newToken, response.request.value(forHTTPHeaderField: authHeaderName))
                 
                 exp.fulfill()
             }

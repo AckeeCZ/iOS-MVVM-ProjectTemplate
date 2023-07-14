@@ -114,7 +114,7 @@ final class OAuthInterceptor_Tests: XCTestCase {
         var refreshCount = 0
 
         let refreshResponseRequest: (HTTPResponse) -> URLRequest = { response in
-            var request = response.request!
+            var request = response.request
             var headers = request.allHTTPHeaderFields!
             headers["refreshed"] = "true"
             request.allHTTPHeaderFields = headers
@@ -123,13 +123,13 @@ final class OAuthInterceptor_Tests: XCTestCase {
 
         let subject = OAuthInterceptor(
             isExpiredAuthDataResponse: { response in
-                let request = response.request!
+                let request = response.request
                 print("[IS_EXPIRED]", request.allHTTPHeaderFields!["index"]!, request.allHTTPHeaderFields!["refreshed"] ?? "false")
                 return true
             },
             requestUsedCurrentAuthData: { response in
-                guard response.request?.allHTTPHeaderFields?["index"] == "0" else {
-                    return response.request?.allHTTPHeaderFields?["refreshed"] == "true" ? .yes : .no(refreshResponseRequest(response))
+                guard response.request.allHTTPHeaderFields?["index"] == "0" else {
+                    return response.request.allHTTPHeaderFields?["refreshed"] == "true" ? .yes : .no(refreshResponseRequest(response))
                 }
 
                 return .yes
@@ -137,7 +137,7 @@ final class OAuthInterceptor_Tests: XCTestCase {
             refreshAuthData: {
                 refreshCount += 1
                 return { response in
-                    let request = response.request!
+                    let request = response.request
                     print("[REFRESH]", request.allHTTPHeaderFields!["index"]!, request.allHTTPHeaderFields!["refreshed"] ?? "false")
                     return refreshResponseRequest(response)
                 }
@@ -183,7 +183,7 @@ final class OAuthInterceptor_Tests: XCTestCase {
         let subject = OAuthInterceptor(
             isExpiredAuthDataResponse: { $0.statusCode == 401 },
             requestUsedCurrentAuthData: {
-                guard var request = $0.request else { return .yes }
+                var request = $0.request
                 
                 let isCurrent = request.value(forHTTPHeaderField: authHeaderName) == currentToken
                 
@@ -202,7 +202,7 @@ final class OAuthInterceptor_Tests: XCTestCase {
                 
                 currentToken = newToken
                 return {
-                    var request = $0.request!
+                    var request = $0.request
                     request.setValue(currentToken, forHTTPHeaderField: authHeaderName)
                     return request
                 }
@@ -236,10 +236,10 @@ final class OAuthInterceptor_Tests: XCTestCase {
         
         try await subject.intercept(service: service, response: &response1)
         
-        XCTAssertEqual(response1.request?.value(forHTTPHeaderField: authHeaderName), newToken)
+        XCTAssertEqual(response1.request.value(forHTTPHeaderField: authHeaderName), newToken)
         
         try await subject.intercept(service: service, response: &response2)
         
-        XCTAssertEqual(response2.request?.value(forHTTPHeaderField: authHeaderName), newToken)
+        XCTAssertEqual(response2.request.value(forHTTPHeaderField: authHeaderName), newToken)
     }
 }

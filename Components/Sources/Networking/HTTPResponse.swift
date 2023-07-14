@@ -1,14 +1,17 @@
 import Foundation
 
 public struct HTTPResponse {
-    public let request: URLRequest?
+    /// Request that was sent
+    public let request: URLRequest
+    /// Received `HTTPURLResponse`
     public let response: HTTPURLResponse?
+    /// Body of response
     public let data: Data?
-
+    /// Shortcut to response status code
     public var statusCode: Int? { response?.statusCode }
     
     public init(
-        request: URLRequest?,
+        request: URLRequest,
         response: HTTPURLResponse?,
         data: Data?
     ) {

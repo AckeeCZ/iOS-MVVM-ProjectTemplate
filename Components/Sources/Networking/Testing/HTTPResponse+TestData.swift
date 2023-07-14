@@ -3,7 +3,7 @@ import Foundation
 
 extension HTTPResponse {
     static func test(
-        request: URLRequest? = .test(),
+        request: URLRequest = .test(),
         response: HTTPURLResponse? = nil,
         data: Data? = nil
     ) -> HTTPResponse {
