@@ -94,14 +94,20 @@ extension URLRequest {
         headers: [String: String]?,
         body: RequestBody?
     ) {
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        var queryItems = urlComponents?.queryItems ?? []
-        query?.forEach { key, value in
-            queryItems.append(.init(name: key, value: value))
-        }
-        urlComponents?.queryItems = queryItems
+        let url: URL = {
+            guard let query, !query.isEmpty else { return url }
+       
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            var queryItems = urlComponents?.queryItems ?? []
+            query.forEach { key, value in
+                queryItems.append(.init(name: key, value: value))
+            }
+            urlComponents?.queryItems = queryItems
+            
+            return urlComponents?.url ?? url
+        }()
         
-        var request = URLRequest(url: urlComponents?.url ?? url)
+        var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body?.data
         request.allHTTPHeaderFields = headers
