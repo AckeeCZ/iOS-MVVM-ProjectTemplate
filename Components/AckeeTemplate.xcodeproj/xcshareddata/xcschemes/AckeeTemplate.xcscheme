@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1500"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "697F85AA2A580EB0009BA75F"
-               BuildableName = "Networking.framework"
-               BlueprintName = "Networking"
-               ReferencedContainer = "container:Components.xcodeproj">
+               BlueprintIdentifier = "69BE64432A6474E200B41993"
+               BuildableName = "AckeeTemplate.framework"
+               BlueprintName = "AckeeTemplate"
+               ReferencedContainer = "container:AckeeTemplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,10 +34,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "697F85B12A580EB0009BA75F"
-               BuildableName = "NetworkingTests.xctest"
-               BlueprintName = "NetworkingTests"
-               ReferencedContainer = "container:Components.xcodeproj">
+               BlueprintIdentifier = "69BE644B2A6474E200B41993"
+               BuildableName = "AckeeTemplateTests.xctest"
+               BlueprintName = "AckeeTemplateTests"
+               ReferencedContainer = "container:AckeeTemplate.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -62,10 +62,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "697F85AA2A580EB0009BA75F"
-            BuildableName = "Networking.framework"
-            BlueprintName = "Networking"
-            ReferencedContainer = "container:Components.xcodeproj">
+            BlueprintIdentifier = "69BE64432A6474E200B41993"
+            BuildableName = "AckeeTemplate.framework"
+            BlueprintName = "AckeeTemplate"
+            ReferencedContainer = "container:AckeeTemplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,3 +1,4 @@
+#if canImport(UIKit) && !os(watchOS)
 import Foundation
 import UIKit
 
@@ -143,3 +144,4 @@ extension PopupModalAnimation: UIViewControllerTransitioningDelegate {
         return self
     }
 }
+#endif

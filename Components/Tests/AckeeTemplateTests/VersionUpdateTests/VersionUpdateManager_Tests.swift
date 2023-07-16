@@ -1,4 +1,4 @@
-@testable import VersionUpdate
+@testable import AckeeTemplate
 import XCTest
 
 @MainActor

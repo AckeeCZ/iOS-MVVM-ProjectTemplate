@@ -1,4 +1,4 @@
-@testable import Networking
+@testable import AckeeTemplate
 import XCTest
 
 @MainActor

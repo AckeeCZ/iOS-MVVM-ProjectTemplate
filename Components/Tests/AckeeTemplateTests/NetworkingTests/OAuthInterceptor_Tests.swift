@@ -1,5 +1,5 @@
+@testable import AckeeTemplate
 import XCTest
-@testable import Networking
 
 @MainActor
 final class OAuthInterceptor_Tests: XCTestCase {

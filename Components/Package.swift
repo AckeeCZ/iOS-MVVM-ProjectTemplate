@@ -2,27 +2,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "Components",
+    name: "AckeeTemplate",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15),
     ],
     products: [
         .library(
-            name: "Networking",
-            targets: ["Networking"]
+            name: "AckeeTemplate",
+            targets: ["AckeeTemplate"]
         ),
         .library(
             name: "PushNotifications",
             targets: ["PushNotifications"]
-        ),
-        .library(
-            name: "UI",
-            targets: ["UI"]
-        ),
-        .library(
-            name: "VersionUpdate",
-            targets: ["VersionUpdate"]
         ),
         .library(
             name: "FirebaseFetcher",
@@ -36,29 +28,20 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(name: "Networking"),
+        .target(name: "AckeeTemplate"),
         .testTarget(
-            name: "NetworkingTests",
-            dependencies: ["Networking"]
+            name: "AckeeTemplateTests",
+            dependencies: ["AckeeTemplate"]
         ),
         .target(name: "PushNotifications"),
         .testTarget(
             name: "PushNotificationsTests",
             dependencies: ["PushNotifications"]
         ),
-        .target(name: "UI"),
-        .target(
-            name: "VersionUpdate",
-            dependencies: ["Networking"]
-        ),
-        .testTarget(
-            name: "VersionUpdateTests",
-            dependencies: ["VersionUpdate"]
-        ),
         .target(
             name: "FirebaseFetcher",
             dependencies: [
-                "VersionUpdate",
+                "AckeeTemplate",
                 .product(
                     name: "FirebaseRemoteConfigSwift",
                     package: "firebase-ios-sdk"

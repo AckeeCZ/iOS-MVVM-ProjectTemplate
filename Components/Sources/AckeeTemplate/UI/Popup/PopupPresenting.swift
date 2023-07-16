@@ -1,3 +1,4 @@
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public protocol PopupPresenting {
@@ -14,4 +15,4 @@ public extension PopupPresenting where Self: UIViewController {
         present(popup, animated: animated)
     }
 }
-
+#endif

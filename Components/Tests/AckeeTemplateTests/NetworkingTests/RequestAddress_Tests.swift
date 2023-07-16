@@ -1,4 +1,4 @@
-import Networking
+import AckeeTemplate
 import XCTest
 
 final class RequestAddress_Tests: XCTestCase {
