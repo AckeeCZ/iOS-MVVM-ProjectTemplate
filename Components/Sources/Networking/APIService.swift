@@ -61,24 +61,42 @@ public final class APIService: APIServicing {
         return response
     }
     
-    /// Construct and send request using given parameters
-    /// - Parameters:
-    ///   - url: Request URL
-    ///   - method: Request method
-    ///   - query: Query parameters
-    ///   - headers: Custom headers
-    ///   - body: Request body
-    /// - Returns: Received HTTP response
     public func request(
+        _ address: RequestAddress,
+        method: HTTPMethod = .get,
+        query: [String: String]? = nil,
+        headers: [String: String]? = nil,
+        body: RequestBody? = nil
+    ) async throws -> HTTPResponse {
+        let url: URL = {
+            switch address {
+            case .url(let url): return url
+            case .path(let path):
+                return baseURLFactory().appendingPathComponent(path)
+            }
+        }()
+        
+        return try await self.request(.init(
+            url: url,
+            method: method,
+            query: query,
+            headers: headers,
+            body: body
+        ))
+    }
+}
+
+extension URLRequest {
+    init(
         url: URL,
         method: HTTPMethod,
-        query: [String: String],
-        headers: [String: String],
+        query: [String: String]?,
+        headers: [String: String]?,
         body: RequestBody?
-    ) async throws -> HTTPResponse {
+    ) {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         var queryItems = urlComponents?.queryItems ?? []
-        query.forEach { key, value in
+        query?.forEach { key, value in
             queryItems.append(.init(name: key, value: value))
         }
         urlComponents?.queryItems = queryItems
@@ -88,7 +106,6 @@ public final class APIService: APIServicing {
         request.httpBody = body?.data
         request.allHTTPHeaderFields = headers
         request.setValue(body?.contentType, forHTTPHeaderField: "Content-Type")
-        
-        return try await self.request(request)
+        self = request
     }
 }

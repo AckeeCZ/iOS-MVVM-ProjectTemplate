@@ -6,6 +6,22 @@ public protocol APIServicing {
     /// - Parameter request: Request to be sent
     /// - Returns: HTTPResponse to given request
     func request(_ request: URLRequest) async throws -> HTTPResponse
+    
+    /// Construct and send request using given parameters
+    /// - Parameters:
+    ///   - address: Request address
+    ///   - method: Request method
+    ///   - query: Query parameters
+    ///   - headers: Custom headers
+    ///   - body: Request body
+    /// - Returns: Received HTTP response
+    func request(
+        _ address: RequestAddress,
+        method: HTTPMethod,
+        query: [String: String]?,
+        headers: [String: String]?,
+        body: RequestBody?
+    ) async throws -> HTTPResponse
 }
 
 /// Protocol wrapping interceptors that can modify requests before they are sent
