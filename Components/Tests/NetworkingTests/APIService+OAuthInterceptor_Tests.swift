@@ -2,7 +2,7 @@
 import XCTest
 
 @MainActor
-final class JSONAPIService_OAuthInterceptor_IntegrationTests: XCTestCase {
+final class APIService_OAuthInterceptor_IntegrationTests: XCTestCase {
     private var network: Network_Mock!
     
     // MARK: - Setup
