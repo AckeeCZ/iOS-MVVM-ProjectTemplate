@@ -6,7 +6,7 @@ This repository contains one of our project template components, this document w
 
 Our template consist from two components, well three if you may:
 - library with reused components like API service for network calls ([SPM](spm) and [Carthage][carthage] compatible)
-- [Tuist plugin](https://github.com/AckeeCZ/AckeeTemplate-TuistPlugin) that we use to share components among our projects
+- [Tuist plugin][tuist plugin] that we use to share components among our projects
 - [example project][example project] that consumes both of the above
 
 ## Requirements
@@ -15,6 +15,9 @@ Template itself basically has no requirements, it just relies heavily on [Tuist]
 ## Documentation
 - [Project generation](Documentation/ProjectGeneration.md)
 - [Project architecture](Documentation/ProjectArchitecture.md)
+
+## Usage
+The easiest usage would be to copy the [example project][example project] and update it according to your needs. It would be good idea to update the AckeeTemplate lib to latest version and to also update our [Tuist plugin][tuist plugin].
 
 ## Future steps
 In future we would love to move the whole template to Tuist plugin which will allow us to use this template in true template manner.
@@ -25,3 +28,4 @@ In the meantime next minor step would be to create a true release process that w
 [carthage]: https://github.com/Carthage/Carthage
 [spm]: http://github.com/apple/swift-package-manager
 [tuist]: https://tuist.io
+[tuist plugin]: https://github.com/AckeeCZ/AckeeTemplate-TuistPlugin
