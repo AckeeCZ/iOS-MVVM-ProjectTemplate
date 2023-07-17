@@ -12,11 +12,11 @@ let userManager = Target(
     deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
-        .testing(at: basePath),
+        .testing(at: basePath)
     ].compactMap { $0 }),
     dependencies: [
         .core,
-        .ackeeTemplate,
+        .ackeeTemplate
     ]
 )
 
@@ -29,6 +29,6 @@ let userManagerTests = Target(
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .target(userManager),
+        .target(userManager)
     ]
 )

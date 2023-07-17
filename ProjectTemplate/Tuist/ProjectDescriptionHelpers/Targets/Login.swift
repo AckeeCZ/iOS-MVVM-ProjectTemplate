@@ -12,12 +12,12 @@ let login = Target(
     deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
-        .testing(at: basePath),
+        .testing(at: basePath)
     ].compactMap { $0 }),
     dependencies: [
         .core,
         .ackeeTemplate,
-        .appUI,
+        .appUI
     ]
 )
 
@@ -30,6 +30,6 @@ let loginTests = Target(
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .target(login),
+        .target(login)
     ]
 )

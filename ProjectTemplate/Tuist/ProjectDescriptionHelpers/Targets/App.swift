@@ -24,13 +24,13 @@ let app = Target(
     resources: "\(targetName)/Resources/**",
     scripts: [
         .setBuildNumber(),
-        .crashlytics(),
+        .crashlytics()
     ],
     dependencies: [
         .core,
         .target(login),
         .target(profile),
-        .target(userManager),
+        .target(userManager)
     ],
     settings: .settings(
         base: codeSigning.settings,

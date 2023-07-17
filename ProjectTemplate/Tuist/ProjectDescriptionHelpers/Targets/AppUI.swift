@@ -12,11 +12,11 @@ let appUI = Target(
     deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
-        .testing(at: basePath),
+        .testing(at: basePath)
     ].compactMap { $0 }),
     dependencies: [
         .assets,
-        .ackeeTemplate,
+        .ackeeTemplate
     ]
 )
 
@@ -29,7 +29,7 @@ let appUITests = Target(
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .appUI,
+        .appUI
     ]
 )
 

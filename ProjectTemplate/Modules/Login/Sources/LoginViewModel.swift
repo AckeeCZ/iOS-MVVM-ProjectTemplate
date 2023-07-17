@@ -3,7 +3,7 @@ import Foundation
 
 public protocol LoginViewModeling {
     var actions: LoginViewModelingActions { get }
-    
+
     var username: String { get set }
     var password: String { get set }
 }
@@ -25,17 +25,16 @@ public func createLoginVM(
 final class LoginViewModel: LoginViewModeling, LoginViewModelingActions {
     var username = ""
     var password = ""
-    
+
     private let userManager: UserManaging
-    
+
     // MARK: - Initializers
-    
+
     init(dependencies: HasUserManager) {
         userManager = dependencies.userManager
     }
-    
+
     func login() async throws {
         try await userManager.actions.login(username: username, password: password)
     }
 }
-

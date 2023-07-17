@@ -24,7 +24,7 @@ let project = Project(
     ),
     settings: .settings(
         base: [
-            "MARKETING_VERSION": .string(version.description),
+            "MARKETING_VERSION": .string(version.description)
         ],
         configurations: [.current]
     ),

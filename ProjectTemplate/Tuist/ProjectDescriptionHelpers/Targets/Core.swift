@@ -12,11 +12,11 @@ let core = Target(
     deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
-        .testing(at: basePath, isDebug: true),
+        .testing(at: basePath, isDebug: true)
     ].compactMap { $0 }),
     dependencies: [
         .assets,
-        .ackeeTemplate,
+        .ackeeTemplate
     ]
 )
 
@@ -29,7 +29,7 @@ let coreTests = Target(
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .core,
+        .core
     ]
 )
 

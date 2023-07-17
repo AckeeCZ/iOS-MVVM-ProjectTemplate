@@ -5,6 +5,6 @@ let config = Config(
         .git(
             url: "https://github.com/AckeeCZ/AckeeTemplate-TuistPlugin",
             tag: "0.1.2"
-        ),
+        )
     ]
 )

@@ -12,12 +12,12 @@ let profile = Target(
     deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
-        .testing(at: basePath),
+        .testing(at: basePath)
     ].compactMap { $0 }),
     dependencies: [
         .core,
         .ackeeTemplate,
-        .appUI,
+        .appUI
     ]
 )
 
@@ -30,6 +30,6 @@ let profileTests = Target(
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .target(profile),
+        .target(profile)
     ]
 )

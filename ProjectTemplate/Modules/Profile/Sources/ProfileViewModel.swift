@@ -3,7 +3,7 @@ import Foundation
 
 public protocol ProfileViewModeling {
     var actions: ProfileViewModelingActions { get }
-    
+
     var username: String { get }
 }
 
@@ -23,18 +23,17 @@ public func createProfileVM(
 
 final class ProfileViewModel: ProfileViewModeling, ProfileViewModelingActions {
     let username: String
-    
+
     private let userManager: UserManaging
-    
+
     // MARK: - Initializers
-    
+
     init(dependencies: HasUserManager) {
         userManager = dependencies.userManager
         username = userManager.currentUserName ?? ""
     }
-    
+
     func logout() async {
         await userManager.actions.logout()
     }
 }
-

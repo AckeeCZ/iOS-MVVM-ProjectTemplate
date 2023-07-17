@@ -12,5 +12,5 @@ public let projectTargets = [
     appUI, appUITests,
     login, loginTests,
     profile, profileTests,
-    userManager, userManagerTests,
+    userManager, userManagerTests
 ]

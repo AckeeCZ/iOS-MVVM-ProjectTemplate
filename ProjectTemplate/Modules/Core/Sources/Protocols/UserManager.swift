@@ -2,7 +2,7 @@ import Foundation
 
 public protocol UserManaging {
     var actions: UserManagingActions { get }
-    
+
     var currentUserName: String? { get }
     var isLoggedIn: Bool { get }
 }
