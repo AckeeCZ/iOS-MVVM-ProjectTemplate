@@ -1,10 +1,10 @@
 import Foundation
 import ProjectDescription
 
-private let targetName = "DesignSystem"
+private let targetName = "AppUI"
 private let basePath = "Modules/" + targetName
 
-let designSystem = Target(
+let appUI = Target(
     name: targetName,
     platform: .iOS,
     product: .framework,
@@ -19,19 +19,19 @@ let designSystem = Target(
     ]
 )
 
-let designSystemTests = Target(
-    name: designSystem.name + "_Tests",
+let appUITests = Target(
+    name: appUI.name + "_Tests",
     platform: .iOS,
     product: .unitTests,
-    bundleId: designSystem.bundleId + ".tests",
+    bundleId: appUI.bundleId + ".tests",
     deploymentTarget: .tests,
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,
-        .designSystem,
+        .appUI,
     ]
 )
 
 public extension TargetDependency {
-    static let designSystem = TargetDependency.target(ProjectDescriptionHelpers.designSystem)
+    static let appUI = TargetDependency.target(ProjectDescriptionHelpers.appUI)
 }

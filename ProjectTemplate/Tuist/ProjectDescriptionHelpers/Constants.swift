@@ -9,5 +9,5 @@ public let projectTargets = [
     app,
     assets,
     core, coreTests,
-    designSystem, designSystemTests,
+    appUI, appUITests,
 ]
