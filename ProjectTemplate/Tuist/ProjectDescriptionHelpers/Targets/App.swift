@@ -28,6 +28,9 @@ let app = Target(
     ],
     dependencies: [
         .core,
+        .target(login),
+        .target(profile),
+        .target(userManager),
     ],
     settings: .settings(
         base: codeSigning.settings,

@@ -10,4 +10,7 @@ public let projectTargets = [
     assets,
     core, coreTests,
     appUI, appUITests,
+    login, loginTests,
+    profile, profileTests,
+    userManager, userManagerTests,
 ]

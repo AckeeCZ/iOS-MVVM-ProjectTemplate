@@ -3,9 +3,8 @@ import ProjectDescription
 let config = Config(
     plugins: [
         .git(
-            url: "https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate",
-            tag: "tuist_plugin/0.1.1",
-            directory: "TuistPlugin"
+            url: "https://github.com/AckeeCZ/AckeeTemplate-TuistPlugin",
+            tag: "0.1.2"
         ),
     ]
 )
