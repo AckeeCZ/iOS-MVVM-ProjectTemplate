@@ -10,7 +10,7 @@ public extension SourceFileGlob {
         at path: String,
         isDebug: Bool = Configuration.current.isDebug
     ) -> SourceFileGlob? {
-        guard !isDebug else { return nil }
+        guard isDebug else { return nil }
         
         var isDirectory: ObjCBool = false
         let testingPath = path + "/Testing"
