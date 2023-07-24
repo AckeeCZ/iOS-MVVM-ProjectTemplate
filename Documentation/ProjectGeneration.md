@@ -3,7 +3,7 @@ To be able to run the project you need to have a Xcodeproj file. As mentioned ab
 
 Our projects usually have 3 build configurations and 3 environments, but to keep things simple our [Tuist][tuist] setup always generates a project with a single configuration and a single environment.
 
-Our standard configurations are _Debug_ for Xcode development, _Beta_ for testing and _Release_ for App Store builds. Usually _Debug_ and _Beta_ configurations share its bundle identifier and are connected to the same testing app in TestFlight. Which configuration is generate to Xcode project file is determined by using `TUIST_CONFIGURATION` environment variable that should contain the configuration that should be generated - if it is missing, empty or its value doesn't match any of known values - _Debug_ is used.
+Our standard configurations are _Debug_ for Xcode development, _Beta_ for testing and _Release_ for App Store builds. Usually _Debug_ and _Beta_ configurations share its bundle identifier and are connected to the same testing app in TestFlight. Which configuration is generated to Xcode project file is determined by using `TUIST_CONFIGURATION` environment variable that should contain the configuration that should be generated - if it is missing, empty or its value doesn't match any of known values - _Debug_ is used.
 
 Environments usually are _Development_, _Stage_ and _Production_. Which environment is generated is determined by using `TUIST_ENVIRONMENT` environment variable - if it is missing, empty or its value doesn't match any of known values - _Development_ is used.
 
