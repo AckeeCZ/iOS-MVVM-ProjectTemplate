@@ -14,3 +14,5 @@ So to generate production app for App Store, you will need to run these commands
 TUIST_ENVIRONMENT=Production TUIST_CONFIGURATION=Release tuist fetch
 TUIST_ENVIRONMENT=Production TUIST_CONFIGURATION=Release tuist generate
 ```
+
+[tuist]: https://tuist.io
