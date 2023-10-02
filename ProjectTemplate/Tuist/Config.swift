@@ -5,7 +5,7 @@ let config = Config(
         .git(
             url: "https://github.com/AckeeCZ/AckeeTemplate-TuistPlugin",
 //            tag: "0.1.3"
-            sha: "c5d8b0e1c92e7795dc7ffc41a7a3699cb311aa96"
+            sha: "2f49af1dd17d25b29d9151765a456b94d233a9c8"
         )
     ]
 )
