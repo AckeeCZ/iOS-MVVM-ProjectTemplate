@@ -20,12 +20,13 @@ let app = Target(
     product: .app,
     bundleId: bundleID,
     deploymentTarget: .app,
+    infoPlist: .extendingSharedDefault(with: [
+        "ITSAppUsesNonExemptEncryption": false,
+        "UILaunchStoryboardName": "LaunchScreen.storyboard",
+    ]),
     sources: "\(targetName)/Sources/**",
     resources: "\(targetName)/Resources/**",
-    scripts: [
-        .setBuildNumber(),
-        .crashlytics()
-    ],
+    scripts: .crashlytics(),
     dependencies: [
         .core,
         .target(login),
