@@ -14,7 +14,7 @@ let project = Project(
             testLanguage: "cs",
             testRegion: "CZ"
         ),
-        developmentRegion: "CZ",
+        developmentRegion: "cs",
         textSettings: .textSettings(
             usesTabs: false,
             indentWidth: 4,
