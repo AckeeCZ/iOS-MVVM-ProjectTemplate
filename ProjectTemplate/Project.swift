@@ -24,7 +24,11 @@ let project = Project(
     ),
     settings: .settings(
         base: [
-            "MARKETING_VERSION": .string(version.description)
+            "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+            "EAGER_LINKING": true,
+            "ENABLE_MODULE_VERIFIER": true,
+            "MARKETING_VERSION": .string(version.description),
+            "OTHER_LDFLAGS": "-ObjC",
         ],
         configurations: [.current]
     ),
