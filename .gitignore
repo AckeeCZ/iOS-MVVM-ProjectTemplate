@@ -1,5 +1,63 @@
-.build
-.swiftpm
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
 
-Carthage
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Objective-C ###
+# Xcode
+#
+build/
+.build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
 xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+*.xcodeproj
+*.xcworkspace
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build
+Carthage/Checkouts
+
+#build output
+/outputs
+
+# tuist
+Derived
+Tuist/Dependencies/*
+!Tuist/Dependencies/Lockfiles
+
+# SPM
+.swiftpm
