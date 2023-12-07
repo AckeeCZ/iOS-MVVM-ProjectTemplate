@@ -6,10 +6,9 @@ private let basePath = "Modules/" + targetName
 
 let assets = Target(
     name: targetName,
-    platform: .iOS,
+    destinations: .app,
     product: .framework,
     bundleId: "cz.ackee.\(projectName).\(targetName.toBundleID())",
-    deploymentTarget: .app,
     resources: "\(basePath)/Resources/**"
 )
 

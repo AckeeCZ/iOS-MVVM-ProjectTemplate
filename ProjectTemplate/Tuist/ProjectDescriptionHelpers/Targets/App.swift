@@ -16,10 +16,9 @@ private let codeSigning = CodeSigning.current(
 
 let app = Target(
     name: targetName,
-    platform: .iOS,
+    destinations: .app,
     product: .app,
     bundleId: bundleID,
-    deploymentTarget: .app,
     infoPlist: .extendingSharedDefault(with: [
         "ITSAppUsesNonExemptEncryption": false,
         "UILaunchStoryboardName": "LaunchScreen.storyboard",

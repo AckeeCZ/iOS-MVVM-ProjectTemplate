@@ -27,6 +27,8 @@ let project = Project(
             "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
             "EAGER_LINKING": true,
             "ENABLE_MODULE_VERIFIER": true,
+            "ENABLE_USER_SCRIPT_SANDBOXING": true,
+            "IPHONEOS_DEPLOYMENT_TARGET": "15.0",
             "MARKETING_VERSION": .string(version.description),
             "OTHER_LDFLAGS": "-ObjC",
         ],
