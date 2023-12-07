@@ -7,7 +7,7 @@ jobs:
     name: SPM tests
     runs-on: macos-13
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4
       - uses: AckeeCZ/load-xcode-version@1.1.0
       - uses: actions/cache@v3
         with:
@@ -21,9 +21,9 @@ jobs:
     name: Carthage build
     runs-on: macos-13
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4
       - uses: AckeeCZ/load-xcode-version@1.1.0
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v3
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
@@ -40,9 +40,9 @@ jobs:
       run:
         working-directory: ./ProjectTemplate
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4
       - uses: AckeeCZ/load-xcode-version@1.1.0
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v3
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}

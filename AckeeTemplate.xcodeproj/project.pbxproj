@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		695155382A647B4C00A5C43D /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552A2A647B4C00A5C43D /* nanopb.xcframework */; };
 		6951553A2A647B4C00A5C43D /* FirebaseABTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552B2A647B4C00A5C43D /* FirebaseABTesting.xcframework */; };
-		6951553C2A647B4C00A5C43D /* FirebaseRemoteConfigSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552C2A647B4C00A5C43D /* FirebaseRemoteConfigSwift.xcframework */; };
 		6951553E2A647B4C00A5C43D /* FBLPromises.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552D2A647B4C00A5C43D /* FBLPromises.xcframework */; };
 		695155402A647B4C00A5C43D /* FirebaseAnalytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552E2A647B4C00A5C43D /* FirebaseAnalytics.xcframework */; };
 		695155422A647B4C00A5C43D /* FirebaseCoreInternal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6951552F2A647B4C00A5C43D /* FirebaseCoreInternal.xcframework */; };
 		695155442A647B4C00A5C43D /* FirebaseSharedSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155302A647B4C00A5C43D /* FirebaseSharedSwift.xcframework */; };
-		695155462A647B4C00A5C43D /* FirebaseAnalyticsSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155312A647B4C00A5C43D /* FirebaseAnalyticsSwift.xcframework */; };
 		695155482A647B4C00A5C43D /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155322A647B4C00A5C43D /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		6951554A2A647B4C00A5C43D /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155332A647B4C00A5C43D /* FirebaseInstallations.xcframework */; };
 		6951554C2A647B4C00A5C43D /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155342A647B4C00A5C43D /* GoogleAppMeasurement.xcframework */; };
@@ -177,11 +175,9 @@
 				6951553E2A647B4C00A5C43D /* FBLPromises.xcframework in Frameworks */,
 				695155742A647E7D00A5C43D /* AckeeTemplate.framework in Frameworks */,
 				695155502A647B4C00A5C43D /* FirebaseCore.xcframework in Frameworks */,
-				695155462A647B4C00A5C43D /* FirebaseAnalyticsSwift.xcframework in Frameworks */,
 				695155482A647B4C00A5C43D /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
 				695155422A647B4C00A5C43D /* FirebaseCoreInternal.xcframework in Frameworks */,
 				6951554A2A647B4C00A5C43D /* FirebaseInstallations.xcframework in Frameworks */,
-				6951553C2A647B4C00A5C43D /* FirebaseRemoteConfigSwift.xcframework in Frameworks */,
 				6951554C2A647B4C00A5C43D /* GoogleAppMeasurement.xcframework in Frameworks */,
 				6951553A2A647B4C00A5C43D /* FirebaseABTesting.xcframework in Frameworks */,
 				695155382A647B4C00A5C43D /* nanopb.xcframework in Frameworks */,
