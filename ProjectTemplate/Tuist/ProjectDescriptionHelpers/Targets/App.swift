@@ -25,7 +25,8 @@ let app = Target(
     ]),
     sources: "\(targetName)/Sources/**",
     resources: "\(targetName)/Resources/**",
-    scripts: .crashlytics(),
+// TODO: In app you would want crashlytics 🙃
+//    scripts: .crashlytics(),
     dependencies: [
         .core,
         .target(login),
