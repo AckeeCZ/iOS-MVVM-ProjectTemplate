@@ -16,16 +16,17 @@ private let codeSigning = CodeSigning.current(
 
 let app = Target(
     name: targetName,
-    platform: .iOS,
+    destinations: .app,
     product: .app,
     bundleId: bundleID,
-    deploymentTarget: .app,
+    infoPlist: .extendingSharedDefault(with: [
+        "ITSAppUsesNonExemptEncryption": false,
+        "UILaunchStoryboardName": "LaunchScreen.storyboard",
+    ]),
     sources: "\(targetName)/Sources/**",
     resources: "\(targetName)/Resources/**",
-    scripts: [
-        .setBuildNumber(),
-        .crashlytics()
-    ],
+// TODO: In app you would want crashlytics 🙃
+//    scripts: .crashlytics(),
     dependencies: [
         .core,
         .target(login),

@@ -6,10 +6,9 @@ private let basePath = "Modules/" + targetName
 
 let profile = Target(
     name: targetName,
-    platform: .iOS,
+    destinations: .app,
     product: .staticFramework,
     bundleId: "cz.ackee.\(projectName).\(targetName.toBundleID())",
-    deploymentTarget: .app,
     sources: .init(globs: [
         "\(basePath)/Sources/**",
         .testing(at: basePath)
@@ -23,10 +22,9 @@ let profile = Target(
 
 let profileTests = Target(
     name: profile.name + "_Tests",
-    platform: .iOS,
+    destinations: .tests,
     product: .unitTests,
     bundleId: profile.bundleId + ".tests",
-    deploymentTarget: .tests,
     sources: "\(basePath)/Tests/**",
     dependencies: [
         .xctest,

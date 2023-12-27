@@ -14,7 +14,7 @@ let project = Project(
             testLanguage: "cs",
             testRegion: "CZ"
         ),
-        developmentRegion: "CZ",
+        developmentRegion: "cs",
         textSettings: .textSettings(
             usesTabs: false,
             indentWidth: 4,
@@ -24,7 +24,13 @@ let project = Project(
     ),
     settings: .settings(
         base: [
-            "MARKETING_VERSION": .string(version.description)
+            "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+            "EAGER_LINKING": true,
+            "ENABLE_MODULE_VERIFIER": true,
+            "ENABLE_USER_SCRIPT_SANDBOXING": true,
+            "IPHONEOS_DEPLOYMENT_TARGET": "15.0",
+            "MARKETING_VERSION": .string(version.description),
+            "OTHER_LDFLAGS": "-ObjC",
         ],
         configurations: [.current]
     ),

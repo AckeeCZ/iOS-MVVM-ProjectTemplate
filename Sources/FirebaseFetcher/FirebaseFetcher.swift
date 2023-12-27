@@ -1,6 +1,5 @@
 import AckeeTemplate
 import FirebaseRemoteConfig
-import FirebaseRemoteConfigSwift
 
 public final class FirebaseFetcher: MinBuildNumberFetcher {
     public var minBuildNumber: Int {
