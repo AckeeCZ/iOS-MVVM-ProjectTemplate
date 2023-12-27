@@ -44,14 +44,16 @@ jobs:
       - uses: AckeeCZ/load-xcode-version@1.1.0
       - uses: actions/cache@v3
         with:
-          path: Carthage
+          path: ../Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
       - name: Install Tuist
         run: bash <(curl -Ls https://install.tuist.io)
       - name: Build Carthage dependencies
-        run: carthage bootstrap --platform iOS --cache-builds --use-xcframeworks
+        run: |
+          carthage checkout --project-directory ..
+          carthage build --no-skip-current --cache-builds --use-xcframeworks --project-directory ..
       - name: Generate project
         run: tuist fetch && tuist generate
       - name: Build project
