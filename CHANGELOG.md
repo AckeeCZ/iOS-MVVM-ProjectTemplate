@@ -1,6 +1,8 @@
 # Changelog
 
 ## Next
+
+## 1.1.0
 - Updates ([#74](https://github.com/AckeeCZ/iOS-MVVM-ProjectTemplate/pull/74), kudos to @olejnjak)
     - new build settings defaults
     - add app icon
