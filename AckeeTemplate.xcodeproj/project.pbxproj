@@ -19,6 +19,7 @@
 		6951554E2A647B4C00A5C43D /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155352A647B4C00A5C43D /* GoogleUtilities.xcframework */; };
 		695155502A647B4C00A5C43D /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155362A647B4C00A5C43D /* FirebaseCore.xcframework */; };
 		695155522A647B4C00A5C43D /* FirebaseRemoteConfig.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695155372A647B4C00A5C43D /* FirebaseRemoteConfig.xcframework */; };
+		699C13772B864D4100AC76C5 /* ACKategories.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699C13762B864D4100AC76C5 /* ACKategories.xcframework */; };
 		69CFAD3C2A647A7100344512 /* FirebaseFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BE64AE2A64755D00B41993 /* FirebaseFetcher.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		695155362A647B4C00A5C43D /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCore.xcframework; path = Carthage/Build/FirebaseCore.xcframework; sourceTree = "<group>"; };
 		695155372A647B4C00A5C43D /* FirebaseRemoteConfig.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseRemoteConfig.xcframework; path = Carthage/Build/FirebaseRemoteConfig.xcframework; sourceTree = "<group>"; };
 		695155722A647C0000A5C43D /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		699C13762B864D4100AC76C5 /* ACKategories.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ACKategories.xcframework; path = Carthage/Build/ACKategories.xcframework; sourceTree = "<group>"; };
 		69BE64AE2A64755D00B41993 /* FirebaseFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFetcher.swift; sourceTree = "<group>"; };
 		69CFAD352A647A6500344512 /* FirebaseFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CFAD3D2A647A8800344512 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 				6951553E2A647B4C00A5C43D /* FBLPromises.xcframework in Frameworks */,
 				695155502A647B4C00A5C43D /* FirebaseCore.xcframework in Frameworks */,
 				695155482A647B4C00A5C43D /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
+				699C13772B864D4100AC76C5 /* ACKategories.xcframework in Frameworks */,
 				695155422A647B4C00A5C43D /* FirebaseCoreInternal.xcframework in Frameworks */,
 				6951554A2A647B4C00A5C43D /* FirebaseInstallations.xcframework in Frameworks */,
 				6951554C2A647B4C00A5C43D /* GoogleAppMeasurement.xcframework in Frameworks */,
@@ -80,6 +83,7 @@
 		695155292A647B4C00A5C43D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				699C13762B864D4100AC76C5 /* ACKategories.xcframework */,
 				6951552D2A647B4C00A5C43D /* FBLPromises.xcframework */,
 				6951552B2A647B4C00A5C43D /* FirebaseABTesting.xcframework */,
 				6951552E2A647B4C00A5C43D /* FirebaseAnalytics.xcframework */,
@@ -161,7 +165,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					69CFAD342A647A6500344512 = {
 						CreatedOnToolsVersion = 15.0;
@@ -211,9 +215,38 @@
 		691C499A2A647446000A0FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
@@ -223,6 +256,33 @@
 		691C499B2A647446000A0FAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.1.0;
@@ -265,6 +325,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -355,6 +416,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
