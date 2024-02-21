@@ -1,4 +1,4 @@
-import AckeeTemplate
+import ACKategories
 import FirebaseRemoteConfig
 
 public final class FirebaseFetcher: MinBuildNumberFetcher {

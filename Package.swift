@@ -11,14 +11,6 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "AckeeTemplate",
-            targets: ["AckeeTemplate"]
-        ),
-        .library(
-            name: "PushNotifications",
-            targets: ["PushNotifications"]
-        ),
-        .library(
             name: "FirebaseFetcher",
             targets: ["FirebaseFetcher"]
         ),
@@ -28,26 +20,24 @@ let package = Package(
             url: "https://github.com/firebase/firebase-ios-sdk",
             .upToNextMajor(from: "10.19.0")
         ),
+        .package(
+            url: "https://github.com/AckeeCZ/ACKategories",
+            .upToNextMajor(from: "6.13.0")
+        ),
     ],
     targets: [
-        .target(name: "AckeeTemplate"),
-        .testTarget(
-            name: "AckeeTemplateTests",
-            dependencies: ["AckeeTemplate"]
-        ),
-        .target(name: "PushNotifications"),
-        .testTarget(
-            name: "PushNotificationsTests",
-            dependencies: ["PushNotifications"]
-        ),
         .target(
             name: "FirebaseFetcher",
             dependencies: [
-                "AckeeTemplate",
                 .product(
-                    name: "FirebaseRemoteConfigSwift",
+                    name: "ACKategories",
+                    package: "ACKategories"
+                ),
+                .product(
+                    name: "FirebaseRemoteConfig",
                     package: "firebase-ios-sdk"
                 ),
+
             ]
         )
     ]

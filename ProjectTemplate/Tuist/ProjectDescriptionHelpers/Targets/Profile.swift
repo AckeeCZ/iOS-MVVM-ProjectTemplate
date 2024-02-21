@@ -15,7 +15,7 @@ let profile = Target(
     ].compactMap { $0 }),
     dependencies: [
         .core,
-        .ackeeTemplate,
+        .ackategories,
         .appUI
     ]
 )

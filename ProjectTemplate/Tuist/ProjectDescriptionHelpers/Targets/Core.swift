@@ -15,7 +15,7 @@ let core = Target(
     ].compactMap { $0 }),
     dependencies: [
         .assets,
-        .ackeeTemplate
+        .ackategories,
     ]
 )
 
