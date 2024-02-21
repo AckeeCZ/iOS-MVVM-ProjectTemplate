@@ -3,6 +3,6 @@ import ProjectDescription
 
 public extension TargetDependency {
 // In real project you will want the following line
-//    static let ackeeTemplate = TargetDependency.carthage("AckeeTemplate")
-    static let ackeeTemplate = TargetDependency.xcframework(path: "../Carthage/Build/AckeeTemplate.xcframework")
+//    static let ackategories = TargetDependency.carthage("ACKategories")
+    static let ackategories = TargetDependency.xcframework(path: "../Carthage/Build/ACKategories.xcframework")
 }
