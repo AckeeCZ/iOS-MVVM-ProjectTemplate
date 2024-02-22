@@ -3,23 +3,7 @@ name: Build
 on: [pull_request, push]
 
 jobs:
-  carthage:
-    name: Carthage build
-    runs-on: macos-13
-    steps:
-      - uses: actions/checkout@v4
-      - uses: AckeeCZ/load-xcode-version@1.1.0
-      - uses: actions/cache@v3
-        with:
-          path: Carthage
-          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-carthage-
-      - name: Fetch Carthage dependencies
-        run: carthage checkout
-      - name: Carthage build
-        run: carthage build --no-skip-current --cache-builds --use-xcframeworks
-  tests:
+  build:
     name: Build
     runs-on: macos-13
     steps:
@@ -27,7 +11,7 @@ jobs:
       - uses: AckeeCZ/load-xcode-version@1.1.0
       - uses: actions/cache@v3
         with:
-          path: ../Carthage
+          path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
