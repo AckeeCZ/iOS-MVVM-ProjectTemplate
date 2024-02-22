@@ -18,11 +18,12 @@ jobs:
       - name: Install Tuist
         run:  |
           curl https://mise.run | sh
-          eval "$(~/.local/bin/mise activate bash)"
-          mise install tuist
+          ~/.local/bin/mise install tuist
       - name: Build Carthage dependencies
         run: carthage bootstrap --cache-builds --use-xcframeworks
       - name: Generate project
-        run: tuist fetch && tuist generate
+        run: |
+          ~/.local/bin/mise exec -- tuist fetch
+          ~/.local/bin/mise exec -- tuist generate
       - name: Build project
-        run: tuist build
+        run: ~/.local/bin/mise exec -- tuist build
