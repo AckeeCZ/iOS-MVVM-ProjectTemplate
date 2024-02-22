@@ -19,8 +19,7 @@ jobs:
         run: carthage bootstrap --cache-builds --use-xcframeworks
       - name: Build project
         run: |
-          curl https://mise.run | sh
-          ~/.local/bin/mise install tuist
-          ~/.local/bin/mise exec -- tuist fetch
-          ~/.local/bin/mise exec -- tuist generate
-          ~/.local/bin/mise exec -- tuist build
+          bash <(curl -Ls https://install.tuist.io)
+          tuist fetch
+          tuist generate
+          tuist build
