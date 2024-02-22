@@ -15,15 +15,12 @@ jobs:
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
-      - name: Install Tuist
-        run:  |
-          curl https://mise.run | sh
-          ~/.local/bin/mise install tuist
       - name: Build Carthage dependencies
         run: carthage bootstrap --cache-builds --use-xcframeworks
-      - name: Generate project
+      - name: Build project
         run: |
+          curl https://mise.run | sh
+          ~/.local/bin/mise install tuist
           ~/.local/bin/mise exec -- tuist fetch
           ~/.local/bin/mise exec -- tuist generate
-      - name: Build project
-        run: ~/.local/bin/mise exec -- tuist build
+          ~/.local/bin/mise exec -- tuist build
