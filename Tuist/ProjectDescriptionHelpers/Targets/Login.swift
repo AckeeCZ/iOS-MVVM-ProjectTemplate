@@ -21,7 +21,7 @@ let login = Target(
 )
 
 let loginTests = Target(
-    name: login.name + "_Tests",
+    name: login.name + "Tests",
     destinations: .tests,
     product: .unitTests,
     bundleId: login.bundleId + ".tests",

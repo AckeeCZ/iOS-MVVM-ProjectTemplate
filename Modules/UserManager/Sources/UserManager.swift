@@ -1,4 +1,4 @@
-import Core
+import AppCore
 import Foundation
 
 public func createUserManager() -> UserManaging {

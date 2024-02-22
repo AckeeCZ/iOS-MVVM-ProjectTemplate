@@ -1,7 +1,7 @@
 import Foundation
 import ProjectDescription
 
-private let targetName = "Core"
+private let targetName = "AppCore"
 private let basePath = "Modules/" + targetName
 
 let core = Target(
@@ -20,7 +20,7 @@ let core = Target(
 )
 
 let coreTests = Target(
-    name: core.name + "_Tests",
+    name: core.name + "Tests",
     destinations: .tests,
     product: .unitTests,
     bundleId: core.bundleId + ".tests",

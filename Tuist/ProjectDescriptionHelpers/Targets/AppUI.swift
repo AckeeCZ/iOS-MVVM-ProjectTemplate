@@ -20,7 +20,7 @@ let appUI = Target(
 )
 
 let appUITests = Target(
-    name: appUI.name + "_Tests",
+    name: appUI.name + "Tests",
     destinations: .tests,
     product: .unitTests,
     bundleId: appUI.bundleId + ".tests",

@@ -20,7 +20,7 @@ let userManager = Target(
 )
 
 let userManagerTests = Target(
-    name: userManager.name + "_Tests",
+    name: userManager.name + "Tests",
     destinations: .tests,
     product: .unitTests,
     bundleId: userManager.bundleId + ".tests",

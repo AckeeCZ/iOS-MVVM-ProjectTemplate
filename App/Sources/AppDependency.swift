@@ -1,5 +1,5 @@
 import ACKategories
-import Core
+import AppCore
 import Foundation
 import UserManager
 

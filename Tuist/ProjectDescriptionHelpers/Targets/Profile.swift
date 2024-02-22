@@ -21,7 +21,7 @@ let profile = Target(
 )
 
 let profileTests = Target(
-    name: profile.name + "_Tests",
+    name: profile.name + "Tests",
     destinations: .tests,
     product: .unitTests,
     bundleId: profile.bundleId + ".tests",
