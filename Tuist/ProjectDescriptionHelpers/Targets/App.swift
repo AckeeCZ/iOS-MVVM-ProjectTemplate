@@ -24,9 +24,11 @@ let app = Target(
         "UILaunchStoryboardName": "LaunchScreen.storyboard",
     ]),
     sources: "\(targetName)/Sources/**",
-    resources: "\(targetName)/Resources/**",
-// TODO: In app you would want crashlytics 🙃
-//    scripts: .crashlytics(),
+    resources: [
+        "\(targetName)/Resources/**",
+        "\(targetName)/GoogleService/\(bundleID)/GoogleService-Info.plist",
+    ],
+    scripts: .crashlytics(),
     dependencies: [
         .core,
         .target(login),

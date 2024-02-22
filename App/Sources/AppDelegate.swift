@@ -1,3 +1,4 @@
+import FirebaseCore
 import FirebaseCrashlytics
 import UIKit
 
@@ -9,6 +10,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
+        // This is gonna crash as plist file is just a placeholder
+        FirebaseApp.configure()
+
         window = .init(frame: UIScreen.main.bounds)
         window?.rootViewController = UIViewController()
         window?.rootViewController?.view.backgroundColor = .red

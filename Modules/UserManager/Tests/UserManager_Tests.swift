@@ -8,7 +8,7 @@ final class UserManager_Tests: XCTestCase {
 
         try await subject.login(username: "user", password: "password")
 
-        XCTAssertEqual(subject.currentUserName, "user")
+        XCTAssertEqual(subject.currentUser?.username, "user")
     }
 
     func test_loggedIn() async throws {
@@ -29,6 +29,6 @@ final class UserManager_Tests: XCTestCase {
         try await subject.login(username: "user", password: "password")
         await subject.logout()
 
-        XCTAssertNil(subject.currentUserName)
+        XCTAssertNil(subject.currentUser)
     }
 }

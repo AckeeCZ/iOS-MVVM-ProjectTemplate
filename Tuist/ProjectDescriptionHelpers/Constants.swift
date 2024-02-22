@@ -10,7 +10,6 @@ public let projectTargets = [
     assets,
     core, coreTests,
     appUI, appUITests,
-    firebaseFetcher,
     login, loginTests,
     profile, profileTests,
     userManager, userManagerTests
