@@ -3,9 +3,9 @@ name: Build
 on: [pull_request, push]
 
 jobs:
-  carthage:
-    name: Carthage build
-    runs-on: macos-13
+  build:
+    name: Build
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: AckeeCZ/load-xcode-version@1.1.0
@@ -15,32 +15,11 @@ jobs:
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
-      - name: Fetch Carthage dependencies
-        run: carthage checkout
-      - name: Carthage build
-        run: carthage build --no-skip-current --cache-builds --use-xcframeworks
-  tests:
-    name: Build
-    runs-on: macos-13
-    defaults:
-      run:
-        working-directory: ./ProjectTemplate
-    steps:
-      - uses: actions/checkout@v4
-      - uses: AckeeCZ/load-xcode-version@1.1.0
-      - uses: actions/cache@v3
-        with:
-          path: ../Carthage
-          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-carthage-
-      - name: Install Tuist
-        run: bash <(curl -Ls https://install.tuist.io)
       - name: Build Carthage dependencies
-        run: |
-          carthage checkout --project-directory ..
-          carthage build --no-skip-current --cache-builds --use-xcframeworks --project-directory ..
-      - name: Generate project
-        run: tuist fetch && tuist generate
+        run: carthage bootstrap --cache-builds --use-xcframeworks
       - name: Build project
-        run: set -o pipefail && xcodebuild -scheme App -workspace ProjectTemplate.xcworkspace -sdk iphonesimulator ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO | xcpretty
+        run: |
+          bash <(curl -Ls https://install.tuist.io)
+          tuist fetch
+          tuist generate
+          tuist build
